@@ -43,7 +43,8 @@ Because I have been fascinated by the gameplay of Taiko No Tatsujin, however I d
 + a, s, d, f, g, z, x, c, v, b
   + Inner Left Drum (Red)
 + h, j, k, l, ;, n, m, ",", ".", "/"
-  + Inner Right Drum (Red)
+  + Inner Right Drum (Red) 
+    + Note: the period and slash key don't work.
  
 ## How will the engine work?
 We will have create functions for the bar, the blue orb, and the red orb.
