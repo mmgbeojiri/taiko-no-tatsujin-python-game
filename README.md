@@ -22,6 +22,13 @@ Senbonzakura = {
 }
 ```
 
+Here is the list for the notes.
+```
+0: No Note
+1: Don (red)
+2: Katsu (blue)
+```
+
 ## What will be the design?
 A more modern minimalistic design.
 
