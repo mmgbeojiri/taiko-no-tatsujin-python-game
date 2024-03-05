@@ -109,11 +109,15 @@ while not game.over:
     for i in range(len(outerLeftKeys)): # Katsu
         if keys.Pressed[outerLeftKeys[i]]:
             drumOuterLeft.draw()
-
-
+    for i in range(len(outerRightKeys)): # Katsu
+        if keys.Pressed[outerRightKeys[i]]:
+            drumOuterRight.draw()
     for i in range(len(innerLeftKeys)): # Don
         if keys.Pressed[innerLeftKeys[i]]:
             drumInnerLeft.draw()
+    for i in range(len(innerRightKeys)): # Don
+        if keys.Pressed[innerRightKeys[i]]:
+            drumInnerRight.draw()
 
 
 
