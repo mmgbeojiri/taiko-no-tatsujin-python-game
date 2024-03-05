@@ -1,5 +1,24 @@
 from gamelib import *
 
+'''
+# Initialize debounce flags for each key
+debounce_flags = {
+    key: False for key in outerLeftKeys + outerRightKeys + innerLeftKeys + innerRightKeys
+}
+
+# Inside the game loop, handle key press events
+for key in debounce_flags:
+    if keys.Pressed[key] and not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
+        debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
+        # Play corresponding sound based on key
+        if key in innerLeftKeys or key in innerRightKeys:  # Don sound
+            don_sound.play()
+        else:  # Katsu sound
+            katsu_sound.play()
+    elif not keys.Pressed[key] and debounce_flags[key]:  # Check if key is released and debounce flag is True
+        debounce_flags[key] = False  # Reset debounce flag
+'''
+
 game = Game(1920, 1080, "Taiko no Tatsujin - Python")
 
 outerBar = Image("./images/outerbar.png", game)
