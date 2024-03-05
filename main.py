@@ -42,6 +42,9 @@ drumInnerLeft.resizeBy(-78)
 drumOuterRight.resizeBy(-78)
 drumOuterLeft.resizeBy(-78)
 
+don = Sound("./sounds/Don.wav", 1)
+katsu = Sound("./sounds/Katsu.wav", 2)
+
 outerLeftKeys = [
     K_1,
     K_2,
@@ -55,6 +58,23 @@ outerLeftKeys = [
     K_t
 ]
 
+
+
+innerLeftKeys = [
+    K_a,
+    K_s,
+    K_d,
+    K_f,
+    K_g,
+    K_z,
+    K_x,
+    K_c,
+    K_v,
+    K_b,
+]
+
+
+
 while not game.over:
     game.processInput()
     game.clearBackground()
@@ -65,9 +85,18 @@ while not game.over:
     scoreContain.draw()
     drum.draw()
 
-    for i in range(len(outerLeftKeys)):
+
+    for i in range(len(outerLeftKeys)): # Katsu
         if keys.Pressed[outerLeftKeys[i]]:
             drumOuterLeft.draw()
+
+
+    for i in range(len(innerLeftKeys)): # Don
+        if keys.Pressed[innerLeftKeys[i]]:
+            drumInnerLeft.draw()
+
+
+
 
     game.update(60)
 game.quit()
