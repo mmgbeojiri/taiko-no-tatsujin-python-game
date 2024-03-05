@@ -119,7 +119,7 @@ while not game.over:
         if keys.Pressed[innerRightKeys[i]]:
             drumInnerRight.draw()
 
-
+    # for each key, make a sound debounce. when key is pressed, play sound only once. 
 
 
     game.update(60)
