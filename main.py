@@ -16,7 +16,7 @@ scoreContain.moveTo(scoreContain.width/2, 153)
 drum = Image("./images/taikodrum.png", game)
 drumCollide = Image("./images/drumhit.png", game)
 
-drum.resizeBy(-)
+drum.resizeBy(-60)
 drum.moveTo(scoreContain.width/2, 153)
 
 blue = Image("./images/blue.png", game)
