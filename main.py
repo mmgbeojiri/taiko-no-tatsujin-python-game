@@ -58,7 +58,18 @@ outerLeftKeys = [
     K_t
 ]
 
-
+outerRightKeys = [
+    K_6,
+    K_7,
+    K_8,
+    K_9,
+    K_0,
+    K_y,
+    K_u,
+    K_i,
+    K_o,
+    K_p
+]
 
 innerLeftKeys = [
     K_a,
@@ -73,7 +84,16 @@ innerLeftKeys = [
     K_b,
 ]
 
-
+innerRightKeys = [
+    K_h,
+    K_j,
+    K_k,
+    K_l,
+    K_SEMICOLON,
+    K_n,
+    K_m,
+    K_COMMA
+]
 
 while not game.over:
     game.processInput()
