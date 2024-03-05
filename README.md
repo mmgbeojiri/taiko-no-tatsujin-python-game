@@ -25,8 +25,8 @@ Senbonzakura = {
 Here is the list for the notes.
 ```
 0: No Note
-1: Don (red)
-2: Katsu (blue)
+1: Don (red) (middle hit)
+2: Katsu (blue) (side hit)
 ```
 
 ## What will be the design?
