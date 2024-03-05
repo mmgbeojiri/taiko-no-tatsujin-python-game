@@ -21,22 +21,53 @@ drum.resizeBy(-78)
 
 drum.moveTo(scoreContain.width - 100, 153)
 
-drumInnerRight = Image("./images/drum/innerright", game)
-drumInnerLeft = Image("./images/drum/innerleft", game)
-drumOuterRight = Image("./images/drum/outerright", game)
-drumOuterLeft = Image("./images/drum/outerleft", game)
+drumInnerRight = Image("./images/drum/innerright.png", game)
+drumInnerLeft = Image("./images/drum/innerleft.png", game)
+drumOuterRight = Image("./images/drum/outerright.png", game)
+drumOuterLeft = Image("./images/drum/outerleft.png", game)
 
+
+
+drumInnerRight.moveTo(drum.x, drum.y)
+drumInnerLeft.moveTo(drum.x, drum.y)
+drumOuterRight.moveTo(drum.x, drum.y)
+drumOuterLeft.moveTo(drum.x, drum.y)
 
 blue = Image("./images/blue.png", game)
 red = Image("./images/red.png", game)
 effect = Image("./images/effect.png", game)
 
+drumInnerRight.resizeBy(-78)
+drumInnerLeft.resizeBy(-78)
+drumOuterRight.resizeBy(-78)
+drumOuterLeft.resizeBy(-78)
+
+outerLeftKeys = [
+    K_1,
+    K_2,
+    K_3,
+    K_4,
+    K_5,
+    K_q,
+    K_w,
+    K_e, 
+    K_r,
+    K_t
+]
+
 while not game.over:
     game.processInput()
+    game.clearBackground()
     outerBar.draw()
     innerBar.draw()
 
+
     scoreContain.draw()
-    drum.draw() 
+    drum.draw()
+
+    for i in range(len(outerLeftKeys)):
+        if keys.Pressed[outerLeftKeys[i]]:
+            drumOuterLeft.draw()
+
     game.update(60)
 game.quit()
