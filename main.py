@@ -62,6 +62,7 @@ drumOuterLeft.moveTo(drum.x, drum.y)
 blue = Image("./images/blue.png", game)
 red = Image("./images/red.png", game)
 effect = Image("./images/effect.png", game)
+effect.resizeTo(5, 5)
 
 drumInnerRight.resizeBy(drumResize)
 drumInnerLeft.resizeBy(drumResize)
@@ -73,7 +74,8 @@ katsu = Sound("./sounds/Katsu.wav", 2)
 
 def hitEffect():
     global drumCollide, effect
-    effect.resizeBy(100)
+    effect.resizeTo(78, 78)
+    effect.resizeBy(130)
 
 
 outerLeftKeys = [
@@ -137,7 +139,7 @@ while not game.over:
     outerBar.draw()
     innerBar.draw()
     effect.draw()
-    effect.resizeBy(-5)
+    effect.resizeBy(-2)
     effect.moveTo(drumCollide.x, drumCollide.y)
     drumCollide.draw()
 
