@@ -145,10 +145,22 @@ class Blue:
     def move(self):
         self.object.move()
 
+class Red:
+    def __init__(self):
+        self.object = Image("./images/red.png", game)
+        self.object.resizeBy(drumResize)
+        self.object.moveTo(game.width + 100, yPositionLine)
+        self.object.setSpeed(scrollSpeed, 90)
+    def move(self):
+        self.object.move()
+
+
 def createObject(string):
     global renders, Blue
     if string == "blue":
         renders.append(Blue())
+    if string == "red":
+        renders.append(Red())
 
 
 renders = []
@@ -165,6 +177,8 @@ while not game.over:
     # Notes #
     if keys.Pressed[K_SPACE]:
         createObject("blue")
+    if keys.Pressed[K_COMMA]:
+        createObject("red")
 
     for i in range(len(renders)):
         renders[i].move()
