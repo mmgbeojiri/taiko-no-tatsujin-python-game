@@ -72,6 +72,8 @@ drumOuterLeft.resizeBy(drumResize)
 don = Sound("./sounds/Don.wav", 1)
 katsu = Sound("./sounds/Katsu.wav", 2)
 
+scrollSpeed = 10
+
 def hitEffect():
     global drumCollide, effect
     effect.resizeTo(78, 78)
@@ -133,6 +135,23 @@ debounce_flags = {
     key: False for key in outerLeftKeys + outerRightKeys + innerLeftKeys + innerRightKeys
 }
 
+# Object Oriented Programming
+class Blue:
+    def __init__(self):
+        self.object = Image("./images/blue.png", game)
+        self.object.resizeBy(drumResize)
+        self.object.moveTo(game.width + 100, yPositionLine)
+        self.object.setSpeed(scrollSpeed, 90)
+    def move(self):
+        self.object.move()
+
+def createObject(string):
+    global renders, Blue
+    if string == "blue":
+        renders.append(Blue())
+
+
+renders = []
 while not game.over:
     game.processInput()
     game.clearBackground()
@@ -144,6 +163,11 @@ while not game.over:
     drumCollide.draw()
 
     # Notes #
+    if keys.Pressed[K_SPACE]:
+        createObject("blue")
+
+    for i in range(len(renders)):
+        renders[i].move()
 
     scoreContain.draw()
     drum.draw()
