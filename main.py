@@ -28,6 +28,7 @@ outerBar.resizeBy(100)
 innerBar.resizeBy(100)
 
 yPositionLine = 153
+drumResize = -78
 
 scoreContain = Image("./images/scorecontainer.png", game)
 
@@ -38,8 +39,8 @@ scoreContain.moveTo(scoreContain.width/2, yPositionLine)
 drum = Image("./images/taikodrum.png", game)
 drumCollide = Image("./images/drumhit.png", game)
 
-drum.resizeBy(-78)
-drumCollide.resizeBy(-78)
+drum.resizeBy(drumResize)
+drumCollide.resizeBy(drumResize)
 
 
 drum.moveTo(scoreContain.width - 100, yPositionLine)
@@ -62,13 +63,19 @@ blue = Image("./images/blue.png", game)
 red = Image("./images/red.png", game)
 effect = Image("./images/effect.png", game)
 
-drumInnerRight.resizeBy(-78)
-drumInnerLeft.resizeBy(-78)
-drumOuterRight.resizeBy(-78)
-drumOuterLeft.resizeBy(-78)
+drumInnerRight.resizeBy(drumResize)
+drumInnerLeft.resizeBy(drumResize)
+drumOuterRight.resizeBy(drumResize)
+drumOuterLeft.resizeBy(drumResize)
 
 don = Sound("./sounds/Don.wav", 1)
 katsu = Sound("./sounds/Katsu.wav", 2)
+
+def hitEffect():
+    global drumCollide, effect
+    effect.resizeBy(78, 78)
+    effect.resizeBy(500)
+
 
 outerLeftKeys = [
     K_1,
@@ -130,6 +137,9 @@ while not game.over:
     game.clearBackground()
     outerBar.draw()
     innerBar.draw()
+    effect.draw()
+    effect.resizeBy(-5)
+    effect.moveTo(drumCollide.x, drumCollide.y)
     drumCollide.draw()
 
     # Notes #
@@ -156,6 +166,7 @@ while not game.over:
     # Inside the game loop, handle key press events
     for key in debounce_flags:
         if keys.Pressed[key] and not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
+            hitEffect()
             debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
             # Play corresponding sound based on key
             if key in innerLeftKeys or key in innerRightKeys:  # Don sound
