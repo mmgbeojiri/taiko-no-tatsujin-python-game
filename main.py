@@ -73,8 +73,7 @@ katsu = Sound("./sounds/Katsu.wav", 2)
 
 def hitEffect():
     global drumCollide, effect
-    effect.resizeBy(78, 78)
-    effect.resizeBy(500)
+    effect.resizeBy(100)
 
 
 outerLeftKeys = [
