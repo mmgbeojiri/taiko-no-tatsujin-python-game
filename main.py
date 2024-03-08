@@ -73,7 +73,7 @@ don = Sound("./sounds/Don.wav", 1)
 katsu = Sound("./sounds/Katsu.wav", 2)
 
 scrollSpeed = 10
-
+drumHitboxAdd = 5
 def hitEffect():
     global drumCollide, effect
     effect.resizeTo(78, 78)
@@ -127,7 +127,8 @@ innerRightKeys = [
     K_SEMICOLON,
     K_n,
     K_m,
-    K_COMMA
+    K_COMMA,
+    K_PERIOD
 ]
 
 # Initialize debounce flags for each key
@@ -136,7 +137,7 @@ debounce_flags = {
 }
 
 # Object Oriented Programming
-class Blue:
+class Blue: # Katsu
     def __init__(self):
         self.object = Image("./images/blue.png", game)
         self.object.resizeBy(drumResize)
@@ -144,6 +145,18 @@ class Blue:
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
         self.object.move()
+    def checkIfHit(self):
+        if self.object.x > drumCollide.left - drumHitboxAdd:
+            if self.object.x < drumCollide.right + drumHitboxAdd:
+                for i in range(len(outerLeftKeys)): # Katsu
+                    if keys.Pressed[outerLeftKeys[i]]:
+                        game.score += 100
+                        self.object.visible = False
+                for i in range(len(outerRightKeys)): # Katsu
+                    if keys.Pressed[outerRightKeys[i]]:
+                        game.score += 100
+                        self.object.visible = False
+
 
 class Red:
     def __init__(self):
@@ -153,6 +166,35 @@ class Red:
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
         self.object.move()
+    def checkIfHit(self):
+        if self.object.x > drumCollide.left - drumHitboxAdd:
+            if self.object.x < drumCollide.right + drumHitboxAdd:
+                for i in range(len(innerLeftKeys)): # Don
+                    if keys.Pressed[innerLeftKeys[i]]:
+                        game.score += 100
+                        self.object.visible = False
+                for i in range(len(innerRightKeys)): # Don
+                    if keys.Pressed[innerRightKeys[i]]:
+                        game.score += 100
+                        self.object.visible = False
+songStartDebounce = True
+class Bar:
+    def __init__(self):
+        self.object = Image("./images/bar.png", game)
+        self.object.resizeBy(drumResize)
+        self.object.moveTo(game.width + 100, yPositionLine)
+        self.object.setSpeed(scrollSpeed, 90)
+
+    def move(self):
+        self.object.move()
+        if self.object.x < drumCollide.x:
+            if songStartDebounce:
+                print("play the Music")
+                songStartDebounce = False
+    def checkIfHit(self):
+        pass
+        # We do a pass to not cause an error since this is in the render
+
 
 
 def createObject(string):
@@ -161,6 +203,8 @@ def createObject(string):
         renders.append(Blue())
     if string == "red":
         renders.append(Red())
+    if string == "bar":
+        renders.append(Bar())
 
 
 renders = []
@@ -175,6 +219,8 @@ while not game.over:
     drumCollide.draw()
 
     # Notes #
+    if keys.Pressed[K_PERIOD]:
+        createObject("red")
     if keys.Pressed[K_SPACE]:
         createObject("blue")
     if keys.Pressed[K_COMMA]:
@@ -206,6 +252,8 @@ while not game.over:
     for key in debounce_flags:
         if keys.Pressed[key] and not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
             hitEffect()
+            for i in range(len(renders)):
+                renders[i].checkIfHit()
             debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
             # Play corresponding sound based on key
             if key in innerLeftKeys or key in innerRightKeys:  # Don sound
