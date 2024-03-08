@@ -226,7 +226,7 @@ while not game.over:
         renders[i].move()
 
     scoreContain.draw()
-    game.drawText(f"Score: {game.score}", drum.left - 100, yPositionLine)
+    game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
     drum.draw()
 
 
