@@ -186,6 +186,7 @@ class Bar:
         self.object.setSpeed(scrollSpeed, 90)
 
     def move(self):
+        global songStartDebounce
         self.object.move()
         if self.object.x < drumCollide.x:
             if songStartDebounce:
@@ -220,7 +221,7 @@ while not game.over:
 
     # Notes #
     if keys.Pressed[K_PERIOD]:
-        createObject("red")
+        createObject("bar")
     if keys.Pressed[K_SPACE]:
         createObject("blue")
     if keys.Pressed[K_COMMA]:
