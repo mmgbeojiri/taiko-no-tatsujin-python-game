@@ -80,7 +80,35 @@ WaitToRenderNote(noteType, noteTimeStamp)
 WaitToRenderBar(barTimeStamp)
 ```
 FindNextNote() will be ran every frame.
+
+WaitToRenderNote(noteType, noteTimeStamp) will wait until the songPosition reaches the noteTimeStamp to add a note to the Render list.
+--
 ```
+if songPosition > noteTimeStamp:
+  if noteType == "1"
+    render.append(Blue())
+```
+After songPosition is greater, it will run ```FindNextNote()``` again to avoid duplicates.
+
+WaitToRenderBar(barTimeStamp) will wait until songPosition reaches the barTimeStamp to add a bar to the Render List
+--
+```
+if songPosition > barTimeStamp:
+  render.append(Bar())
+```
+WaitToRenderBar() will not run ```FindNextNote()``` again.
+
+CheckForHit() will check if how close the notes are to being on the rhythm line when hit. This is ran in the note Classes.
+--
+A special varible called ```SongStartDebounce``` will be used during the CheckForHit function for the Bar
+
+```
+SongStartDebounce = True
+if self.x < drum.collide.x:
+  if SongStartDebounce:
+    playMusic()
+```
+Detects when the first bar reaches the drum, it'll start to play the music, and the following bars won't.
 
 The music will play offset to the distance of the bar.
 When the first bar is sent, and when the song starts, the music will wait unti the first bar reaches the start of the drum, and then start.
