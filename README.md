@@ -6,6 +6,8 @@ A Taiko game recreated in python.
 Most likely that this will not be a lot of songs, however I was thinking about some. The only ones I could think of are
 + SEKAI-chan to KAFU-chan no Otsukai Gassoukyoku
 + Senbonzakura
++ Bad Apple
++ Rin-Chan Now!
 
 ## How will the game be played?
 Using the keyboard, you can activate the inner and outer sides of the drums.
