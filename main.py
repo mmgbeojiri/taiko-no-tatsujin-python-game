@@ -171,11 +171,11 @@ class Red:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 for i in range(len(innerLeftKeys)): # Don
                     if keys.Pressed[innerLeftKeys[i]]:
-                        game.score += 100
+                        game.score += 15
                         self.object.visible = False
                 for i in range(len(innerRightKeys)): # Don
                     if keys.Pressed[innerRightKeys[i]]:
-                        game.score += 100
+                        game.score += 15
                         self.object.visible = False
 songStartDebounce = True
 class Bar:
@@ -220,32 +220,32 @@ while not game.over:
     drumCollide.draw()
 
     # Notes #
-    if keys.Pressed[K_PERIOD]:
-        createObject("bar")
-    if keys.Pressed[K_SPACE]:
-        createObject("blue")
-    if keys.Pressed[K_COMMA]:
-        createObject("red")
+
 
     for i in range(len(renders)):
         renders[i].move()
 
     scoreContain.draw()
+    game.drawText(f"Score: {game.score}", drum.left - 100, yPositionLine)
     drum.draw()
 
 
     for i in range(len(outerLeftKeys)): # Katsu
         if keys.Pressed[outerLeftKeys[i]]:
             drumOuterLeft.draw()
+            createObject("bar")
     for i in range(len(outerRightKeys)): # Katsu
         if keys.Pressed[outerRightKeys[i]]:
             drumOuterRight.draw()
+            createObject("blue")
     for i in range(len(innerLeftKeys)): # Don
         if keys.Pressed[innerLeftKeys[i]]:
             drumInnerLeft.draw()
+            createObject("red")
     for i in range(len(innerRightKeys)): # Don
         if keys.Pressed[innerRightKeys[i]]:
             drumInnerRight.draw()
+            createObject("red")
     
     # for each key, make a sound debounce. when key is pressed, play sound only once. 
 
