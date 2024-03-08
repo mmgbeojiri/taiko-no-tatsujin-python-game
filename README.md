@@ -11,23 +11,7 @@ Most likely that this will not be a lot of songs, however I was thinking about s
 Using the keyboard, you can activate the inner and outer sides of the drums.
 
 ## What is the song format for songs?
-A dictionary portrayed via numbers in its seperate file that represent beats. it will have a time signature as well. An example:
-```
-Senbonzakura = {
-  "beatsPerMeasure": 8
-  "bpm": 150
-  "audio": "./sounds/senbonzakura.wav"
-  "1": [1,0,1,0,1,0,1,0]
-  "2": [1,0,1,0,1,0,1,0]
-}
-```
-
-Here is the list for the notes.
-```
-0: No Note
-1: Don (red) (middle hit)
-2: Katsu (blue) (side hit)
-```
+A regular .tja file will suffice.
 
 ## What will be the design?
 A more modern minimalistic design.
@@ -47,11 +31,56 @@ Because I have been fascinated by the gameplay of Taiko No Tatsujin, however I d
     + Note: the period and slash key don't work.
  
 ## How will the engine work?
-We will have create functions for the bar, the blue orb, and the red orb.
-When a song is loaded, it will read the bpm, and then the time signature.
-A beatsPerMeasure of 8 on 150 bpm will mean that, after 8 beats, the bar line will be created.
-This will also mean the beatsPerMeasure will make each note an eighth note.
-The speed that the lines will be created is dependent on the ```1/(bpm/60)``` forumla.
+We will have create functions to create the bar, the blue orb, and the red orb.
+The scroll speed will be set to 10.
+There are two main functions that will control the song.
+
+The ```FindNextNote()``` function will find the timestamp of the next note, and the notetype. This is how it'll work.
+--
+```
+measureLength = 1/bpm/60
+noteTimeStamp = measureLength * measure
+noteTimeStamp += (noteIndex/lengthOfMeasure * measureLength)
+```
+The measure length is equal to 1 / bpm / 60. For example, if the BPM is 120, ```measureLength``` will be 0.5.
+Then, the noteTimeStamp will be calculated. Here is a example of the .tja file we will use.
+
+```
+#START
+10201020,
+20102010,
+#END
+```
+The ```measure``` is equal to the line number we are reading relative to the ```#START``` minus 1. 
+So if we were on the first line, ```measure``` would be equal to 0.
+The ```measureLength``` is the length of the measure, this is 8 and will change for each line.
+If we are doing the first note, ```then noteIndex``` would be equal to 0.
+
+So, to get the timestamp of the first note, we would do
+```
+measureLength = 1/120/60 # 0.5
+noteTimeStamp = 8 * 0 # 0
+noteTimeStamp += (0/8 * 0.5) # 0
+```
+So noteTimeStamp would be zero.
+
+So, to get the timestamp of the second note, we would do
+```
+measureLength = 1/120/60 # 0.5
+noteTimeStamp = 8 * 0 # 0
+noteTimeStamp += (1/8 * 0.5) # 0.0625
+```
+So noteTimeStamp would be 0.0625.
+
+There will also be a ```barTimeStamp``` to caluclate the next bar,  using only the ```measureLength * measure``` formula.
+```noteType`` will be set to the line of the measure, and indexed by noteIndex.
+Then, the values will be passed to the next functions,
+```
+WaitToRenderNote(noteType, noteTimeStamp)
+WaitToRenderBar(barTimeStamp)
+```
+FindNextNote() will be ran every frame.
+```
 
 The music will play offset to the distance of the bar.
 When the first bar is sent, and when the song starts, the music will wait unti the first bar reaches the start of the drum, and then start.
