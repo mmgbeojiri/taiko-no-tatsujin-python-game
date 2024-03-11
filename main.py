@@ -74,8 +74,8 @@ katsu = Sound("./sounds/Katsu.wav", 2)
 
 health = 50
 barMultipler = 9
-yellowHealth = Shape("bar", game, health * barMultipler, 10, yellow)
-greenHealth = Shape("bar", game, health * barMultipler, 10, green)
+yellowHealth = Shape("bar", game, health * barMultipler, 20, yellow)
+greenHealth = Shape("bar", game, health * barMultipler, 20, green)
 
 scrollSpeed = 10
 drumHitboxAdd = 5
@@ -234,7 +234,8 @@ while not game.over:
         greenHealth.width = 0
 
 
-    yellowHealth.moveTo(0, 0)
+    yellowHealth.moveTo(0, scoreContain.top)
+
     greenHealth.moveTo(yellowHealth.x + (50*barMultipler), yellowHealth.y)
     yellowHealth.draw()
     greenHealth.draw()
