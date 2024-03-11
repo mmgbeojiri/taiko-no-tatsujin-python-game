@@ -72,6 +72,11 @@ drumOuterLeft.resizeBy(drumResize)
 don = Sound("./sounds/Don.wav", 1)
 katsu = Sound("./sounds/Katsu.wav", 2)
 
+health = 50
+barMultipler = 9
+yellowHealth = Shape("bar", game, health * barMultipler, 10, yellow)
+greenHealth = Shape("bar", game, health * barMultipler, 10, green)
+
 scrollSpeed = 10
 drumHitboxAdd = 5
 def hitEffect():
@@ -146,6 +151,7 @@ class Blue: # Katsu
     def move(self):
         self.object.move()
     def checkIfHit(self):
+        global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 for i in range(len(outerLeftKeys)): # Katsu
@@ -156,6 +162,7 @@ class Blue: # Katsu
                     if keys.Pressed[outerRightKeys[i]]:
                         game.score += 100
                         self.object.visible = False
+                        health += 5
 
 
 class Red:
@@ -167,6 +174,7 @@ class Red:
     def move(self):
         self.object.move()
     def checkIfHit(self):
+        global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 for i in range(len(innerLeftKeys)): # Don
@@ -177,6 +185,7 @@ class Red:
                     if keys.Pressed[innerRightKeys[i]]:
                         game.score += 15
                         self.object.visible = False
+                        health -= 5
 songStartDebounce = True
 class Bar:
     def __init__(self):
@@ -213,6 +222,23 @@ while not game.over:
     game.processInput()
     game.clearBackground()
     outerBar.draw()
+
+    if health < 50:
+        yellowHealth.width = health * barMultipler
+    else:
+        yellowHealth.width = 50 * barMultipler
+
+    if health > 50:
+        greenHealth.width = health/2 * barMultipler
+    else:
+        greenHealth.width = 0
+
+
+    yellowHealth.moveTo(0, 0)
+    greenHealth.moveTo(yellowHealth.x + (50*barMultipler), yellowHealth.y)
+    yellowHealth.draw()
+    greenHealth.draw()
+
     innerBar.draw()
     effect.draw()
     effect.resizeBy(-2)
