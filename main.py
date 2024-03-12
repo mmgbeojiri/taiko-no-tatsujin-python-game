@@ -1,4 +1,5 @@
 from gamelib import *
+import time
 
 '''
 # Initialize debounce flags for each key
@@ -242,6 +243,8 @@ def createObject(string):
         renders.append(Bar())
 
 
+startTime = time.time()
+songPosition = 0
 renders = []
 while not game.over:
     game.processInput()
@@ -272,7 +275,9 @@ while not game.over:
     drumCollide.draw()
 
     # Notes #
-
+    print(round(songPosition, 8) % 8)
+    if round(songPosition, 8) % 8 == 0:
+        createObject("bar")
 
     for i in range(len(renders)):
         renders[i].move()
@@ -286,19 +291,15 @@ while not game.over:
     for i in range(len(outerLeftKeys)): # Katsu
         if keys.Pressed[outerLeftKeys[i]]:
             drumOuterLeft.draw()
-            createObject("bar")
     for i in range(len(outerRightKeys)): # Katsu
         if keys.Pressed[outerRightKeys[i]]:
             drumOuterRight.draw()
-            createObject("blue")
     for i in range(len(innerLeftKeys)): # Don
         if keys.Pressed[innerLeftKeys[i]]:
             drumInnerLeft.draw()
-            createObject("red")
     for i in range(len(innerRightKeys)): # Don
         if keys.Pressed[innerRightKeys[i]]:
             drumInnerRight.draw()
-            createObject("red")
     
     # for each key, make a sound debounce. when key is pressed, play sound only once. 
 
@@ -319,5 +320,6 @@ while not game.over:
 
 
 
+    songPosition = (time.time() - startTime)
     game.update(60)
 game.quit()
