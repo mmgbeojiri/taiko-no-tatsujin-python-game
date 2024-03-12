@@ -147,6 +147,8 @@ def hitANote():
     global health, combo, game
     combo+=1
     health+=5
+    if health > 100:
+        health = 100
     game.score += 100
 
 # Object Oriented Programming
@@ -186,13 +188,12 @@ class Red:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 for i in range(len(innerLeftKeys)): # Don
                     if keys.Pressed[innerLeftKeys[i]]:
-                        game.score += 15
                         self.object.visible = False
+                        hitANote()
                 for i in range(len(innerRightKeys)): # Don
                     if keys.Pressed[innerRightKeys[i]]:
-                        game.score += 15
                         self.object.visible = False
-                        health += 5
+                        hitANote()
 songStartDebounce = True
 class Bar:
     def __init__(self):
