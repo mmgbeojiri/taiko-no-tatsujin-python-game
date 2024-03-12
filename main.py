@@ -275,8 +275,8 @@ while not game.over:
     drumCollide.draw()
 
     # Notes #
-    print(round(songPosition, 8) % 8)
-    if round(songPosition, 8) % 8 == 0:
+    print(round(songPosition, 5) % 1)
+    if round(songPosition, 5) % 1 < 0.01:
         createObject("bar")
 
     for i in range(len(renders)):
