@@ -168,6 +168,10 @@ class Blue: # Katsu
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
         self.object.move()
+        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
+            # Missed
+            hitANote(-1)
+            self.object.visible = False
     def checkIfHit(self):
         global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
