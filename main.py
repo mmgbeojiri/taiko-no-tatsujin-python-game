@@ -245,6 +245,7 @@ def createObject(string):
 
 startTime = time.time()
 songPosition = 0
+frame = 0
 renders = []
 while not game.over:
     game.processInput()
@@ -276,8 +277,10 @@ while not game.over:
 
     # Notes #
     print(round(songPosition, 5) % 1)
-    if round(songPosition, 5) % 1 < 0.01:
+    if frame == 0:
         createObject("bar")
+    if frame == 5:
+        createObject("blue")
 
     for i in range(len(renders)):
         renders[i].move()
@@ -321,5 +324,8 @@ while not game.over:
 
 
     songPosition = (time.time() - startTime)
+    frame += 1
+    if frame == 60:
+        frame = 0
     game.update(60)
 game.quit()
