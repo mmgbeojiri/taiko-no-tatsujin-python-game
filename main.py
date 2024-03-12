@@ -216,7 +216,7 @@ songStartDebounce = True
 class Bar:
     def __init__(self):
         self.object = Image("./images/bar.png", game)
-        self.object.resizeBy(drumResize)
+        self.object.resizeBy(-73)
         self.object.moveTo(game.width + 100, yPositionLine)
         self.object.setSpeed(scrollSpeed, 90)
 
@@ -279,8 +279,12 @@ while not game.over:
     print(round(songPosition, 5) % 1)
     if frame == 0:
         createObject("bar")
-    if frame == 5:
+    if frame == 15:
         createObject("blue")
+    if frame == 30:
+        createObject("blue")
+    if frame == 45:
+        createObject("blue") 
 
     for i in range(len(renders)):
         renders[i].move()
