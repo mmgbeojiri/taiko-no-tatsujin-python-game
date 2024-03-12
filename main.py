@@ -141,6 +141,14 @@ debounce_flags = {
     key: False for key in outerLeftKeys + outerRightKeys + innerLeftKeys + innerRightKeys
 }
 
+combo = 0
+
+def hitANote():
+    global health, combo, game
+    combo+=1
+    health+=5
+    game.score += 100
+
 # Object Oriented Programming
 class Blue: # Katsu
     def __init__(self):
@@ -156,13 +164,12 @@ class Blue: # Katsu
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 for i in range(len(outerLeftKeys)): # Katsu
                     if keys.Pressed[outerLeftKeys[i]]:
-                        game.score += 100
+                        hitANote()
                         self.object.visible = False
                 for i in range(len(outerRightKeys)): # Katsu
                     if keys.Pressed[outerRightKeys[i]]:
-                        game.score += 100
                         self.object.visible = False
-                        health += 5
+                        hitANote()
 
 
 class Red:
@@ -185,7 +192,7 @@ class Red:
                     if keys.Pressed[innerRightKeys[i]]:
                         game.score += 15
                         self.object.visible = False
-                        health -= 5
+                        health += 5
 songStartDebounce = True
 class Bar:
     def __init__(self):
