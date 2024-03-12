@@ -182,6 +182,7 @@ class Red:
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
         self.object.move()
+        
     def checkIfHit(self):
         global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
@@ -262,6 +263,7 @@ while not game.over:
 
     scoreContain.draw()
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
+    game.drawText(f"combo: {combo}", drum.left - 100, yPositionLine+50)
     drum.draw()
 
 
