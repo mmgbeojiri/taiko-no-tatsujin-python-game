@@ -163,9 +163,12 @@ def hitANote(positive = 1):
 
 # Object Oriented Programming
 class Blue: # Katsu
-    def __init__(self):
+    def __init__(self, big = 0):
         self.object = Image("./images/blue.png", game)
         self.object.resizeBy(drumResize)
+        if big == 1:
+            self.object.resizeBy(10)
+        
         self.object.moveTo(game.width + 100, yPositionLine)
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
@@ -189,9 +192,9 @@ class Blue: # Katsu
 
 
 class Red:
-    def __init__(self):
+    def __init__(self, big = 0):
         self.object = Image("./images/red.png", game)
-        self.object.resizeBy(drumResize)
+        self.object.resizeBy(drumResize-10)
         self.object.moveTo(game.width + 100, yPositionLine)
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
@@ -237,7 +240,7 @@ class Bar:
 def createObject(string):
     global renders, Blue
     if string == "blue":
-        renders.append(Blue())
+        renders.append(Blue(1))
     if string == "red":
         renders.append(Red())
     if string == "bar":
