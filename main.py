@@ -143,12 +143,20 @@ debounce_flags = {
 
 combo = 0
 
-def hitANote():
+def hitANote(positive = 1):
     global health, combo, game
-    combo+=1
-    health+=5
+    if positive == 1:
+
+        combo+=1
+    else: 
+        combo = 0
+    
+    health+= 5 * positive
     if health > 100:
         health = 100
+    if health < 0:
+        game.over = False
+        # Died
     game.score += 100
 
 # Object Oriented Programming
@@ -182,7 +190,11 @@ class Red:
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
         self.object.move()
-        
+        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
+            # Missed
+            hitANote(-1)
+            self.object.visible = False
+
     def checkIfHit(self):
         global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
