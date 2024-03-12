@@ -1,5 +1,6 @@
 from gamelib import *
 import time
+from random import randint
 
 '''
 # Initialize debounce flags for each key
@@ -279,12 +280,34 @@ while not game.over:
     print(round(songPosition, 5) % 1)
     if frame == 0:
         createObject("bar")
+    if frame == 0:
+        if randint(1, 2) == 1:
+            randomNum = randint(1, 4)
+            if randomNum == 1:
+                createObject("blue")
+            if randomNum == 2:
+                createObject("red")
     if frame == 15:
-        createObject("blue")
+        if randint(1, 2) == 1:
+            randomNum = randint(1, 4)
+            if randomNum == 1:
+                createObject("blue")
+            if randomNum == 2:
+                createObject("red")
     if frame == 30:
-        createObject("blue")
+        if randint(1, 2) == 1:
+            randomNum = randint(1, 4)
+            if randomNum == 1:
+                createObject("blue")
+            if randomNum == 2:
+                createObject("red")
     if frame == 45:
-        createObject("blue") 
+        if randint(1, 2) == 1:
+            randomNum = randint(1, 4)
+            if randomNum == 1:
+                createObject("blue")
+            if randomNum == 2:
+                createObject("red") 
 
     for i in range(len(renders)):
         renders[i].move()
