@@ -502,11 +502,11 @@ while not game.over:
             if randomNum == 2:
                 createObject("red")
             if randomNum == 3:
-                createObject("bigblue")
+                createObject("blue", 1)
             if randomNum == 4:
-                createObject("bigred")
+                createObject("red", 1)
             if randomNum == 5:
-                createObject("holdStart")
+                createObject("holdstart")
 
     if frame == 15:
         if randint(1, 2) == 1:
@@ -516,11 +516,11 @@ while not game.over:
             if randomNum == 2:
                 createObject("red")
             if randomNum == 3:
-                createObject("bigblue")
+                createObject("blue", 1)
             if randomNum == 4:
-                createObject("bigred")
+                createObject("red", 1)
             if randomNum == 5:
-                createObject("holdStart")
+                createObject("holdstart")
 
     if frame == 30:
         if randint(1, 2) == 1:
@@ -530,11 +530,11 @@ while not game.over:
             if randomNum == 2:
                 createObject("red")
             if randomNum == 3:
-                createObject("bigblue")
+                createObject("blue", 1)
             if randomNum == 4:
-                createObject("bigred")
+                createObject("red", 1)
             if randomNum == 5:
-                createObject("holdStart")
+                createObject("holdstart")
                 
     if frame == 45:
         if randint(1, 2) == 1:
@@ -544,11 +544,11 @@ while not game.over:
             if randomNum == 2:
                 createObject("red")
             if randomNum == 3:
-                createObject("bigblue")
+                createObject("blue", 1)
             if randomNum == 4:
-                createObject("bigred")
+                createObject("red", 1)
             if randomNum == 5:
-                createObject("holdStart") 
+                createObject("holdstart") 
 
     for i in range(len(renders)):
         renders[i].move()
