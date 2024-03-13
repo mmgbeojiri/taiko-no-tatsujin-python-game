@@ -508,9 +508,11 @@ while not game.over:
                     createObject("red", 1)
                 if randomNum == 5:
                     createObject("holdstart")
-            if randomNum == 6:
-                createObject("holdend")
-                holdNote == False
+                    holdNote = True
+            if holdNote == True:
+                if randomNum == 6:
+                    createObject("holdend")
+                    holdNote = False
 
     for i in range(len(renders)):
         renders[i].move()
