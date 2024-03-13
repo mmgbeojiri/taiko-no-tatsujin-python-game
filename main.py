@@ -421,7 +421,7 @@ class Bar:
 
 
 
-def createObject(string, big):
+def createObject(string, big = 0):
     global renders, Blue
     if string == "blue":
         if big == 0:
@@ -429,13 +429,29 @@ def createObject(string, big):
         else:
             renders.append(Blue(1))
     if string == "red":
-        renders.append(Red())
-    if string == "bigblue":
-        renders.append(Blue(1))
-    if string == "bigred":
-        renders.append(Red(1))
+        if big == 0:
+            renders.append(Red())
+        else:
+            renders.append(Red(1))
+
     if string == "holdstart":
-        renders.append(HoldStart())
+        if big == 0:
+            renders.append(HoldStart())
+        else:
+            renders.append(HoldStart(1))
+    
+    if string == "holdmiddle":
+        if big == 0:
+            renders.append(HoldMiddle())
+        else:
+            renders.append(HoldMiddle(1))
+    
+    if string == "holdend":
+        if big == 0:
+            renders.append(HoldEnd())
+        else:
+            renders.append(HoldEnd(1))
+
 
     if string == "bar":
         renders.append(Bar())
