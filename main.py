@@ -399,6 +399,7 @@ class HoldEnd:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False   
+
 songStartDebounce = True
 class Bar:
     def __init__(self):
@@ -420,16 +421,22 @@ class Bar:
 
 
 
-def createObject(string):
+def createObject(string, big):
     global renders, Blue
     if string == "blue":
-        renders.append(Blue())
+        if big == 0:
+            renders.append(Blue())
+        else:
+            renders.append(Blue(1))
     if string == "red":
         renders.append(Red())
     if string == "bigblue":
         renders.append(Blue(1))
     if string == "bigred":
         renders.append(Red(1))
+    if string == "holdstart":
+        renders.append(HoldStart())
+
     if string == "bar":
         renders.append(Bar())
 
@@ -470,9 +477,10 @@ while not game.over:
     print(round(songPosition, 5) % 1)
     if frame == 0:
         createObject("bar")
+
     if frame == 0:
         if randint(1, 2) == 1:
-            randomNum = randint(1, 4)
+            randomNum = randint(1, 5)
             if randomNum == 1:
                 createObject("blue")
             if randomNum == 2:
@@ -481,9 +489,12 @@ while not game.over:
                 createObject("bigblue")
             if randomNum == 4:
                 createObject("bigred")
+            if randomNum == 5:
+                createObject("holdStart")
+
     if frame == 15:
         if randint(1, 2) == 1:
-            randomNum = randint(1, 4)
+            randomNum = randint(1, 5)
             if randomNum == 1:
                 createObject("blue")
             if randomNum == 2:
@@ -492,9 +503,12 @@ while not game.over:
                 createObject("bigblue")
             if randomNum == 4:
                 createObject("bigred")
+            if randomNum == 5:
+                createObject("holdStart")
+
     if frame == 30:
         if randint(1, 2) == 1:
-            randomNum = randint(1, 4)
+            randomNum = randint(1, 5)
             if randomNum == 1:
                 createObject("blue")
             if randomNum == 2:
@@ -503,9 +517,12 @@ while not game.over:
                 createObject("bigblue")
             if randomNum == 4:
                 createObject("bigred")
+            if randomNum == 5:
+                createObject("holdStart")
+                
     if frame == 45:
         if randint(1, 2) == 1:
-            randomNum = randint(1, 4)
+            randomNum = randint(1, 5)
             if randomNum == 1:
                 createObject("blue")
             if randomNum == 2:
@@ -513,7 +530,9 @@ while not game.over:
             if randomNum == 3:
                 createObject("bigblue")
             if randomNum == 4:
-                createObject("bigred") 
+                createObject("bigred")
+            if randomNum == 5:
+                createObject("holdStart") 
 
     for i in range(len(renders)):
         renders[i].move()
