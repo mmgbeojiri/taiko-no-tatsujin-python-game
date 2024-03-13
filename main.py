@@ -227,19 +227,19 @@ class Red:
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 if self.big == 0:
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
+                    for i in range(len(innerLeftKeys)): # Katsu
+                        if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
                             self.object.visible = False
-                    for i in range(len(outerRightKeys)): # Katsu
-                        if keys.Pressed[outerRightKeys[i]]:
+                    for i in range(len(innerRightKeys)): # Katsu
+                        if keys.Pressed[innerRightKeys[i]]:
                             self.object.visible = False
                             hitANote()
                 else:
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
-                                if keys.Pressed[outerRightKeys[i]]:
+                    for i in range(len(innerLeftKeys)): # Katsu
+                        if keys.Pressed[innerLeftKeys[i]]:
+                            for i in range(len(innerRightKeys)): # Katsu
+                                if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False
 songStartDebounce = True
