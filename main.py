@@ -347,7 +347,58 @@ class HoldMiddle:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False   
+class HoldEnd:
+    def __init__(self, big = 0):
+        self.object = Image("./images/holdEnd.png", game)
+        self.object.resizeTo(960, 540)
+        self.big = big
+        if self.big == 0:
+            self.object.resizeBy(drumResize-7)
+        else:
+            self.object.resizeBy(drumResize+7)
+        self.object.moveTo(game.width + 100, yPositionLine)
+        self.object.setSpeed(scrollSpeed, 90)
+    def move(self):
+        self.object.move()
+        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
+            # Missed
+            hitANote(-1)
+            self.object.visible = False
 
+    def checkIfHit(self):
+        global health
+        if self.object.x > drumCollide.left - drumHitboxAdd:
+            if self.object.x < drumCollide.right + drumHitboxAdd:
+                if self.big == 0:
+                    for i in range(len(innerLeftKeys)): # Katsu
+                        if keys.Pressed[innerLeftKeys[i]]:
+                            hitANote()
+                            self.object.visible = False
+                    for i in range(len(innerRightKeys)): # Katsu
+                        if keys.Pressed[innerRightKeys[i]]:
+                            self.object.visible = False
+                            hitANote()
+                    for i in range(len(outerLeftKeys)): # Katsu
+                        if keys.Pressed[outerLeftKeys[i]]:
+                            hitANote()
+                            self.object.visible = False
+                    for i in range(len(outerRightKeys)): # Katsu
+                        if keys.Pressed[outerRightKeys[i]]:
+                            self.object.visible = False
+                            hitANote()
+                else:
+                    for i in range(len(innerLeftKeys)): # Katsu
+                        if keys.Pressed[innerLeftKeys[i]]:
+                            for i in range(len(innerRightKeys)): # Katsu
+                                if keys.Pressed[innerRightKeys[i]]:
+                                    hitANote(5)
+                                    self.object.visible = False
+                    for i in range(len(outerLeftKeys)): # Katsu
+                        if keys.Pressed[outerLeftKeys[i]]:
+                            for i in range(len(outerRightKeys)): # Katsu
+                                if keys.Pressed[outerRightKeys[i]]:
+                                    hitANote(5)
+                                    self.object.visible = False   
 songStartDebounce = True
 class Bar:
     def __init__(self):
