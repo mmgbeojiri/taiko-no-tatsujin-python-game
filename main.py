@@ -201,9 +201,6 @@ class Blue: # Katsu
                                     hitANote(5)
                                     self.object.visible = False
 
-
-
-
 class Red: # Don
     def __init__(self, big = 0):
         self.object = Image("./images/red.png", game)
@@ -400,7 +397,6 @@ class HoldEnd:
                                     hitANote(5)
                                     self.object.visible = False   
 
-songStartDebounce = True
 class Bar:
     def __init__(self):
         self.object = Image("./images/bar.png", game)
@@ -418,7 +414,7 @@ class Bar:
     def checkIfHit(self):
         pass
         # We do a pass to not cause an error since this is in the render
-
+songStartDebounce = True
 
 
 def createObject(string, big = 0):
