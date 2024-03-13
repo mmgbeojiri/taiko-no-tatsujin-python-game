@@ -266,9 +266,13 @@ class Bar:
 def createObject(string):
     global renders, Blue
     if string == "blue":
-        renders.append(Blue(1))
+        renders.append(Blue())
     if string == "red":
         renders.append(Red())
+    if string == "bigblue":
+        renders.append(Blue(1))
+    if string == "bigred":
+        renders.append(Red(1))
     if string == "bar":
         renders.append(Bar())
 
@@ -316,6 +320,10 @@ while not game.over:
                 createObject("blue")
             if randomNum == 2:
                 createObject("red")
+            if randomNum == 3:
+                createObject("bigblue")
+            if randomNum == 4:
+                createObject("bigred")
     if frame == 15:
         if randint(1, 2) == 1:
             randomNum = randint(1, 4)
@@ -323,6 +331,10 @@ while not game.over:
                 createObject("blue")
             if randomNum == 2:
                 createObject("red")
+            if randomNum == 3:
+                createObject("bigblue")
+            if randomNum == 4:
+                createObject("bigred")
     if frame == 30:
         if randint(1, 2) == 1:
             randomNum = randint(1, 4)
@@ -330,13 +342,21 @@ while not game.over:
                 createObject("blue")
             if randomNum == 2:
                 createObject("red")
+            if randomNum == 3:
+                createObject("bigblue")
+            if randomNum == 4:
+                createObject("bigred")
     if frame == 45:
         if randint(1, 2) == 1:
             randomNum = randint(1, 4)
             if randomNum == 1:
                 createObject("blue")
             if randomNum == 2:
-                createObject("red") 
+                createObject("red")
+            if randomNum == 3:
+                createObject("bigblue")
+            if randomNum == 4:
+                createObject("bigred") 
 
     for i in range(len(renders)):
         renders[i].move()
