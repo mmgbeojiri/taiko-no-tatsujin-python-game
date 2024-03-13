@@ -452,6 +452,10 @@ def createObject(string, big = 0):
     if string == "bar":
         renders.append(Bar())
 
+holdNote = False
+def CheckIfShouldBeHold():
+    if holdNote == True:
+        createObject("holdmiddle")
 
 startTime = time.time()
 songPosition = 0
@@ -591,5 +595,6 @@ while not game.over:
     frame += 1
     if frame == 60:
         frame = 0
+    CheckIfShouldBeHold()
     game.update(60)
 game.quit()
