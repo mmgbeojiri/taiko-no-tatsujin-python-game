@@ -147,7 +147,7 @@ combo = 0
 
 def hitANote(positive = 1):
     global health, combo, game
-    if positive == 1:
+    if positive > 0:
 
         combo+=1
     else: 
@@ -166,7 +166,8 @@ class Blue: # Katsu
     def __init__(self, big = 0):
         self.object = Image("./images/blue.png", game)
         self.object.resizeTo(960, 540)
-        if big == 0:
+        self.big = big
+        if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
             self.object.resizeBy(drumResize+7)
@@ -183,21 +184,32 @@ class Blue: # Katsu
         global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
-                for i in range(len(outerLeftKeys)): # Katsu
-                    if keys.Pressed[outerLeftKeys[i]]:
-                        hitANote()
-                        self.object.visible = False
-                for i in range(len(outerRightKeys)): # Katsu
-                    if keys.Pressed[outerRightKeys[i]]:
-                        self.object.visible = False
-                        hitANote()
+                if self.big == 0:
+                    for i in range(len(outerLeftKeys)): # Katsu
+                        if keys.Pressed[outerLeftKeys[i]]:
+                            hitANote()
+                            self.object.visible = False
+                    for i in range(len(outerRightKeys)): # Katsu
+                        if keys.Pressed[outerRightKeys[i]]:
+                            self.object.visible = False
+                            hitANote()
+                else:
+                    for i in range(len(outerLeftKeys)): # Katsu
+                        if keys.Pressed[outerLeftKeys[i]]:
+                            for i in range(len(outerRightKeys)): # Katsu
+                                if keys.Pressed[outerRightKeys[i]]:
+                                    hitANote(5)
+                                    self.object.visible = False
+
+
 
 
 class Red:
     def __init__(self, big = 0):
         self.object = Image("./images/red.png", game)
         self.object.resizeTo(960, 540)
-        if big == 0:
+        self.big = big
+        if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
             self.object.resizeBy(drumResize+7)
@@ -214,14 +226,22 @@ class Red:
         global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
-                for i in range(len(innerLeftKeys)): # Don
-                    if keys.Pressed[innerLeftKeys[i]]:
-                        self.object.visible = False
-                        hitANote()
-                for i in range(len(innerRightKeys)): # Don
-                    if keys.Pressed[innerRightKeys[i]]:
-                        self.object.visible = False
-                        hitANote()
+                if self.big == 0:
+                    for i in range(len(outerLeftKeys)): # Katsu
+                        if keys.Pressed[outerLeftKeys[i]]:
+                            hitANote()
+                            self.object.visible = False
+                    for i in range(len(outerRightKeys)): # Katsu
+                        if keys.Pressed[outerRightKeys[i]]:
+                            self.object.visible = False
+                            hitANote()
+                else:
+                    for i in range(len(outerLeftKeys)): # Katsu
+                        if keys.Pressed[outerLeftKeys[i]]:
+                            for i in range(len(outerRightKeys)): # Katsu
+                                if keys.Pressed[outerRightKeys[i]]:
+                                    hitANote(5)
+                                    self.object.visible = False
 songStartDebounce = True
 class Bar:
     def __init__(self):
