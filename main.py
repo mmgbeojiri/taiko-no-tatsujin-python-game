@@ -165,9 +165,11 @@ def hitANote(positive = 1):
 class Blue: # Katsu
     def __init__(self, big = 0):
         self.object = Image("./images/blue.png", game)
-        self.object.resizeBy(drumResize-5)
-        if big == 1:
-            self.object.resizeBy(20)
+        self.object.resizeTo(960, 540)
+        if big == 0:
+            self.object.resizeBy(drumResize-7)
+        else:
+            self.object.resizeBy(drumResize+7)
         
         self.object.moveTo(game.width + 100, yPositionLine)
         self.object.setSpeed(scrollSpeed, 90)
@@ -194,9 +196,11 @@ class Blue: # Katsu
 class Red:
     def __init__(self, big = 0):
         self.object = Image("./images/red.png", game)
-        self.object.resizeBy(drumResize-5)
-        if big == 1:
-            self.object.resizeBy(10)
+        self.object.resizeTo(960, 540)
+        if big == 0:
+            self.object.resizeBy(drumResize-7)
+        else:
+            self.object.resizeBy(drumResize+7)
         self.object.moveTo(game.width + 100, yPositionLine)
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
