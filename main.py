@@ -510,7 +510,7 @@ while not game.over:
                     createObject("holdstart")
                     holdNote = True
             if holdNote == True:
-                if randomNum == 6 or randomNum == 5 or randomNum == 4:
+                if randomNum == 6 or randomNum == 2 or randomNum == 4:
                     createObject("holdend")
                     holdNote = False
 
