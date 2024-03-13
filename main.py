@@ -494,61 +494,23 @@ while not game.over:
     if frame == 0:
         createObject("bar")
 
-    if frame == 0:
+    if frame % 15 == 0:
         if randint(1, 2) == 1:
-            randomNum = randint(1, 5)
-            if randomNum == 1:
-                createObject("blue")
-            if randomNum == 2:
-                createObject("red")
-            if randomNum == 3:
-                createObject("blue", 1)
-            if randomNum == 4:
-                createObject("red", 1)
-            if randomNum == 5:
-                createObject("holdstart")
-
-    if frame == 15:
-        if randint(1, 2) == 1:
-            randomNum = randint(1, 5)
-            if randomNum == 1:
-                createObject("blue")
-            if randomNum == 2:
-                createObject("red")
-            if randomNum == 3:
-                createObject("blue", 1)
-            if randomNum == 4:
-                createObject("red", 1)
-            if randomNum == 5:
-                createObject("holdstart")
-
-    if frame == 30:
-        if randint(1, 2) == 1:
-            randomNum = randint(1, 5)
-            if randomNum == 1:
-                createObject("blue")
-            if randomNum == 2:
-                createObject("red")
-            if randomNum == 3:
-                createObject("blue", 1)
-            if randomNum == 4:
-                createObject("red", 1)
-            if randomNum == 5:
-                createObject("holdstart")
-                
-    if frame == 45:
-        if randint(1, 2) == 1:
-            randomNum = randint(1, 5)
-            if randomNum == 1:
-                createObject("blue")
-            if randomNum == 2:
-                createObject("red")
-            if randomNum == 3:
-                createObject("blue", 1)
-            if randomNum == 4:
-                createObject("red", 1)
-            if randomNum == 5:
-                createObject("holdstart") 
+            randomNum = randint(1, 6)
+            if holdNote == False:
+                if randomNum == 1:
+                    createObject("blue")
+                if randomNum == 2:
+                    createObject("red")
+                if randomNum == 3:
+                    createObject("blue", 1)
+                if randomNum == 4:
+                    createObject("red", 1)
+                if randomNum == 5:
+                    createObject("holdstart")
+            if randomNum == 6:
+                createObject("holdend")
+                holdNote == False
 
     for i in range(len(renders)):
         renders[i].move()
