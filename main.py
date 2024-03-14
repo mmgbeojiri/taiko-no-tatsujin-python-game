@@ -1,6 +1,9 @@
-from gamelib import *
-import time
 from random import randint
+from gamelib import *
+from globalvars import * # All the Global Variables (Defining the inital keys and sprites)
+from notes_n_classes import * # All the Note Types and Classes (available for cloning)
+from filereader import * # responsible for reading the chart
+from conductor import * # responsible for rendering notes from the filereaders
 
 '''
 # Initialize debounce flags for each key
@@ -21,401 +24,6 @@ for key in debounce_flags:
         debounce_flags[key] = False  # Reset debounce flag
 '''
 
-game = Game(1920, 1080, "Taiko no Tatsujin - Python")
-
-outerBar = Image("./images/outerbar.png", game)
-innerBar = Image("./images/innerbar.png", game)
-
-outerBar.resizeBy(100)
-innerBar.resizeBy(100)
-
-yPositionLine = 153
-drumResize = -78
-
-scoreContain = Image("./images/scorecontainer.png", game)
-
-scoreContain.resizeBy(-57)
-scoreContain.moveTo(scoreContain.width/2, yPositionLine)
-
-
-drum = Image("./images/taikodrum.png", game)
-drumCollide = Image("./images/drumhit.png", game)
-
-drum.resizeBy(drumResize)
-drumCollide.resizeBy(drumResize)
-
-
-drum.moveTo(scoreContain.width - 100, yPositionLine)
-drumCollide.moveTo(drum.x + 200, yPositionLine)
-beatLine = drumCollide.x
-
-drumInnerRight = Image("./images/drum/innerright.png", game)
-drumInnerLeft = Image("./images/drum/innerleft.png", game)
-drumOuterRight = Image("./images/drum/outerright.png", game)
-drumOuterLeft = Image("./images/drum/outerleft.png", game)
-
-
-
-drumInnerRight.moveTo(drum.x, drum.y)
-drumInnerLeft.moveTo(drum.x, drum.y)
-drumOuterRight.moveTo(drum.x, drum.y)
-drumOuterLeft.moveTo(drum.x, drum.y)
-
-blue = Image("./images/blue.png", game)
-red = Image("./images/red.png", game)
-effect = Image("./images/effect.png", game)
-effect.resizeTo(5, 5)
-
-drumInnerRight.resizeBy(drumResize)
-drumInnerLeft.resizeBy(drumResize)
-drumOuterRight.resizeBy(drumResize)
-drumOuterLeft.resizeBy(drumResize)
-
-don = Sound("./sounds/Don.wav", 1)
-katsu = Sound("./sounds/Katsu.wav", 2)
-
-health = 50
-barMultipler = 9
-yellowHealth = Shape("bar", game, health * barMultipler, 20, yellow)
-greenHealth = Shape("bar", game, health * barMultipler, 20, green)
-
-scrollSpeed = 10
-drumHitboxAdd = 5
-def hitEffect():
-    global drumCollide, effect
-    effect.resizeTo(78, 78)
-    effect.resizeBy(130)
-
-
-outerLeftKeys = [
-    K_1,
-    K_2,
-    K_3,
-    K_4,
-    K_5,
-    K_q,
-    K_w,
-    K_e, 
-    K_r,
-    K_t
-]
-
-outerRightKeys = [
-    K_6,
-    K_7,
-    K_8,
-    K_9,
-    K_0,
-    K_y,
-    K_u,
-    K_i,
-    K_o,
-    K_p
-]
-
-innerLeftKeys = [
-    K_a,
-    K_s,
-    K_d,
-    K_f,
-    K_g,
-    K_z,
-    K_x,
-    K_c,
-    K_v,
-    K_b,
-]
-
-innerRightKeys = [
-    K_h,
-    K_j,
-    K_k,
-    K_l,
-    K_SEMICOLON,
-    K_n,
-    K_m,
-    K_COMMA,
-    K_PERIOD
-]
-
-# Initialize debounce flags for each key
-debounce_flags = {
-    key: False for key in outerLeftKeys + outerRightKeys + innerLeftKeys + innerRightKeys
-}
-
-combo = 0
-
-def hitANote(positive = 1):
-    global health, combo, game
-    if positive > 0:
-
-        combo+=1
-    else: 
-        combo = 0
-    
-    health+= 5 * positive
-    if health > 100:
-        health = 100
-    if health < 0:
-        game.over = False
-        # Died
-    game.score += 100
-
-# Object Oriented Programming
-class Blue: # Katsu
-    def __init__(self, big = 0):
-        self.object = Image("./images/blue.png", game)
-        self.object.resizeTo(960, 540)
-        self.big = big
-        if self.big == 0:
-            self.object.resizeBy(drumResize-7)
-        else:
-            self.object.resizeBy(drumResize+7)
-        
-        self.object.moveTo(game.width + 100, yPositionLine)
-        self.object.setSpeed(scrollSpeed, 90)
-    def move(self):
-        self.object.move()
-        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            hitANote(-1)
-            self.object.visible = False
-    def checkIfHit(self):
-        global health
-        if self.object.x > drumCollide.left - drumHitboxAdd:
-            if self.object.x < drumCollide.right + drumHitboxAdd:
-                if self.big == 0:
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(outerRightKeys)): # Katsu
-                        if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                else:
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
-                                if keys.Pressed[outerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False
-
-class Red: # Don
-    def __init__(self, big = 0):
-        self.object = Image("./images/red.png", game)
-        self.object.resizeTo(960, 540)
-        self.big = big
-        if self.big == 0:
-            self.object.resizeBy(drumResize-7)
-        else:
-            self.object.resizeBy(drumResize+7)
-        self.object.moveTo(game.width + 100, yPositionLine)
-        self.object.setSpeed(scrollSpeed, 90)
-    def move(self):
-        self.object.move()
-        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            hitANote(-1)
-            self.object.visible = False
-
-    def checkIfHit(self):
-        global health
-        if self.object.x > drumCollide.left - drumHitboxAdd:
-            if self.object.x < drumCollide.right + drumHitboxAdd:
-                if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
-                        if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                else:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
-                                if keys.Pressed[innerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False
-
-class HoldStart:
-    def __init__(self, big = 0):
-        self.object = Image("./images/holdStart.png", game)
-        self.object.resizeTo(960, 540)
-        self.big = big
-        if self.big == 0:
-            self.object.resizeBy(drumResize-7)
-        else:
-            self.object.resizeBy(drumResize+7)
-        self.object.moveTo(game.width + 100, yPositionLine)
-        self.object.setSpeed(scrollSpeed, 90)
-    def move(self):
-        self.object.move()
-        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            hitANote(-1)
-            self.object.visible = False
-
-    def checkIfHit(self):
-        global health
-        if self.object.x > drumCollide.left - drumHitboxAdd:
-            if self.object.x < drumCollide.right + drumHitboxAdd:
-                if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
-                        if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(outerRightKeys)): # Katsu
-                        if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                else:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
-                                if keys.Pressed[innerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
-                                if keys.Pressed[outerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False                                    
-class HoldMiddle:
-    def __init__(self, big = 0):
-        self.object = Image("./images/holdMiddle.png", game)
-        self.object.resizeTo(960, 540)
-        self.big = big
-        if self.big == 0:
-            self.object.resizeBy(drumResize-7)
-        else:
-            self.object.resizeBy(drumResize+7)
-        self.object.moveTo(game.width + 100, yPositionLine)
-        self.object.setSpeed(scrollSpeed, 90)
-    def move(self):
-        self.object.move()
-        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            hitANote(-1)
-            self.object.visible = False
-
-    def checkIfHit(self):
-        global health
-        if self.object.x > drumCollide.left - drumHitboxAdd:
-            if self.object.x < drumCollide.right + drumHitboxAdd:
-                if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
-                        if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(outerRightKeys)): # Katsu
-                        if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                else:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
-                                if keys.Pressed[innerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
-                                if keys.Pressed[outerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False   
-class HoldEnd:
-    def __init__(self, big = 0):
-        self.object = Image("./images/holdEnd.png", game)
-        self.object.resizeTo(960, 540)
-        self.big = big
-        if self.big == 0:
-            self.object.resizeBy(drumResize-7)
-        else:
-            self.object.resizeBy(drumResize+7)
-        self.object.moveTo(game.width + 100, yPositionLine)
-        self.object.setSpeed(scrollSpeed, 90)
-    def move(self):
-        self.object.move()
-        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            hitANote(-1)
-            self.object.visible = False
-
-    def checkIfHit(self):
-        global health
-        if self.object.x > drumCollide.left - drumHitboxAdd:
-            if self.object.x < drumCollide.right + drumHitboxAdd:
-                if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
-                        if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            hitANote()
-                            self.object.visible = False
-                    for i in range(len(outerRightKeys)): # Katsu
-                        if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
-                            hitANote()
-                else:
-                    for i in range(len(innerLeftKeys)): # Katsu
-                        if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
-                                if keys.Pressed[innerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False
-                    for i in range(len(outerLeftKeys)): # Katsu
-                        if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
-                                if keys.Pressed[outerRightKeys[i]]:
-                                    hitANote(5)
-                                    self.object.visible = False   
-
-class Bar:
-    def __init__(self):
-        self.object = Image("./images/bar.png", game)
-        self.object.resizeBy(-73)
-        self.object.moveTo(game.width + 100, yPositionLine)
-        self.object.setSpeed(scrollSpeed, 90)
-
-    def move(self):
-        global songStartDebounce
-        self.object.move()
-        if self.object.x < drumCollide.x:
-            if songStartDebounce:
-                print("play the Music")
-                songStartDebounce = False
-    def checkIfHit(self):
-        pass
-        # We do a pass to not cause an error since this is in the render
-songStartDebounce = True
-
 
 def createObject(string, big = 0):
     global renders, Blue
@@ -433,8 +41,10 @@ def createObject(string, big = 0):
     if string == "holdstart":
         if big == 0:
             renders.append(HoldStart())
+            holdNote = True
         else:
             renders.append(HoldStart(1))
+            holdNote = True
     
     if string == "holdmiddle":
         if big == 0:
@@ -445,22 +55,21 @@ def createObject(string, big = 0):
     if string == "holdend":
         if big == 0:
             renders.append(HoldEnd())
+            holdNote = False
         else:
             renders.append(HoldEnd(1))
+            holdNote = False
 
 
     if string == "bar":
         renders.append(Bar())
 
-holdNote = False
 def CheckIfShouldBeHold():
+    global holdNote
     if holdNote == True:
         createObject("holdmiddle")
 
-startTime = time.time()
-songPosition = 0
-frame = 0
-renders = []
+
 while not game.over:
     game.processInput()
     game.clearBackground()
@@ -508,7 +117,7 @@ while not game.over:
                     createObject("red", 1)
                 if randomNum == 5:
                     createObject("holdstart")
-                    holdNote = True
+                    
             if holdNote == True:
                 if randomNum == 6 or randomNum == 2 or randomNum == 4:
                     createObject("holdend")
