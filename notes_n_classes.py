@@ -8,7 +8,6 @@ localHealth = 50
 def getCombo():
     return combo
 def getHealth():
-    print(localHealth)
     return localHealth
 
 def hitANote(positive = 1):
