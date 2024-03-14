@@ -35,6 +35,7 @@ while not game.over:
     game.clearBackground()
     outerBar.draw()
     health = getHealth()
+    combo = getCombo()
     if health < 50:
         yellowHealth.width = health * barMultipler
     else:
