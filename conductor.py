@@ -2,7 +2,7 @@ from time import time
 from notes_n_classes import *
 
 
-combo = 0
+
 
 startTime = time()
 songPosition = 0
