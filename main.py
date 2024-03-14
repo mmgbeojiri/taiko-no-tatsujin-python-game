@@ -35,7 +35,6 @@ while not game.over:
     game.processInput()
     game.clearBackground()
     outerBar.draw()
-
     if health < 50:
         yellowHealth.width = health * barMultipler
     else:
@@ -60,7 +59,6 @@ while not game.over:
     drumCollide.draw()
 
     # Notes #
-    print(round(songPosition, 5) % 1)
     if frame == 0:
         createObject("bar")
 

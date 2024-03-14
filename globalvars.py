@@ -70,6 +70,10 @@ def hitEffect():
     effect.resizeTo(78, 78)
     effect.resizeBy(130)
 
+def changeHealth(number):
+    global health
+    health += number
+
 
 outerLeftKeys = [
     K_1,

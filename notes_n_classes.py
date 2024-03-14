@@ -4,6 +4,7 @@ from globalvars import *
 songStartDebounce = True
 combo = 0
 
+
 def hitANote(positive = 1):
     global health, combo, game
     if positive > 0:
@@ -12,7 +13,7 @@ def hitANote(positive = 1):
     else: 
         combo = 0
     
-    health+= 5 * positive
+    changeHealth(5 * positive)
     if health > 100:
         health = 100
     if health < 0:
