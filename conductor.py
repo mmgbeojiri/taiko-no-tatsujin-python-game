@@ -1,8 +1,9 @@
 from time import time
 from notes_n_classes import *
 
+
 combo = 0
-songStartDebounce = True
+
 startTime = time()
 songPosition = 0
 

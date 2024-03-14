@@ -125,7 +125,7 @@ while not game.over:
 
 
 
-    songPosition = (time.time() - startTime)
+    songPosition = (time() - startTime)
     frame += 1
     if frame == 60:
         frame = 0
