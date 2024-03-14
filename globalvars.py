@@ -60,19 +60,17 @@ drumOuterLeft.resizeBy(drumResize)
 don = Sound("./sounds/Don.wav", 1)
 katsu = Sound("./sounds/Katsu.wav", 2)
 
-health = 50
+
 barMultipler = 9
-yellowHealth = Shape("bar", game, health * barMultipler, 20, yellow)
-greenHealth = Shape("bar", game, health * barMultipler, 20, green)
+yellowHealth = Shape("bar", game, 50 * barMultipler, 20, yellow)
+greenHealth = Shape("bar", game, 50 * barMultipler, 20, green)
 
 def hitEffect():
     global drumCollide, effect
     effect.resizeTo(78, 78)
     effect.resizeBy(130)
 
-def changeHealth(number):
-    global health
-    health += number
+
 
 
 outerLeftKeys = [

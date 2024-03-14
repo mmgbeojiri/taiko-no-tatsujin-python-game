@@ -3,23 +3,26 @@ from globalvars import *
 
 songStartDebounce = True
 combo = 0
+localHealth = 50
+
 def getCombo():
     return combo
 def getHealth():
-    return health
+    print(localHealth)
+    return localHealth
 
 def hitANote(positive = 1):
-    global health, combo, game
+    global localHealth, combo, game
     if positive > 0:
 
         combo+=1
     else: 
         combo = 0
     
-    changeHealth(5 * positive)
-    if health > 100:
-        health = 100
-    if health < 0:
+    localHealth += 5 * positive
+    if localHealth > 100:
+        localHealth = 100
+    if localHealth < 0:
         game.over = False
         # Died
     game.score += 100
