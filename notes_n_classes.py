@@ -1,5 +1,6 @@
 from gamelib import *
 from globalvars import *
+from conductor import songStartDebounce
 
 def hitANote(positive = 1):
     global health, combo, game

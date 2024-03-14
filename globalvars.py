@@ -1,5 +1,6 @@
 from gamelib import *
 from time import *
+
 game = Game(1920, 1080, "Taiko no Tatsujin - Python")
 
 yPositionLine = 153
@@ -125,6 +126,5 @@ innerRightKeys = [
 debounce_flags = {
     key: False for key in outerLeftKeys + outerRightKeys + innerLeftKeys + innerRightKeys
 }
-
 
 
