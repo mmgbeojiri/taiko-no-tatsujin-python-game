@@ -1,7 +1,9 @@
 from gamelib import *
 from globalvars import *
+
 songStartDebounce = True
 combo = 0
+
 def hitANote(positive = 1):
     global health, combo, game
     if positive > 0:
