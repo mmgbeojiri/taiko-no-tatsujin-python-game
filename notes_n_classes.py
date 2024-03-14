@@ -3,7 +3,10 @@ from globalvars import *
 
 songStartDebounce = True
 combo = 0
-
+def getCombo():
+    return combo
+def getHealth():
+    return health
 
 def hitANote(positive = 1):
     global health, combo, game

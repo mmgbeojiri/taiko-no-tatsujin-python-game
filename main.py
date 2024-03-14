@@ -30,11 +30,11 @@ def CheckIfShouldBeHold():
     if holdNote == True:
         createObject("holdmiddle")
 
-
 while not game.over:
     game.processInput()
     game.clearBackground()
     outerBar.draw()
+    health = getHealth()
     if health < 50:
         yellowHealth.width = health * barMultipler
     else:
