@@ -1,4 +1,4 @@
-from time import *
+import time
 combo = 0
 songStartDebounce = True
 startTime = time.time()
