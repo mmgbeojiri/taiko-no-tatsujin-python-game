@@ -9,6 +9,8 @@ songPosition = 0
 
 frame = 0
 holdNote = False
+def getHoldStatus():
+    return holdNote
 renders = []
 
 def createObject(string, big = 0):
