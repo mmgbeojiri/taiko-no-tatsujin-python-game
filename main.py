@@ -26,8 +26,8 @@ for key in debounce_flags:
 
 
 def CheckIfShouldBeHold():
-    global holdNote
-    if holdNote == True:
+    global holdNote, frame
+    if holdNote == True and frame % 4 == 0:
         createObject("holdmiddle")
 
 while not game.over:
