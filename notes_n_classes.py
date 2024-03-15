@@ -43,7 +43,10 @@ class Blue: # Katsu
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
             # Missed
-            hitANote(-1)
+            if self.big == 0:
+                hitANote(-1)
+            else:
+                hitANote(-5)
             self.object.visible = False
     def checkIfHit(self):
         global health
@@ -81,7 +84,10 @@ class Red: # Don
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
             # Missed
-            hitANote(-1)
+            if self.big == 0:
+                hitANote(-1)
+            else:
+                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
@@ -120,7 +126,10 @@ class HoldStart:
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
             # Missed
-            hitANote(-1)
+            if self.big == 0:
+                hitANote(-1)
+            else:
+                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
@@ -172,7 +181,10 @@ class HoldMiddle:
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
             # Missed
-            hitANote(-1)
+            if self.big == 0:
+                hitANote(-1)
+            else:
+                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
@@ -224,7 +236,10 @@ class HoldEnd:
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
             # Missed
-            hitANote(-1)
+            if self.big == 0:
+                hitANote(-1)
+            else:
+                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
