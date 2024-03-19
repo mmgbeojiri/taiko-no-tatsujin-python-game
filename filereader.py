@@ -32,6 +32,7 @@ def findNextNote():
             val = int(letter)
           except ValueError:
             print("That's not an int!")
+            continue
 
 
 def FindLineWith(string, StringOrNum):
