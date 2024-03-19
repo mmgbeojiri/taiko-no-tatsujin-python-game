@@ -6,9 +6,16 @@ song = "Luka Luka Night Fever"
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
 
 def findNextNote():
-    measureDuration = 1/bpm/60
-    noteTimeStamp = measureDuration * measure
-    noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
+    global bpm, measure, noteIndex
+    
+    songFile = open(tjaFile, "r")
+    for i, value in enumerate(songFile)
+    beatMapLine = songFile
+              
+              measure = i-startSongLine
+              measureDuration = 1/bpm/60
+              noteTimeStamp = measureDuration * measure
+              noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
 
 def FindLineWith(string, StringOrNum):
   global tjaFile
@@ -48,8 +55,4 @@ print(wave)
 print(startSongLine)
 print(endSongLine)
 
-songFile = open(tjaFile, "r")
-
-for i, lineBeatMap in enumerate(songFile):
-      if i > startSongLine and i < endSongLine:
-        measure = i-startSongLine
+        
