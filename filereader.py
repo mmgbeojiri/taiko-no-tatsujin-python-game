@@ -7,15 +7,24 @@ tjaFile = f"./tjadatabase/{song}/{song}.tja"
 
 def findNextNote():
     global bpm, measure, noteIndex
-    
+
     songFile = open(tjaFile, "r")
-    for i, value in enumerate(songFile)
-    beatMapLine = songFile
-              
-              measure = i-startSongLine
+    for i, value in enumerate(songFile):
+      if i == measure:
+        beatMapLine = value
+        for j, letter in enumerate(beatMapLine):
+          if noteIndex == j:
+              noteType = letter
               measureDuration = 1/bpm/60
               noteTimeStamp = measureDuration * measure
               noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
+              print(noteTimeStamp)
+              noteIndex += 1
+              break
+          if letter == ",": #new line
+              measure += 1
+              noteIndex = 0
+              break
 
 def FindLineWith(string, StringOrNum):
   global tjaFile
