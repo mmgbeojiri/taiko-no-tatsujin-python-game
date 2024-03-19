@@ -28,7 +28,7 @@ def FindLineWith(string, StringOrNum):
   with open(tjaFile, "r") as file:
     for i, line in enumerate(file):
       if string in line:
-        value = line.split(string)[1].strip()  # Extract value after the string
+        value = line.split(line)[1].strip()  # Extract value after the string
         if StringOrNum == "String":
             return str(value)
         else:
