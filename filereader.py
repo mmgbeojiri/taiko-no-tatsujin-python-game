@@ -47,6 +47,9 @@ print(bpm)
 print(wave)
 print(startSongLine)
 print(endSongLine)
-with open(tjaFile, "r") as file:
-    for i, line in enumerate(file):
-      pass
+
+songFile = open(tjaFile, "r")
+
+for i, lineBeatMap in enumerate(songFile):
+      if i > startSongLine and i < endSongLine:
+        measure = i-startSongLine
