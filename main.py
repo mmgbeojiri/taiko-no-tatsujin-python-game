@@ -59,12 +59,13 @@ while not game.over:
     effect.moveTo(drumCollide.x, drumCollide.y)
     drumCollide.draw()
 
+    if keys.Pressed[K_SPACE]:
+        findNextNote()
     # Notes #
     if frame == 0:
         createObject("bar")
     holdNote = getHoldStatus()
     if frame % 15 == 0:
-        print(holdNote)
         if randint(1, 2) == 1:
             randomNum = randint(1, 6)
             if holdNote == False:
