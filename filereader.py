@@ -5,12 +5,14 @@ lengthOfMeasure = 5
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
+
 def findNextNote():
     measureDuration = 1/bpm/60
     noteTimeStamp = measureDuration * measure
     noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
 
-def FindLineWith(filename, string):
+def FindLineWith(string, StringOrNum):
+  global tjaFile
   """
   This function finds lines in an external file that contain the specified string.
 
@@ -23,9 +25,15 @@ def FindLineWith(filename, string):
   """
 
   results = []
-  with open(filename, "r") as file:
+  with open(tjaFile, "r") as file:
     for i, line in enumerate(file):
       if string in line:
         value = line.split(string)[1].strip()  # Extract value after the string
-        results.append(f"{value},{i}")  # Append value and line number to results
+        if StringOrNum == "String":
+            return str(value)
+        else:
+            return i  # Append value and line number to results
   return results
+
+title = FindLineWith("TITLE:", "String")
+print(song.title)
