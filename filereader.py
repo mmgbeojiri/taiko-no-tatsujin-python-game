@@ -1,4 +1,3 @@
-bpm = 120
 measure = 0
 noteIndex = 0
 lengthOfMeasure = 5
@@ -28,7 +27,7 @@ def FindLineWith(string, StringOrNum):
   with open(tjaFile, "r") as file:
     for i, line in enumerate(file):
       if string in line:
-        value = line.split(line)[1].strip()  # Extract value after the string
+        value = line.split(string)[1].strip()  # Extract value after the string
         if StringOrNum == "String":
             return str(value)
         else:
@@ -36,4 +35,18 @@ def FindLineWith(string, StringOrNum):
   return results
 
 title = FindLineWith("TITLE:", "String")
-print(song.title)
+subtitle = FindLineWith("SUBTITLE:", "String")
+bpm = FindLineWith("BPM:", "String")
+wave = FindLineWith("WAVE:", "String")
+startSongLine = FindLineWith("#START", "Number")
+endSongLine = FindLineWith("#END", "Number")
+
+print(title)
+print(subtitle)
+print(bpm)
+print(wave)
+print(startSongLine)
+print(endSongLine)
+with open(tjaFile, "r") as file:
+    for i, line in enumerate(file):
+      pass
