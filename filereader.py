@@ -10,7 +10,7 @@ def getLastNoteTimeStamp():
   return noteTimeStamp
 
 def getLastNoteType():
-   return noteType
+   return str(noteType)
 
 def findNextNote(updateNoteIndex = 1):
     global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType

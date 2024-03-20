@@ -128,7 +128,7 @@ while not game.over:
 
     findNextNote(0)
     print(songPosition)
-    print(getLastNoteType)
+    print(getLastNoteType())
     if songPosition > getLastNoteTimeStamp():
         renderNote(getLastNoteType())
         findNextNote(1)
