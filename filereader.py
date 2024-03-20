@@ -1,15 +1,16 @@
 measure = 0
+measureWithComments = 0
 noteIndex = 0
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
 
 def findNextNote():
-    global bpm, measure, noteIndex
+    global bpm, measure, noteIndex, measureWithComments
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
-      if lineNumber == startSongLine + measure + 1: # Check if this is the line we want to check
+      if lineNumber == startSongLine + measureWithComments + 1: # Check if this is the line we want to check
         beatMapLine = lineString
         for noteIndexCheck, letter in enumerate(beatMapLine): # Enumeratre through the line
           if noteIndex == noteIndexCheck: #If this is our number
@@ -20,6 +21,7 @@ def findNextNote():
               noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
               if letter == ",": # check if this is new line
                   measure += 1
+                  measureWithComments += 1
                   noteIndex = 0
                   break
               try: #check if this is a number
@@ -27,6 +29,7 @@ def findNextNote():
               except ValueError:
                 print("That's not an int!")
                 print(f"noteType {noteType}")
+                measureWithComments += 1
                 break
               print(f"measure: {measure}")
               print(f"noteindex: {noteIndex}")
