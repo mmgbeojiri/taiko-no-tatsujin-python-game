@@ -40,11 +40,11 @@ There are two main functions that will control the song.
 The ```FindNextNote()``` function will find the timestamp of the next note, and the notetype. This is how it'll work.
 --
 ```
-measureLength = 1/bpm/60
+measureLength = 1*4/BPM*60
 noteTimeStamp = measureLength * measure
 noteTimeStamp += (noteIndex/lengthOfMeasure * measureLength)
 ```
-The measure length is equal to 1 / bpm / 60. For example, if the BPM is 120, ```measureLength``` will be 0.5.
+The measure length is equal to 1* 4 / BPM * 60 For example, if the BPM is 120, ```measureLength``` will be 2.
 Then, the noteTimeStamp will be calculated. Here is a example of the .tja file we will use.
 
 ```

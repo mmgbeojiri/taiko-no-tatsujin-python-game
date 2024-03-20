@@ -1,12 +1,15 @@
 measure = 0
 measureWithComments = 0
 noteIndex = 0
+noteTimeStamp = 0
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
+def getLastNoteTimeStamp():
+  return noteTimeStamp
 
 def findNextNote():
-    global bpm, measure, noteIndex, measureWithComments
+    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
@@ -16,7 +19,7 @@ def findNextNote():
           if noteIndex == noteIndexCheck: #If this is our number
               noteType = letter
               lengthOfMeasure = len(beatMapLine)
-              measureDuration = 1/int(bpm)/60
+              measureDuration = 1/4*int(bpm)/60
               noteTimeStamp = measureDuration * measure
               noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
               if letter == ",": # check if this is new line
@@ -31,10 +34,8 @@ def findNextNote():
                 print(f"noteType {noteType}")
                 measureWithComments += 1
                 break
-              print(f"measure: {measure}")
-              print(f"noteindex: {noteIndex}")
-              print(f"read from {lineNumber}")
-              print(f"noteType {noteType}")
+              print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
+ 
               noteIndex += 1
               return # end the function
       else: # Skip the line if its not ours
