@@ -13,6 +13,11 @@ def findNextNote():
         beatMapLine = lineString
         for noteIndexCheck, letter in enumerate(beatMapLine): # Enumeratre through the line
           if noteIndex == noteIndexCheck: #If this is our number
+              noteType = letter
+              lengthOfMeasure = len(beatMapLine)
+              measureDuration = 1/int(bpm)/60
+              noteTimeStamp = measureDuration * measure
+              noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
               if letter == ",": # check if this is new line
                   measure += 1
                   noteIndex = 0
@@ -21,12 +26,8 @@ def findNextNote():
                 val = int(letter)
               except ValueError:
                 print("That's not an int!")
-                continue
-              noteType = letter
-              lengthOfMeasure = len(beatMapLine)
-              measureDuration = 1/int(bpm)/60
-              noteTimeStamp = measureDuration * measure
-              noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
+                print(f"noteType {noteType}")
+                break
               print(f"measure: {measure}")
               print(f"noteindex: {noteIndex}")
               print(f"read from {lineNumber}")
