@@ -59,7 +59,7 @@ while not game.over:
     effect.moveTo(drumCollide.x, drumCollide.y)
     drumCollide.draw()
 
-    if keys.Pressed[K_SPACE]:
+    if keys.Pressed[K_]:
         findNextNote()
     # Notes #
     if frame == 0:

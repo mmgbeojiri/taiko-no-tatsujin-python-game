@@ -121,7 +121,8 @@ innerRightKeys = [
     K_n,
     K_m,
     K_COMMA,
-    K_PERIOD
+    K_PERIOD,
+    K_SLASH
 ]
 
 # Initialize debounce flags for each key
