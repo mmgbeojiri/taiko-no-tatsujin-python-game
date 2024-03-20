@@ -60,9 +60,10 @@ while not game.over:
     drumCollide.draw()
 
     
-    findNextNote()
+    
 
     # Notes #
+    '''
     if frame == 0:
         createObject("bar")
     holdNote = getHoldStatus()
@@ -85,7 +86,7 @@ while not game.over:
                 if randomNum == 6 or randomNum == 2 or randomNum == 4:
                     createObject("holdend")
                     holdNote = False
-
+    '''
     for i in range(len(renders)):
         renders[i].move()
 
@@ -125,9 +126,10 @@ while not game.over:
         elif not keys.Pressed[key] and debounce_flags[key]:  # Check if key is released and debounce flag is True
             debounce_flags[key] = False  # Reset debounce flag
 
-
-    if getLastNoteTimeStamp() > songPosition:
-        renderNote(getLastNoteType()) 
+    findNextNote(1)
+    print(songPosition)
+    if songPosition > getLastNoteTimeStamp():
+        renderNote(getLastNoteType())
     songPosition = (time() - startTime)
     frame += 1
     if frame == 60:

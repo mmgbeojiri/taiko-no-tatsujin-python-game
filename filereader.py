@@ -12,7 +12,7 @@ def getLastNoteTimeStamp():
 def getLastNoteType():
    return noteType
 
-def findNextNote():
+def findNextNote(updateNoteIndex = 1):
     global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType
 
     songFile = open(tjaFile, "r")
@@ -39,8 +39,9 @@ def findNextNote():
                 measureWithComments += 1
                 break
               print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
- 
-              noteIndex += 1
+
+              if updateNoteIndex:
+                noteIndex += 1
               return # end the function
       else: # Skip the line if its not ours
            continue
