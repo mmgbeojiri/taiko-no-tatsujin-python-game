@@ -64,7 +64,7 @@ while not game.over:
     # Notes #
     if frame == 0:
         createObject("bar")
-    holdNote = getHoldStatus()   
+    holdNote = getHoldStatus()
     if frame % 15 == 0:
         if randint(1, 2) == 1:
             randomNum = randint(1, 6)

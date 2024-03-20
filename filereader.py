@@ -9,11 +9,11 @@ def findNextNote():
     global bpm, measure, noteIndex
 
     songFile = open(tjaFile, "r")
-    for i, value in enumerate(songFile):
-      if i == startSongLine:
-        beatMapLine = value
-        for j, letter in enumerate(beatMapLine):
-          if noteIndex == j:
+    for lineNumber, lineString in enumerate(songFile):
+      if lineNumber == startSongLine + measure + 1: # Check if this is the line we want to check
+        beatMapLine = lineString
+        for noteIndexCheck, letter in enumerate(beatMapLine): #
+          if noteIndex == noteIndexCheck:
               noteType = letter
               measureDuration = 1/int(bpm)/60
               noteTimeStamp = measureDuration * measure
@@ -33,6 +33,8 @@ def findNextNote():
           except ValueError:
             print("That's not an int!")
             continue
+      else: # Skip the line if its not ours
+           continue
 
 
 def FindLineWith(string, StringOrNum):
