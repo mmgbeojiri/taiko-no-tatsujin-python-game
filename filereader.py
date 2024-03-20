@@ -1,6 +1,5 @@
 measure = 0
 noteIndex = 0
-lengthOfMeasure = 5
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
@@ -12,27 +11,28 @@ def findNextNote():
     for lineNumber, lineString in enumerate(songFile):
       if lineNumber == startSongLine + measure + 1: # Check if this is the line we want to check
         beatMapLine = lineString
-        for noteIndexCheck, letter in enumerate(beatMapLine): #
-          if noteIndex == noteIndexCheck:
+        for noteIndexCheck, letter in enumerate(beatMapLine): # Enumeratre through the line
+          if noteIndex == noteIndexCheck: #If this is our number
+              if letter == ",": # check if this is new line
+                  measure += 1
+                  noteIndex = 0
+                  break
+              try: #check if this is a number
+                val = int(letter)
+              except ValueError:
+                print("That's not an int!")
+                continue
               noteType = letter
+              lengthOfMeasure = len(beatMapLine)
               measureDuration = 1/int(bpm)/60
               noteTimeStamp = measureDuration * measure
               noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
               print(f"measure: {measure}")
               print(f"noteindex: {noteIndex}")
-              print(f"read from {i}")
+              print(f"read from {lineNumber}")
               print(f"noteType {noteType}")
               noteIndex += 1
-              break
-          if letter == ",": #new line
-              measure += 1
-              noteIndex = 0
-              break
-          try:
-            val = int(letter)
-          except ValueError:
-            print("That's not an int!")
-            continue
+              return # end the function
       else: # Skip the line if its not ours
            continue
 
