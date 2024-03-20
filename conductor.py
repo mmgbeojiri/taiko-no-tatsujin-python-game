@@ -1,9 +1,6 @@
 from time import time
 from notes_n_classes import *
 
-
-
-
 startTime = time()
 songPosition = 0
 
@@ -51,4 +48,7 @@ def createObject(string, big = 0):
 
     if string == "bar":
         renders.append(Bar())
+
+def renderNote(noteType):
+    pass
 

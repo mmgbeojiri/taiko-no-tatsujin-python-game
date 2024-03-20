@@ -2,14 +2,18 @@ measure = 0
 measureWithComments = 0
 noteIndex = 0
 noteTimeStamp = 0
+noteType = "0"
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
 def getLastNoteTimeStamp():
   return noteTimeStamp
 
+def getLastNoteType():
+   return noteType
+
 def findNextNote():
-    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp
+    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):

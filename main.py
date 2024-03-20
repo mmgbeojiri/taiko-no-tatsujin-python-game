@@ -61,7 +61,7 @@ while not game.over:
 
     
     findNextNote()
-    
+
     # Notes #
     if frame == 0:
         createObject("bar")
@@ -126,7 +126,8 @@ while not game.over:
             debounce_flags[key] = False  # Reset debounce flag
 
 
-
+    if getLastNoteTimeStamp() > songPosition:
+        renderNote(getLastNoteType()) 
     songPosition = (time() - startTime)
     frame += 1
     if frame == 60:
