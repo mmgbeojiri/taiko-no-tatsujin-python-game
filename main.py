@@ -126,10 +126,12 @@ while not game.over:
         elif not keys.Pressed[key] and debounce_flags[key]:  # Check if key is released and debounce flag is True
             debounce_flags[key] = False  # Reset debounce flag
 
-    findNextNote(1)
+    findNextNote(0)
     print(songPosition)
+    print(getLastNoteType)
     if songPosition > getLastNoteTimeStamp():
         renderNote(getLastNoteType())
+        findNextNote(1)
     songPosition = (time() - startTime)
     frame += 1
     if frame == 60:
