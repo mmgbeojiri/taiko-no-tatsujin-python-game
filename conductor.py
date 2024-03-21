@@ -10,9 +10,8 @@ def getHoldStatus():
     return holdNote
 renders = []
 
-def getRenders(i):
-    return renders[i]
-
+def getRenders():
+    print(renders)
 
 def createObject(string, big = 0):
     global renders, holdNote

@@ -87,8 +87,8 @@ while not game.over:
                     createObject("holdend")
                     holdNote = False
     '''
-    for i in range(len(renders)):
-        getRenders(i).move()
+    #for i in range(len(getRenders())):
+    #    getRenders()[i].move()
 
     scoreContain.draw()
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
