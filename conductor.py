@@ -15,12 +15,12 @@ def getRenders():
 
 def createObject(string, big = 0):
     global renders, holdNote
-    if string == "blue":
+    if string == "don":
         if big == 0:
             renders.append(Blue())
         else:
             renders.append(Blue(1))
-    if string == "red":
+    if string == "katsu":
         if big == 0:
             renders.append(Red())
         else:
