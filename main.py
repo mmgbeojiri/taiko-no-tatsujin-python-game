@@ -88,7 +88,7 @@ while not game.over:
                     holdNote = False
     '''
     for i in range(len(renders)):
-        renders[i].move()
+        getRenders(i).move()
 
     scoreContain.draw()
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
@@ -127,8 +127,6 @@ while not game.over:
             debounce_flags[key] = False  # Reset debounce flag
 
     findNextNote(0)
-    print(songPosition)
-    print(getLastNoteType())
     if songPosition > getLastNoteTimeStamp():
         renderNote(getLastNoteType())
         findNextNote(1)

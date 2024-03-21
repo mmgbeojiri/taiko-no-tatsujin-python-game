@@ -10,6 +10,10 @@ def getHoldStatus():
     return holdNote
 renders = []
 
+def getRenders(i):
+    return renders[i]
+
+
 def createObject(string, big = 0):
     global renders, holdNote
     if string == "blue":
@@ -50,22 +54,25 @@ def createObject(string, big = 0):
         renders.append(Bar())
 
 def renderNote(noteType):
-    if noteType == 0:
+    if noteType == "0":
         pass
-    if noteType == 1:
+    elif noteType == "1":
         createObject("don")
-    if noteType == 2:
+        print("don")
+    elif noteType == "2":
         createObject("katsu")
-    if noteType == 3:
+    elif noteType == "3":
         createObject("don", 1)
-    if noteType == 4:
+    elif noteType == "4":
         createObject("katsu", 1)
-    if noteType == 5:
+    elif noteType == "5":
         createObject("holdstart")
-    if noteType == 6:
+    elif noteType == "6":
         createObject("holdstart", 1)
-    if noteType == 8:
+    elif noteType == "8":
         createObject("holdend")
-    if noteType == 7 or noteType == 9:
+    elif noteType == "7" or noteType == "9":
         print("yea thats never coming here")
+    else:
+        print(f"cant wtf {noteType}, the type is {type(noteType)}")
 
