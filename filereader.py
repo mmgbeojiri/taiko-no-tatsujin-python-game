@@ -1,7 +1,9 @@
 measure = 0
 measureWithComments = 0
 noteIndex = 0
+barIndex = 0
 noteTimeStamp = 0
+barTimeStamp = 0
 noteType = "0"
 song = "Luka Luka Night Fever"
 
@@ -11,6 +13,17 @@ def getLastNoteTimeStamp():
 
 def getLastNoteType():
    return str(noteType)
+
+
+def findNextBar(updateBarIndex = 1):
+    global bpm
+    measureDuration = 1/4*int(bpm)/60
+    barTimeStamp = barIndex * measureDuration
+    if updateBarIndex:
+      barIndex += 1
+    return barTimeStamp
+    
+
 
 def findNextNote(updateNoteIndex = 1):
     global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType
@@ -42,7 +55,7 @@ def findNextNote(updateNoteIndex = 1):
 
               if updateNoteIndex:
                 noteIndex += 1
-              return # end the function
+              return noteTimeStamp # end the function
       else: # Skip the line if its not ours
            continue
 
