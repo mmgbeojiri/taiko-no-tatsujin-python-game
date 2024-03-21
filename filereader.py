@@ -39,7 +39,7 @@ def findNextNote(updateNoteIndex = 1):
               lengthOfMeasure = len(beatMapLine)
               measureDuration = 1/4*int(bpm)/60
               noteTimeStamp = measureDuration * measure
-              noteTimeStamp += (noteIndex/lengthOfMeasure * measureDuration)
+              noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration -(1/lengthOfMeasure)
               if letter == ",": # check if this is new line
                   measure += 1
                   measureWithComments += 1
