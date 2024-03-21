@@ -57,7 +57,6 @@ def renderNote(noteType):
         pass
     elif noteType == "1":
         createObject("don")
-        print("don")
     elif noteType == "2":
         createObject("katsu")
     elif noteType == "3":

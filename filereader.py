@@ -19,6 +19,7 @@ def findNextBar(updateBarIndex = 1):
     global bpm, barIndex
     measureDuration = 1/2*int(bpm)/60
     barTimeStamp = barIndex * measureDuration
+    print(barTimeStamp)
     if updateBarIndex:
       barIndex += 1
     return barTimeStamp
@@ -30,7 +31,7 @@ def findNextNote(updateNoteIndex = 1):
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
-      if lineNumber == startSongLine + measureWithComments + 1: # Check if this is the line we want to check
+      if lineNumber == startSongLine + measureWithComments: # Check if this is the line we want to check
         beatMapLine = lineString
         for noteIndexCheck, letter in enumerate(beatMapLine): # Enumeratre through the line
           if noteIndex == noteIndexCheck: #If this is our number
