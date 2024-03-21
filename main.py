@@ -127,13 +127,13 @@ while not game.over:
             debounce_flags[key] = False  # Reset debounce flag
 
     
-    if songPosition > findNextNote(0):
-        renderNote(getLastNoteType())
-        findNextNote(1)
-
     if songPosition > findNextBar(0):
         renderNote("bar")
         findNextBar(1)
+        
+    if songPosition > findNextNote(0):
+        renderNote(getLastNoteType())
+        findNextNote(1)
 
     
     songPosition = (time() - startTime)
