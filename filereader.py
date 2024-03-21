@@ -16,8 +16,8 @@ def getLastNoteType():
 
 
 def findNextBar(updateBarIndex = 1):
-    global bpm
-    measureDuration = 1/4*int(bpm)/60
+    global bpm, barIndex
+    measureDuration = 1/2*int(bpm)/60
     barTimeStamp = barIndex * measureDuration
     if updateBarIndex:
       barIndex += 1

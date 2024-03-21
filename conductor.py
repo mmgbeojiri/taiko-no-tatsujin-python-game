@@ -72,6 +72,8 @@ def renderNote(noteType):
         createObject("holdend")
     elif noteType == "7" or noteType == "9":
         print("yea thats never coming here")
+    elif noteType == "bar":
+        createObject("bar")
     else:
         print(f"cant wtf {noteType}, the type is {type(noteType)}")
 
