@@ -6,7 +6,7 @@ game = Game(1920, 1080, "Taiko no Tatsujin - Python")
 yPositionLine = 153
 drumResize = -78
 
-scrollSpeed = 10
+scrollSpeed = 20
 drumHitboxAdd = 5
 
 
