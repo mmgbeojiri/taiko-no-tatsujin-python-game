@@ -33,33 +33,29 @@ def findNextNote(updateNoteIndex = 1):
     for lineNumber, lineString in enumerate(songFile):
       if lineNumber == startSongLine + measureWithComments: # Check if this is the line we want to check
         beatMapLine = lineString
-        for noteIndexCheck, letter in enumerate(beatMapLine): # Enumeratre through the line
-          if noteIndex == noteIndexCheck: #If this is our number
-              noteType = letter
-              lengthOfMeasure = len(beatMapLine.split(',')[0])
-              if lengthOfMeasure == 0:
-                lengthOfMeasure = 1
-                
-              measureDuration = 1/4*int(bpm)/60
-              noteTimeStamp = measureDuration * measure
-              noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration
-              if letter == ",": # check if this is new line
-                  measure += 1
-                  measureWithComments += 1
-                  noteIndex = 0
-                  break
-              try: #check if this is a number
-                val = int(letter)
-              except ValueError:
-                print("That's not an int!")
-                print(f"noteType {noteType}")
-                measureWithComments += 1
-                break
-              print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
-
-              if updateNoteIndex:
-                noteIndex += 1
-              return noteTimeStamp # end the function
+        noteType = beatMapLine[noteIndex]
+        lengthOfMeasure = len(beatMapLine.split(',')[0])
+        if lengthOfMeasure == 0:
+          lengthOfMeasure = 1
+        measureDuration = 1/4*int(bpm)/60
+        noteTimeStamp = measureDuration * measure
+        noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration
+        if beatMapLine[noteIndex] == ",": # check if this is new line
+            measure += 1
+            measureWithComments += 1
+            noteIndex = 0
+            continue
+        try: #check if this is a number
+          val = int(beatMapLine[noteIndex])
+        except ValueError:
+          print("That's not an int!")
+          print(f"noteType {noteType}")
+          measureWithComments += 1
+          continue
+        print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
+        if updateNoteIndex:
+          noteIndex += 1
+        return noteTimeStamp # end the function
       else: # Skip the line if its not ours
            continue
 
