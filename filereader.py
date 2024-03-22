@@ -91,6 +91,9 @@ wave = FindLineWith("WAVE:", "String")
 startSongLine = FindLineWith("#START", "Number")
 endSongLine = FindLineWith("#END", "Number")
 
+def getSoundFile():
+    return f"./tjadatabase/{song}/{wave}"
+
 print(title)
 print(subtitle)
 print(bpm)

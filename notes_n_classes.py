@@ -1,5 +1,6 @@
 from gamelib import *
 from globalvars import *
+from filereader import getSoundFile
 
 songStartDebounce = True
 combo = 0
@@ -276,7 +277,7 @@ class HoldEnd:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False   
-
+music = Sound(getSoundFile(), 6)
 class Bar:
     def __init__(self):
         self.object = Image("./images/bar.png", game)
@@ -290,6 +291,7 @@ class Bar:
         if self.object.x < drumCollide.x:
             if songStartDebounce:
                 print("play the Music")
+                music.play()
                 songStartDebounce = False
     def checkIfHit(self):
         pass
