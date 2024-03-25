@@ -4,6 +4,7 @@ noteIndex = 0
 barIndex = 0
 noteTimeStamp = 0
 barTimeStamp = 0
+measureDuration = 1.5
 noteType = "0"
 song = "Luka Luka Night Fever"
 
@@ -16,8 +17,7 @@ def getLastNoteType():
 
 
 def findNextBar(updateBarIndex = 1):
-    global bpm, barIndex
-    measureDuration = 1/2*int(bpm)/60
+    global bpm, barIndex, measureDuration
     barTimeStamp = barIndex * measureDuration
     print(barTimeStamp)
     if updateBarIndex:
@@ -27,7 +27,7 @@ def findNextBar(updateBarIndex = 1):
 
 
 def findNextNote(updateNoteIndex = 1):
-    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType
+    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
@@ -37,8 +37,7 @@ def findNextNote(updateNoteIndex = 1):
         lengthOfMeasure = len(beatMapLine.split(',')[0])
         if lengthOfMeasure == 0:
           lengthOfMeasure = 1
-        measureDuration = 1/4*int(bpm)/60
-        #le measure duration is NOT correct
+        measureDuration = 150/100
         noteTimeStamp = measureDuration * (measure)
         noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration
         if beatMapLine[noteIndex] == ",": # check if this is new line
