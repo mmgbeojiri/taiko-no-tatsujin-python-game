@@ -38,7 +38,8 @@ def findNextNote(updateNoteIndex = 1):
         if lengthOfMeasure == 0:
           lengthOfMeasure = 1
         measureDuration = 1/4*int(bpm)/60
-        noteTimeStamp = measureDuration * measure
+        #le measure duration is NOT correct
+        noteTimeStamp = measureDuration * (measure)
         noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration
         if beatMapLine[noteIndex] == ",": # check if this is new line
             measure += 1
