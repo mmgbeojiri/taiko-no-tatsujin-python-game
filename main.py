@@ -142,5 +142,7 @@ while not game.over:
     if frame == 60:
         frame = 0
     CheckIfShouldBeHold()
+    if health < 0:
+        game.over = True
     game.update(60)
 game.quit()
