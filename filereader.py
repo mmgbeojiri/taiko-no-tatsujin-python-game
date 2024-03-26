@@ -4,7 +4,6 @@ noteIndex = 0
 barIndex = 0
 noteTimeStamp = 0
 barTimeStamp = 0
-measureDuration = 1.5
 noteType = "0"
 song = "Luka Luka Night Fever"
 
@@ -90,6 +89,7 @@ bpm = FindLineWith("BPM:", "String")
 wave = FindLineWith("WAVE:", "String")
 startSongLine = FindLineWith("#START", "Number")
 endSongLine = FindLineWith("#END", "Number")
+measureDuration = (60/int(bpm))*4
 
 def getSoundFile():
     return f"./tjadatabase/{song}/{wave}"
