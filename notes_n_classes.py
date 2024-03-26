@@ -281,6 +281,7 @@ class HoldEnd:
 music = Sound(getSoundFile(), 6)
 
 musicTimeStamp = ((game.width+100) - beatLine)/(scrollSpeed*60) # Distance
+musicTimeStamp *= (1/60) # framerate
 musicTimeStamp += float(offset)
 
 class Bar:
