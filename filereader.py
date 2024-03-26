@@ -90,7 +90,7 @@ wave = FindLineWith("WAVE:", "String")
 startSongLine = FindLineWith("#START", "Number")
 endSongLine = FindLineWith("#END", "Number")
 measureDuration = (60/int(bpm))*4
-
+offset = FindLineWith("OFFSET:", "Number")
 def getSoundFile():
     return f"./tjadatabase/{song}/{wave}"
 

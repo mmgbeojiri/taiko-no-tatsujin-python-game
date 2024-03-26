@@ -1,6 +1,7 @@
 from gamelib import *
 from globalvars import *
 from filereader import getSoundFile
+from filereader import offset
 
 songStartDebounce = True
 combo = 0
@@ -278,6 +279,10 @@ class HoldEnd:
                                     hitANote(5)
                                     self.object.visible = False   
 music = Sound(getSoundFile(), 6)
+musicTimeStamp =(game.width+100) - beatLine
+musicTimeStamp /= scrollSpeed
+musicTimeStamp *= (1/60)
+musicTimeStamp += float(offset)
 class Bar:
     def __init__(self):
         self.object = Image("./images/bar.png", game)
