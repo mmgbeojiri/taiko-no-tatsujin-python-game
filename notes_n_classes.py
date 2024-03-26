@@ -296,6 +296,7 @@ class Bar:
         if self.object.x < drumCollide.x:
             if songStartDebounce:
                 print("play the Music")
+                print(musicTimeStamp)
                 music.play()
                 songStartDebounce = False
     def checkIfHit(self):
