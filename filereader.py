@@ -15,8 +15,12 @@ def getLastNoteTimeStamp():
 def getLastNoteType():
    return str(noteType)
 
-def FindStartEndSongLine():
-   pass
+def FindStartEndSongLine(diffuculty):
+   diffucultyLine = FindLineWith("COURSE:", "Number") #line of diffuculty.
+   results = []
+   file = tjaFile.readlines()
+
+
 
 def findNextBar(updateBarIndex = 1):
     global bpm, barIndex, measureDuration, offset
@@ -63,7 +67,7 @@ def findNextNote(updateNoteIndex = 1):
            continue
 
 
-def FindLineWith(string, StringOrNum):
+def FindLineWith(string, StringOrNum, lineNumberOffset = 0):
   global tjaFile
   """
   This function finds lines in an external file that contain the specified string.
