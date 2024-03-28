@@ -16,7 +16,7 @@ def getLastNoteType():
 
 
 def findNextBar(updateBarIndex = 1):
-    global bpm, barIndex, measureDuration
+    global bpm, barIndex, measureDuration, offset
     barTimeStamp = barIndex * measureDuration
     barTimeStamp += offset
     if updateBarIndex:
@@ -26,7 +26,7 @@ def findNextBar(updateBarIndex = 1):
 
 
 def findNextNote(updateNoteIndex = 1):
-    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration
+    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration, offset
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
@@ -91,7 +91,7 @@ wave = FindLineWith("WAVE:", "String")
 startSongLine = FindLineWith("#START", "Number")
 endSongLine = FindLineWith("#END", "Number")
 measureDuration = (60/int(bpm))*4
-offset = FindLineWith("OFFSET:", "Number")
+offset = FindLineWith("OFFSET:", "String")
 def getSoundFile():
     return f"./tjadatabase/{song}/{wave}"
 
