@@ -81,6 +81,7 @@ def FindLineWith(string, StringOrNum, lineNumberOffset = 0):
   """
 
   results = []
+  
   with open(tjaFile, "r") as file:
     for i, line in enumerate(file):
       if string in line:
