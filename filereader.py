@@ -15,10 +15,15 @@ def getLastNoteTimeStamp():
 def getLastNoteType():
    return str(noteType)
 
-def FindStartEndSongLine(diffuculty):
-   diffucultyLine = FindLineWith("COURSE:", "Number") #line of diffuculty.
-   results = []
-   file = tjaFile.readlines()
+def FindStartEndSongLine(endOrStart, diffuculty):
+   global startSongLine, endSongLine
+   diffucultyLine = FindLineWith(f"COURSE:{diffuculty}", "Number") #line of diffuculty.
+   if endOrStart == "Start":
+    return FindLineWith("#START", "Number", diffucultyLine)
+   elif endOrStart == "End":
+    return FindLineWith("#End", "Number", diffucultyLine)
+   else:
+      return 0
 
 
 
@@ -84,6 +89,8 @@ def FindLineWith(string, StringOrNum, lineNumberOffset = 0):
   
   with open(tjaFile, "r") as file:
     for i, line in enumerate(file):
+      if i < lineNumberOffset: #If the I is less than the line number, then skip over
+         continue 
       if string in line:
         value = line.split(string)[1].strip()  # Extract value after the string
         if StringOrNum == "String":
@@ -96,8 +103,10 @@ title = FindLineWith("TITLE:", "String")
 subtitle = FindLineWith("SUBTITLE:", "String")
 bpm = FindLineWith("BPM:", "String")
 wave = FindLineWith("WAVE:", "String")
-startSongLine = FindLineWith("#START", "Number")
-endSongLine = FindLineWith("#END", "Number")
+
+startSongLine = FindStartEndSongLine("Start", "Oni")
+endSongLine = FindStartEndSongLine("End", "Oni")
+
 measureDuration = (60/int(bpm))*4
 offset = float(FindLineWith("OFFSET:", "String"))
 if noOffset:
