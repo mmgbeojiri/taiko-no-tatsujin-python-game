@@ -18,6 +18,7 @@ def getLastNoteType():
 def findNextBar(updateBarIndex = 1):
     global bpm, barIndex, measureDuration
     barTimeStamp = barIndex * measureDuration
+    barTimeStamp += offset
     if updateBarIndex:
       barIndex += 1
     return barTimeStamp
@@ -38,6 +39,7 @@ def findNextNote(updateNoteIndex = 1):
         measureDuration = 150/100
         noteTimeStamp = measureDuration * (measure)
         noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration
+        noteTimeStamp += offset
         if beatMapLine[noteIndex] == ",": # check if this is new line
             measure += 1
             measureWithComments += 1

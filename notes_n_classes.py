@@ -1,7 +1,6 @@
 from gamelib import *
 from globalvars import *
 from filereader import getSoundFile
-from filereader import offset
 
 songStartDebounce = True
 combo = 0
@@ -294,7 +293,6 @@ class Bar:
         if self.object.x < drumCollide.x:
             if songStartDebounce:
                 print("play the Music")
-                print(musicTimeStamp)
                 music.play()
                 songStartDebounce = False
     def checkIfHit(self):
