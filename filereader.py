@@ -5,6 +5,7 @@ barIndex = 0
 noteTimeStamp = 0
 barTimeStamp = 0
 noteType = "0"
+noOffset = False
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
@@ -14,6 +15,8 @@ def getLastNoteTimeStamp():
 def getLastNoteType():
    return str(noteType)
 
+def FindStartEndSongLine():
+   pass
 
 def findNextBar(updateBarIndex = 1):
     global bpm, barIndex, measureDuration, offset
@@ -92,6 +95,8 @@ startSongLine = FindLineWith("#START", "Number")
 endSongLine = FindLineWith("#END", "Number")
 measureDuration = (60/int(bpm))*4
 offset = float(FindLineWith("OFFSET:", "String"))
+if noOffset:
+   offset = 0
 def getSoundFile():
     return f"./tjadatabase/{song}/{wave}"
 
