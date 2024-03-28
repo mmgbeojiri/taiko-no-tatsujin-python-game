@@ -280,9 +280,6 @@ class HoldEnd:
                                     self.object.visible = False   
 music = Sound(getSoundFile(), 6)
 
-musicTimeStamp = ((game.width+100) - beatLine)/(scrollSpeed*60) # Distance
-musicTimeStamp *= (1/60) # framerate
-musicTimeStamp += float(offset)
 
 class Bar:
     def __init__(self):
