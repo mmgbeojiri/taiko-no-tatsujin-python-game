@@ -133,6 +133,10 @@ while not game.over:
     for i in range(len(renders)):
         if renders[i].needToMove:
             renders[i].object.setSpeed(0, 0)
+            
+            while not round(renders[i].object.x) == bulbx and not round(renders[i].object.y) == bulby:
+                renders[i].object.x += (bulbx - renders[i].object.x) / 8
+                renders[i].object.y += (bulby - renders[i].object.y) / 8
 
 
     if songPosition == 0:
