@@ -63,7 +63,9 @@ katsu = Sound("./sounds/Katsu.wav", 2)
 
 barMultipler = 9
 yellowHealth = Shape("bar", game, 50 * barMultipler, 20, yellow)
-greenHealth = Shape("bar", game, 50 * barMultipler, 20, green)
+greenHealth = Shape("bar", game, 50 * barMultipler, 25, green)
+
+
 
 def hitEffect():
     global drumCollide, effect
