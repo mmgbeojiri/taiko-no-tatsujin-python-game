@@ -48,9 +48,11 @@ while not game.over:
 
 
     yellowHealthContainer.moveTo(0, scoreContain.top-(yellowHealthContainer.height/2))
-    yellowHealth.moveTo(yellowHealthContainer.x + 10, yellowHealthContainer.y-5)
+    greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
 
-    greenHealth.moveTo(yellowHealth.x + (50*barMultipler), yellowHealth.y-(greenHealth.height - yellowHealth.height))
+    yellowHealth.moveTo(yellowHealthContainer.x + 5, yellowHealthContainer.y+5)
+
+    greenHealth.moveTo(greenHealthContainer.x, greenHealthContainer.y+5)
     yellowHealth.draw()
     greenHealth.draw()
 
