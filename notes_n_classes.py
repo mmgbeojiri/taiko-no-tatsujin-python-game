@@ -38,6 +38,7 @@ class Blue: # Katsu
         self.object = Image("./images/blue.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
+        self.needToMove = False
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -74,13 +75,14 @@ class Blue: # Katsu
                             for i in range(len(outerRightKeys)): # Katsu
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
-                                    self.object.visible = False
+                                    #self.object.visible = False
 
 class Red: # Don
     def __init__(self, big = 0):
         self.object = Image("./images/red.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
+        self.needToMove = False
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -123,6 +125,7 @@ class HoldStart:
         self.object = Image("./images/holdStart.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
+        self.needToMove = False
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -178,6 +181,7 @@ class HoldMiddle:
         self.object = Image("./images/holdMiddle.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
+        self.needToMove = False
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -233,6 +237,7 @@ class HoldEnd:
         self.object = Image("./images/holdEnd.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
+        self.needToMove = False
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -292,6 +297,7 @@ class Bar:
         self.object.resizeBy(-73)
         self.object.moveTo(game.width + 100, yPositionLine)
         self.object.setSpeed(scrollSpeed, 90)
+        self.needToMove = False
 
     def move(self):
         global songStartDebounce
