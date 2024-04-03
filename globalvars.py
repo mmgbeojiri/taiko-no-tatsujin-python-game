@@ -69,6 +69,9 @@ yellowHealthContainer = Shape("bar", game, 50 * barMultipler+5, yellowHealth.hei
 greenHealthContainer = Shape("bar", game, 50 * barMultipler+5, greenHealth.height+10, (17, 51, 17))
 
 
+bulbx = greenHealthContainer.right
+bulby = greenHealthContainer.top-(greenHealthContainer.height/2)
+
 def hitEffect():
     global drumCollide, effect
     effect.resizeTo(78, 78)

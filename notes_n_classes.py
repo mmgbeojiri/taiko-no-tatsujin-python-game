@@ -11,6 +11,10 @@ def getCombo():
 def getHealth():
     return localHealth
 
+
+
+
+
 def hitANote(positive = 1):
     global localHealth, combo, game
     if positive > 0:
@@ -26,6 +30,7 @@ def hitANote(positive = 1):
         game.over = False
         # Died
     game.score += 100
+
 
 # Object Oriented Programming
 class Blue: # Katsu
@@ -49,6 +54,7 @@ class Blue: # Katsu
             else:
                 hitANote(-5)
             self.object.visible = False
+
     def checkIfHit(self):
         global health
         if self.object.x > drumCollide.left - drumHitboxAdd:
