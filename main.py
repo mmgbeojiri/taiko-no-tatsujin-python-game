@@ -129,6 +129,12 @@ while not game.over:
         elif not keys.Pressed[key] and debounce_flags[key]:  # Check if key is released and debounce flag is True
             debounce_flags[key] = False  # Reset debounce flag
 
+    #check if need to move
+    for i in range(len(renders)):
+        if renders[i].needToMove:
+            renders[i].object.setSpeed(0, 0)
+
+
     if songPosition == 0:
         renderNote("bar")
     if songPosition >= findNextBar(0):

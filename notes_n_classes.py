@@ -75,6 +75,7 @@ class Blue: # Katsu
                             for i in range(len(outerRightKeys)): # Katsu
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
+                                    self.needToMove = True
                                     #self.object.visible = False
 
 class Red: # Don
