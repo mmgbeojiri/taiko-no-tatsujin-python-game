@@ -65,6 +65,8 @@ barMultipler = 9
 yellowHealth = Shape("bar", game, 50 * barMultipler, 20, yellow)
 greenHealth = Shape("bar", game, 50 * barMultipler, 25, green)
 
+yellowHealthContainer = Shape("bar", game, 50 * barMultipler, 30, (51, 51, 17))
+greenHealthContainer = Shape("bar", game, 50 * barMultipler, 20, (17, 51, 17))
 
 
 def hitEffect():
