@@ -40,7 +40,7 @@ class Blue: # Katsu
         self.object = Image("./images/blue.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
-        self.frameCount = False
+        self.frameCount = 0
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -87,7 +87,7 @@ class Red: # Don
         self.object = Image("./images/red.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
-        self.frameCount = False
+        self.frameCount = 0
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
@@ -133,7 +133,6 @@ class HoldStart:
         self.object = Image("./images/holdStart.png", game)
         self.object.resizeTo(960, 540)
         self.big = big
-        self.frameCount = 0
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
         else:
