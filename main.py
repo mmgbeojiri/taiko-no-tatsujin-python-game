@@ -39,7 +39,7 @@ def UpdateBulbNotes():
                     
                     alpha = 128
                     fadedImage.fill((255, 255, 255, alpha), None, pygame.BLEND_RGBA_MULT)
-                    bulbRenders[i].object.setImage(fadedImage)
+                    bulbRenders[i].object.setImage(fadedImage.convert_alpha())
 
                     if bulbRenders[i].frameCount >= 120:
 
