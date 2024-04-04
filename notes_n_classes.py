@@ -112,10 +112,12 @@ class Red: # Don
                     for i in range(len(innerLeftKeys)): # Katsu
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
+                            bulbRenders.append(self)
+                            #self.object.visible = False
                     for i in range(len(innerRightKeys)): # Katsu
                         if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
+                            #self.object.visible = False
+                            bulbRenders.append(self)
                             hitANote()
                 else:
                     for i in range(len(innerLeftKeys)): # Katsu
@@ -123,7 +125,8 @@ class Red: # Don
                             for i in range(len(innerRightKeys)): # Katsu
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
-                                    self.object.visible = False
+                                    bulbRenders.append(self)
+                                    #self.object.visible = False
 
 class HoldStart:
     def __init__(self, big = 0):

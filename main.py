@@ -27,8 +27,8 @@ for key in debounce_flags:
 def UpdateBulbNotes():
     for i in range(len(bulbRenders)):
         bulbRenders[i].object.setSpeed(0,0)
-        bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 8
-        bulbRenders[i].object.y += (bulby - bulbRenders[i].object.y) / 8
+        bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 16
+        bulbRenders[i].object.y += (bulby - bulbRenders[i].object.y) / 16
 
     
 def CheckIfShouldBeHold():
