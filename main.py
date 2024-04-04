@@ -26,13 +26,18 @@ for key in debounce_flags:
 
 def UpdateBulbNotes():
     for i in range(len(bulbRenders)):
-        bulbRenders[i].object.setSpeed(0,0)
+        if bulbRenders[i].object.visible:
+            bulbRenders[i].object.setSpeed(0,0)
 
-        bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 16
-        bulbRenders[i].object.y += (bulby - bulbRenders[i].object.y) / 16
-        if round(bulbRenders[i].object.x) == bulbx:
-            if round(bulbRenders[i].object.y) == bulby:
-                pass
+            bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 16
+            bulbRenders[i].object.y -= (bulbRenders[i].object.y-bulby) / 16
+
+            if round(bulbRenders[i].object.x) == round(bulbx):
+                if round(bulbRenders[i].object.y) == round(bulby):
+                    print("it workked")
+                    bulbRenders[i].frameCount += 5
+                    if bulbRenders[i].frameCount >= 120:
+                        bulbRenders[i].object.visible = False
 
     
 def CheckIfShouldBeHold():
