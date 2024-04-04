@@ -25,18 +25,24 @@ for key in debounce_flags:
 '''
 
 def UpdateBulbNotes():
+    alpha = 255
     for i in range(len(bulbRenders)):
         if bulbRenders[i].object.visible:
             bulbRenders[i].object.setSpeed(0,0)
-
             bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 16
             bulbRenders[i].object.y -= (bulbRenders[i].object.y-bulby) / 16
 
             if round(bulbRenders[i].object.x) == round(bulbx):
                 if round(bulbRenders[i].object.y) == round(bulby):
-                    print("it workked")
-                    bulbRenders[i].frameCount += 5
+                    bulbRenders[i].frameCount += 1
+                    fadedImage = bulbRenders[i].object.image
+                    
+                    alpha = 128
+                    fadedImage.fill((255, 255, 255, alpha), None, pygame.BLEND_RGBA_MULT)
+                    bulbRenders[i].object.setImage(fadedImage)
+
                     if bulbRenders[i].frameCount >= 120:
+
                         bulbRenders[i].object.visible = False
 
     
