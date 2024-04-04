@@ -24,7 +24,13 @@ for key in debounce_flags:
         debounce_flags[key] = False  # Reset debounce flag
 '''
 
+def UpdateBulbNotes():
+    for i in range(len(bulbRenders)):
+        bulbRenders[i].object.setSpeed(0,0)
+        bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 8
+        bulbRenders[i].object.y += (bulby - bulbRenders[i].object.y) / 8
 
+    
 def CheckIfShouldBeHold():
     global holdNote, frame
     if getHoldStatus() == True and frame % 4 == 0:
@@ -129,14 +135,9 @@ while not game.over:
         elif not keys.Pressed[key] and debounce_flags[key]:  # Check if key is released and debounce flag is True
             debounce_flags[key] = False  # Reset debounce flag
 
-    #check if need to move
-    for i in range(len(renders)):
-        if renders[i].needToMove:
-            renders[i].object.setSpeed(0, 0)
+    UpdateBulbNotes()
             
-            while not round(renders[i].object.x) == bulbx and not round(renders[i].object.y) == bulby:
-                renders[i].object.x += (bulbx - renders[i].object.x) / 8
-                renders[i].object.y += (bulby - renders[i].object.y) / 8
+            
 
 
     if songPosition == 0:

@@ -5,11 +5,13 @@ from filereader import getSoundFile
 songStartDebounce = True
 combo = 0
 localHealth = 50
-
+bulbRenders = []
 def getCombo():
     return combo
 def getHealth():
     return localHealth
+def getBulbRenders():
+    return bulbRenders
 
 
 
@@ -64,18 +66,20 @@ class Blue: # Katsu
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
+                            bulbRenders.append(self)
+                            #self.object.visible = False
                     for i in range(len(outerRightKeys)): # Katsu
                         if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
+                            #self.object.visible = False
                             hitANote()
+                            bulbRenders.append(self)
                 else:
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             for i in range(len(outerRightKeys)): # Katsu
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
-                                    self.needToMove = True
+                                    bulbRenders.append(self)
                                     #self.object.visible = False
 
 class Red: # Don
