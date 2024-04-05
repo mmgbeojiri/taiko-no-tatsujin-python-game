@@ -314,3 +314,9 @@ class Bar:
     def checkIfHit(self):
         pass
         # We do a pass to not cause an error since this is in the render
+    
+class Text():
+    def __init(self):
+        self.text = "Don"
+        self.x = game.width + 100
+        self.y = yPositionLine - 40
