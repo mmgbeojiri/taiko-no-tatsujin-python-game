@@ -34,7 +34,7 @@ def UpdateBulbNotes():
 
             if round(bulbRenders[i].object.x) == round(bulbx):
                 if round(bulbRenders[i].object.y) == round(bulby):
-                    bulbRenders[i].frameCount += 1
+                    bulbRenders[i].frameCount += 2
 
                     if str(bulbRenders[i].__class__) == "<class 'notes_n_classes.Blue'>":
                         imagePath = "./images/blue.png"
