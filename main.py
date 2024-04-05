@@ -37,15 +37,15 @@ def UpdateBulbNotes():
                     bulbRenders[i].frameCount += 1
 
                     if str(bulbRenders[i].__class__) == "<class 'notes_n_classes.Blue'>":
-                        
-                        transparentImage = pygame.image.load("./images/blue.png").convert()
-                        transparentImage = pygame.transform.scale(transparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
-                        transparentImage.set_alpha(128)
-                        bulbRenders[i].object.setImage(transparentImage)
+                        imagePath = "./images/blue.png"
 
                     if str(bulbRenders[i].__class__) == "<class 'notes_n_classes.Red'>":
-                        print("its a red!")
+                        imagePath = "./images/red.png"
                     
+                    transparentImage = pygame.image.load("./images/blue.png").convert()
+                    transparentImage = pygame.transform.scale(transparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
+                    transparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
+                    bulbRenders[i].object.setImage(transparentImage)
                     
 
                     if bulbRenders[i].frameCount >= 128:
