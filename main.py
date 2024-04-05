@@ -49,7 +49,7 @@ def UpdateBulbNotes():
                         blueTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
                         bulbRenders[i].object.setImage(blueTransparentImage)
                     if note == "red":
-                        redTransparentImage = pygame.transform.scale(redTransparentImagejf,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
+                        redTransparentImage = pygame.transform.scale(redTransparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
                         redTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
                         bulbRenders[i].object.setImage(redTransparentImage)
                     
