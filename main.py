@@ -24,9 +24,10 @@ for key in debounce_flags:
         debounce_flags[key] = False  # Reset debounce flag
 '''
 
+blueTransparentImage = pygame.image.load("./images/blue.png").convert()
+redTransparentImage = pygame.image.load("./images/red.png").convert()
 def UpdateBulbNotes():
-    blueTransparentImage = pygame.image.load("./images/blue.png").convert()
-    redTransparentImage = pygame.image.load("./images/red.png").convert()
+    global blueTransparentImage, redTransparentImage
     for i in range(len(bulbRenders)):
         if bulbRenders[i].object.visible:
             bulbRenders[i].object.setSpeed(0,0)
@@ -48,9 +49,9 @@ def UpdateBulbNotes():
                         blueTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
                         bulbRenders[i].object.setImage(blueTransparentImage)
                     if note == "red":
-                        blueTransparentImage = pygame.transform.scale(blueTransparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
-                        blueTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
-                        bulbRenders[i].object.setImage(blueTransparentImage)
+                        redTransparentImage = pygame.transform.scale(redTransparentImagejf,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
+                        redTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
+                        bulbRenders[i].object.setImage(redTransparentImage)
                     
 
                     if bulbRenders[i].frameCount >= 128:
