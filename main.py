@@ -25,7 +25,8 @@ for key in debounce_flags:
 '''
 
 def UpdateBulbNotes():
-    transparentImage = "placeholder"
+    blueTransparentImage = pygame.image.load("./images/blue.png").convert()
+    redTransparentImage = pygame.image.load("./images/red.png").convert()
     for i in range(len(bulbRenders)):
         if bulbRenders[i].object.visible:
             bulbRenders[i].object.setSpeed(0,0)
@@ -37,15 +38,19 @@ def UpdateBulbNotes():
                     bulbRenders[i].frameCount += 8
 
                     if str(bulbRenders[i].__class__) == "<class 'notes_n_classes.Blue'>":
-                        imagePath = "./images/blue.png"
+                        note = "blue"
 
                     if str(bulbRenders[i].__class__) == "<class 'notes_n_classes.Red'>":
-                        imagePath = "./images/red.png"
+                        note = "red"
                     
-                    transparentImage = pygame.image.load(imagePath).convert()
-                    transparentImage = pygame.transform.scale(transparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
-                    transparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
-                    bulbRenders[i].object.setImage(transparentImage)
+                    if note == "blue":
+                        blueTransparentImage = pygame.transform.scale(blueTransparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
+                        blueTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
+                        bulbRenders[i].object.setImage(blueTransparentImage)
+                    if note == "red":
+                        blueTransparentImage = pygame.transform.scale(blueTransparentImage,(int(bulbRenders[i].object.width),int(bulbRenders[i].object.height)))
+                        blueTransparentImage.set_alpha(255 - (bulbRenders[i].frameCount*2))
+                        bulbRenders[i].object.setImage(blueTransparentImage)
                     
 
                     if bulbRenders[i].frameCount >= 128:
