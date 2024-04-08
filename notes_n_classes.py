@@ -232,13 +232,11 @@ class HoldMiddle:
                             for i in range(len(innerRightKeys)): 
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
-                                    bulbRenders.append(redNote)
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
-                                    bulbRenders.append(blueNote)
 class HoldEnd:
     def __init__(self, big = 0):
         self.object = Image("./images/holdEnd.png", game)
