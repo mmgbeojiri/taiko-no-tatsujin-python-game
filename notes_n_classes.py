@@ -142,11 +142,6 @@ class HoldStart:
     def move(self):
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            if self.big == 0:
-                hitANote(-1)
-            else:
-                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
@@ -154,32 +149,37 @@ class HoldStart:
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
+                    redNote = Red()
+                    redNote.object.x = self.object.x
+                    blueNote = Blue()
+                    blueNote.object.x = self.object.x 
+                    for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
+                            bulbRenders.append(redNote)
+                    for i in range(len(innerRightKeys)): # Don
                         if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
                             hitANote()
+                            bulbRenders.append(redNote)
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
+                            bulbRenders.append(blueNote)
                     for i in range(len(outerRightKeys)): # Katsu
                         if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
                             hitANote()
+                            bulbRenders.append(blueNote)
+
                 else:
-                    for i in range(len(innerLeftKeys)): # Katsu
+                    for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
+                            for i in range(len(innerRightKeys)):
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
+                            for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False                                    
@@ -197,11 +197,6 @@ class HoldMiddle:
     def move(self):
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            if self.big == 0:
-                hitANote(-1)
-            else:
-                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
@@ -209,11 +204,11 @@ class HoldMiddle:
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
+                    for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
                             self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
+                    for i in range(len(innerRightKeys)): # Don
                         if keys.Pressed[innerRightKeys[i]]:
                             self.object.visible = False
                             hitANote()
@@ -228,13 +223,13 @@ class HoldMiddle:
                 else:
                     for i in range(len(innerLeftKeys)): # Katsu
                         if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
+                            for i in range(len(innerRightKeys)): 
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
+                            for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False   
@@ -252,11 +247,6 @@ class HoldEnd:
     def move(self):
         self.object.move()
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
-            # Missed
-            if self.big == 0:
-                hitANote(-1)
-            else:
-                hitANote(-5)
             self.object.visible = False
 
     def checkIfHit(self):
@@ -264,11 +254,11 @@ class HoldEnd:
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 if self.big == 0:
-                    for i in range(len(innerLeftKeys)): # Katsu
+                    for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
                             self.object.visible = False
-                    for i in range(len(innerRightKeys)): # Katsu
+                    for i in range(len(innerRightKeys)): # Don
                         if keys.Pressed[innerRightKeys[i]]:
                             self.object.visible = False
                             hitANote()
@@ -281,15 +271,15 @@ class HoldEnd:
                             self.object.visible = False
                             hitANote()
                 else:
-                    for i in range(len(innerLeftKeys)): # Katsu
+                    for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
-                            for i in range(len(innerRightKeys)): # Katsu
+                            for i in range(len(innerRightKeys)):
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
-                            for i in range(len(outerRightKeys)): # Katsu
+                            for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     self.object.visible = False   
