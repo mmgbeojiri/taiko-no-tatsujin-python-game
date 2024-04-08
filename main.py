@@ -29,6 +29,8 @@ redTransparentImage = pygame.image.load("./images/red.png").convert()
 def UpdateBulbNotes():
     global blueTransparentImage, redTransparentImage
     for i in range(len(bulbRenders)):
+        if bulbRenders[i] not in getRenders():
+            bulbRenders[i].object.draw()
         if bulbRenders[i].object.visible:
             bulbRenders[i].object.setSpeed(0,0)
             bulbRenders[i].object.x += (bulbx - bulbRenders[i].object.x) / 16

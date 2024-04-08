@@ -146,13 +146,13 @@ class HoldStart:
 
     def checkIfHit(self):
         global health
+        redNote = Red()
+        redNote.object.x = self.object.x
+        blueNote = Blue()
+        blueNote.object.x = self.object.x
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 if self.big == 0:
-                    redNote = Red()
-                    redNote.object.x = self.object.x
-                    blueNote = Blue()
-                    blueNote.object.x = self.object.x 
                     for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
@@ -171,18 +171,22 @@ class HoldStart:
                             bulbRenders.append(blueNote)
 
                 else:
+                    redNote = Red(1)
+                    redNote.object.x = self.object.x
+                    blueNote = Blue(1)
+                    blueNote.object.x = self.object.x
                     for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             for i in range(len(innerRightKeys)):
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
-                                    self.object.visible = False
+                                    bulbRenders.append(redNote)
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
-                                    self.object.visible = False                                    
+                                    bulbRenders.append(blueNote)                                    
 class HoldMiddle:
     def __init__(self, big = 0):
         self.object = Image("./images/holdMiddle.png", game)
@@ -201,38 +205,46 @@ class HoldMiddle:
 
     def checkIfHit(self):
         global health
+        redNote = Red()
+        redNote.object.x = self.object.x
+        blueNote = Blue()
+        blueNote.object.x = self.object.x
         if self.object.x > drumCollide.left - drumHitboxAdd:
             if self.object.x < drumCollide.right + drumHitboxAdd:
                 if self.big == 0:
                     for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
+                            bulbRenders.append(redNote)
                     for i in range(len(innerRightKeys)): # Don
                         if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
+                            bulbRenders.append(redNote)
                             hitANote()
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
+                            bulbRenders.append(blueNote)
                     for i in range(len(outerRightKeys)): # Katsu
                         if keys.Pressed[outerRightKeys[i]]:
-                            self.object.visible = False
+                            bulbRenders.append(blueNote)
                             hitANote()
                 else:
+                    redNote = Red(1)
+                    redNote.object.x = self.object.x
+                    blueNote = Blue(1)
+                    blueNote.object.x = self.object.x
                     for i in range(len(innerLeftKeys)): # Katsu
                         if keys.Pressed[innerLeftKeys[i]]:
                             for i in range(len(innerRightKeys)): 
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
-                                    self.object.visible = False
+                                    bulbRenders.append(redNote)
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
-                                    self.object.visible = False   
+                                    bulbRenders.append(blueNote)  
 class HoldEnd:
     def __init__(self, big = 0):
         self.object = Image("./images/holdEnd.png", game)
