@@ -269,10 +269,8 @@ class HoldEnd:
                     for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
-                            self.object.visible = False
                     for i in range(len(innerRightKeys)): # Don
                         if keys.Pressed[innerRightKeys[i]]:
-                            self.object.visible = False
                             hitANote()
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
