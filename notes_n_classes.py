@@ -5,6 +5,7 @@ from filereader import getSoundFile
 songStartDebounce = True
 combo = 0
 localHealth = 50
+maxDrumroll = 0
 bulbRenders = []
 def getCombo():
     return combo
@@ -12,7 +13,10 @@ def getHealth():
     return localHealth
 def getBulbRenders():
     return bulbRenders
-
+def addToBulbRenders(item):
+    global bulbRenders, maxDrumroll
+    bulbRenders.append(item)
+    maxDrumroll += 1
 
 
 
@@ -213,19 +217,19 @@ class HoldMiddle:
                     for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
                             hitANote()
-                            bulbRenders.append(redNote)
+                            addToBulbRenders(redNote)
                     for i in range(len(innerRightKeys)): # Don
                         if keys.Pressed[innerRightKeys[i]]:
                             hitANote()
-                            bulbRenders.append(redNote)
+                            addToBulbRenders(redNote)
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             hitANote()
-                            bulbRenders.append(blueNote)
+                            addToBulbRenders(blueNote)
                     for i in range(len(outerRightKeys)): # Katsu
                         if keys.Pressed[outerRightKeys[i]]:
                             hitANote()
-                            bulbRenders.append(blueNote)
+                            addToBulbRenders(blueNote)
                 else:
                     redNote = Red(1)
                     redNote.object.x = self.object.x
@@ -236,13 +240,13 @@ class HoldMiddle:
                             for i in range(len(innerRightKeys)): 
                                 if keys.Pressed[innerRightKeys[i]]:
                                     hitANote(5)
-                                    bulbRenders.append(blueNote)
+                                    addToBulbRenders(blueNote)
                     for i in range(len(outerLeftKeys)): # Katsu
                         if keys.Pressed[outerLeftKeys[i]]:
                             for i in range(len(outerRightKeys)):
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
-                                    bulbRenders.append(blueNote)
+                                    addToBulbRenders(blueNote)
 class HoldEnd:
     def __init__(self, big = 0):
         self.object = Image("./images/holdEnd.png", game)
