@@ -64,7 +64,7 @@ def UpdateBulbNotes():
     
 def CheckIfShouldBeHold():
     global holdNote, frame
-    if getHoldStatus() == True and frame % 4 == 0:
+    if getHoldStatus() == True and frame % 8 == 0:
         createObject("holdmiddle")
 
 while not game.over:
@@ -100,7 +100,20 @@ while not game.over:
     drumCollide.draw()
 
     
-    
+    # Inside the game loop, handle key press events
+    renders = getRenders()
+    for key in debounce_flags:
+        if keys.Pressed[key]:
+            if not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
+                debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
+                hitEffect()
+                for i in range(len(renders)):
+                    renders[i].checkIfHit()
+                # Play corresponding sound based on key
+                if key in innerLeftKeys or key in innerRightKeys:  # Don sound
+                    don.play()
+                else:  # Katsu sound
+                    katsu.play()
 
     # Notes #
     '''
@@ -151,20 +164,12 @@ while not game.over:
     
     # for each key, make a sound debounce. when key is pressed, play sound only once. 
 
-    # Inside the game loop, handle key press events
-    for key in debounce_flags:
-        if keys.Pressed[key] and not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
-            hitEffect()
-            for i in range(len(renders)):
-                renders[i].checkIfHit()
-            debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
-            # Play corresponding sound based on key
-            if key in innerLeftKeys or key in innerRightKeys:  # Don sound
-                don.play()
-            else:  # Katsu sound
-                katsu.play()
-        elif not keys.Pressed[key] and debounce_flags[key]:  # Check if key is released and debounce flag is True
-            debounce_flags[key] = False  # Reset debounce flag
+    
+
+        for key in debounce_flags:
+            if not keys.Pressed[key]:
+                if debounce_flags[key]:  # Check if key is released and debounce flag is True
+                    debounce_flags[key] = False  # Reset debounce flag
 
     UpdateBulbNotes()
             
