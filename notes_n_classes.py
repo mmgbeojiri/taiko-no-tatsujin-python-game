@@ -186,7 +186,7 @@ class HoldStart:
 class HoldMiddle:
     def __init__(self, big = 0):
         self.object = Image("./images/holdMiddle.png", game)
-        self.object.resizeTo(960, 540)
+        self.object.resizeTo(960*2, 540)
         self.big = big
         if self.big == 0:
             self.object.resizeBy(drumResize-7)
@@ -207,8 +207,8 @@ class HoldMiddle:
         blueNote = Blue()
         redNote.object.x = self.object.x
         blueNote.object.x = self.object.x
-        if self.object.x > drumCollide.left - drumHitboxAdd:
-            if self.object.x < drumCollide.right + drumHitboxAdd:
+        if self.object.x > drumCollide.left + drumHitboxAdd:
+            if self.object.x < drumCollide.right - drumHitboxAdd:
                 if self.big == 0:
                     for i in range(len(innerLeftKeys)): # Don
                         if keys.Pressed[innerLeftKeys[i]]:
