@@ -147,7 +147,7 @@ while not game.over:
     for i in range(len(getTextRenders())):
         textObject = getTextRenders()[i]
         textObject.move()
-        game.drawText(textObject.text, textObject.x, textObject.y)
+        game.drawText(textObject.string, textObject.x, textObject.y)
     for i in range(len(getRenders())):
         getRenders()[i].move()
 

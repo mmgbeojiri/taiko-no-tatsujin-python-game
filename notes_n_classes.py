@@ -338,10 +338,10 @@ class Bar:
         # We do a pass to not cause an error since this is in the render
     
 class Text:
-    def __init(self, text = "Don"):
+    def __init__(self, text = "Don"):
         self.string = text
-        self.x = game.width + 100 - (960*(1 - abs(drumResize)/100))
-        self.y = yPositionLine - 40
+        self.x = game.width + 100 
+        self.y = yPositionLine + 50
     def move(self):
         self.x -= scrollSpeed
         
