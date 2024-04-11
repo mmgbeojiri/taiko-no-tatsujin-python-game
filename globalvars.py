@@ -60,6 +60,7 @@ drumOuterLeft.resizeBy(drumResize)
 don = Sound("./sounds/Don.wav", 1)
 katsu = Sound("./sounds/Katsu.wav", 2)
 
+maxCombo = 0
 
 barMultipler = 9
 yellowHealth = Shape("bar", game, 50 * barMultipler, 20, yellow)

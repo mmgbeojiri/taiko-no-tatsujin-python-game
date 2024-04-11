@@ -73,6 +73,8 @@ while not game.over:
     outerBar.draw()
     health = getHealth()
     combo = getCombo()
+    if combo > maxCombo:
+        maxCombo = combo
     if health < 50:
         yellowHealth.width = health * barMultipler
     else:
@@ -174,7 +176,8 @@ while not game.over:
     UpdateBulbNotes()
             
             
-
+    game.drawText(f"Drumroll: {getDrumroll()}", 10, game.height-20)
+    game.drawText(f"Max Combo: {maxCombo}", 120, game.height - 20)
 
     if songPosition == 0:
         renderNote("bar")
