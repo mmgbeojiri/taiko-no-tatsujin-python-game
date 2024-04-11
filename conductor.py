@@ -9,9 +9,13 @@ holdNote = False
 def getHoldStatus():
     return holdNote
 renders = []
+textRenders = []
 
 def getRenders():
     return renders
+
+def getTextRenders():
+    return textRenders
 
 def createObject(string, big = 0):
     global renders, holdNote
@@ -23,6 +27,7 @@ def createObject(string, big = 0):
     if string == "don":
         if big == 0:
             renders.append(Red())
+            textRenders.append(Text("Don"))
         else:
             renders.append(Red(1))
 

@@ -117,6 +117,8 @@ while not game.over:
                 else:  # Katsu sound
                     katsu.play()
 
+    
+
     # Notes #
     '''
     if frame == 0:
@@ -142,6 +144,10 @@ while not game.over:
                     createObject("holdend")
                     holdNote = False
     '''
+    for i in range(len(getTextRenders())):
+        textObject = getTextRenders()[i]
+        textObject.move()
+        game.drawText(textObject.text, textObject.x, textObject.y)
     for i in range(len(getRenders())):
         getRenders()[i].move()
 
