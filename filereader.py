@@ -6,11 +6,15 @@ noteTimeStamp = 0
 barTimeStamp = 0
 noteType = "0"
 noOffset = True
+gogoMode = False
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
 def getLastNoteTimeStamp():
   return noteTimeStamp
+
+def getGogoMode():
+   return gogoMode
 
 def getLastNoteType():
    return str(noteType)
@@ -38,7 +42,7 @@ def findNextBar(updateBarIndex = 1):
 
 
 def findNextNote(updateNoteIndex = 1):
-    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration, offset
+    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration, offset, gogoMode
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
@@ -63,6 +67,13 @@ def findNextNote(updateNoteIndex = 1):
           print("That's not an int!")
           print(f"noteType {noteType}")
           measureWithComments += 1
+          print(beatMapLine)
+          print(type(beatMapLine))
+          if str(beatMapLine) == "#GOGOSTART":
+             print("gogostart")
+             gogoMode = True
+          if str(beatMapLine) == "#GOGOEND":
+             gogoMode = False
           continue
         print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
         if updateNoteIndex:

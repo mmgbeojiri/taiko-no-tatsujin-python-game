@@ -147,7 +147,7 @@ while not game.over:
     for i in range(len(getTextRenders())):
         textObject = getTextRenders()[i]
         textObject.move()
-        game.drawText(textObject.string, textObject.x, textObject.y)
+        #game.drawText(textObject.string, textObject.x, textObject.y)
     for i in range(len(getRenders())):
         getRenders()[i].move()
 
@@ -182,8 +182,9 @@ while not game.over:
     UpdateBulbNotes()
             
             
-    game.drawText(f"Drumroll: {getDrumroll()}", 10, game.height-20)
+    game.drawText(f"Drumroll: {getDrumroll()}", 10, game.height - 20)
     game.drawText(f"Max Combo: {maxCombo}", 120, game.height - 20)
+    game.drawText(f"Gogo Mode: {getGogoMode()}", 250, game.height - 20)
 
     if songPosition == 0:
         renderNote("bar")
