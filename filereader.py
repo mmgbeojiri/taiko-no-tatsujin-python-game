@@ -67,12 +67,11 @@ def findNextNote(updateNoteIndex = 1):
           print("That's not an int!")
           print(f"noteType {noteType}")
           measureWithComments += 1
-          print(beatMapLine)
-          print(type(beatMapLine))
-          if str(beatMapLine) == "#GOGOSTART":
+          if str(beatMapLine) == "#GOGOSTART\n":
              print("gogostart")
              gogoMode = True
-          if str(beatMapLine) == "#GOGOEND":
+          if str(beatMapLine) == "#GOGOEND\n":
+             print("gogoend")
              gogoMode = False
           continue
         print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
