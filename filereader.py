@@ -52,7 +52,6 @@ def findNextNote(updateNoteIndex = 1):
         lengthOfMeasure = len(beatMapLine.split(',')[0])
         if lengthOfMeasure == 0:
           lengthOfMeasure = 1
-        measureDuration = 150/100
         noteTimeStamp = measureDuration * (measure)
         noteTimeStamp += (noteIndex/lengthOfMeasure) * measureDuration
         noteTimeStamp += offset
