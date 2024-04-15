@@ -7,6 +7,7 @@ barTimeStamp = 0
 noteType = "0"
 noOffset = True
 gogoMode = False
+doDon = None
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
@@ -42,7 +43,7 @@ def findNextBar(updateBarIndex = 1):
 
 
 def findNextNote(updateNoteIndex = 1):
-    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration, offset, gogoMode
+    global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration, offset, gogoMode, doDon
 
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
@@ -73,7 +74,16 @@ def findNextNote(updateNoteIndex = 1):
              print("gogoend")
              gogoMode = False
           continue
-        print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp}")
+        if noteType == 1:
+          if beatMapLine[noteIndex+1] == "0":
+              doDon == "Don"
+          elif songFile.readlines()[lineNumber+1][0] == "0":
+              doDon == "Don"
+          else:
+              doDon == "Do"
+        else:
+           doDon = None
+        print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp} doDon: {doDon}")
         if updateNoteIndex:
           noteIndex += 1
         return noteTimeStamp # end the function
