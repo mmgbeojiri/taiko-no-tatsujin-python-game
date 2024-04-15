@@ -74,15 +74,15 @@ def findNextNote(updateNoteIndex = 1):
              print("gogoend")
              gogoMode = False
           continue
-        if noteType == 1:
-          if beatMapLine[noteIndex+1] == "0":
-              doDon == "Don"
+        if noteType == "1":
+          if str(beatMapLine[noteIndex+1]) == "0":
+              doDon = "Don"
           elif songFile.readlines()[lineNumber+1][0] == "0":
-              doDon == "Don"
+              doDon = "Don"
           else:
-              doDon == "Do"
+              doDon = "Do"
         else:
-           doDon = None
+          doDon = None
         print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp} doDon: {doDon}")
         if updateNoteIndex:
           noteIndex += 1
