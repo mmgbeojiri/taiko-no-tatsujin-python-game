@@ -13,7 +13,8 @@ song = "Luka Luka Night Fever"
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
 def getLastNoteTimeStamp():
   return noteTimeStamp
-
+def getLastDoDon():
+  return doDon
 def getGogoMode():
    return gogoMode
 
