@@ -27,9 +27,9 @@ def addToBulbRenders(item):
     drumroll += 1
 
 
-def calculatehitDistance(object):
+def calculatehitDistance(note):
     global good, ok, bad
-    hitDistance = object.x - drumCollide.x
+    hitDistance = note.object.x - drumCollide.x
     hitDistance = abs(hitDistance)
     if hitDistance > 30:
         bad += 1

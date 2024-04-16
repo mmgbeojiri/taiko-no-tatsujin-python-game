@@ -110,7 +110,8 @@ while not game.over:
                 debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
                 hitEffect()
                 for i in range(len(renders)):
-                    renders[i].checkIfHit()
+                    if renders[i].checkIfHit():
+                        calculatehitDistance(renders[i])
                 # Play corresponding sound based on key
                 if key in innerLeftKeys or key in innerRightKeys:  # Don sound
                     don.play()
