@@ -157,7 +157,7 @@ class Red: # Don
                                     hitANote(5)
                                     bulbRenders.append(self)
                                     #self.object.visible = False
-            return True
+                return True
         return False
 
 class HoldStart:
@@ -221,7 +221,7 @@ class HoldStart:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     addToBulbRenders(blueNote)
-            return True
+                return True
         return False
 class HoldMiddle:
     def __init__(self, big = 0):
@@ -283,7 +283,7 @@ class HoldMiddle:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     addToBulbRenders(blueNote)
-            return True
+                return True
         return False
 class HoldEnd:
     def __init__(self, big = 0):
@@ -345,7 +345,7 @@ class HoldEnd:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     addToBulbRenders(blueNote)
-            return True
+                return True
         return False
 music = Sound(getSoundFile(), 6)
 
