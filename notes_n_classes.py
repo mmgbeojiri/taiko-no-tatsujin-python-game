@@ -153,6 +153,8 @@ class Red: # Don
                                     hitANote(5)
                                     bulbRenders.append(self)
                                     #self.object.visible = False
+            return True
+        return False
 
 class HoldStart:
     def __init__(self, big = 0):
@@ -215,6 +217,8 @@ class HoldStart:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     addToBulbRenders(blueNote)
+            return True
+        return False
 class HoldMiddle:
     def __init__(self, big = 0):
         self.object = Image("./images/holdMiddle.png", game)
@@ -234,7 +238,7 @@ class HoldMiddle:
     def checkIfHit(self):
         global health
         if self.object.visible == False:
-            return
+            return False
         redNote = Red()
         blueNote = Blue()
         redNote.object.x = self.object.x
@@ -275,6 +279,8 @@ class HoldMiddle:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     addToBulbRenders(blueNote)
+            return True
+        return False
 class HoldEnd:
     def __init__(self, big = 0):
         self.object = Image("./images/holdEnd.png", game)
@@ -294,7 +300,7 @@ class HoldEnd:
     def checkIfHit(self):
         global health
         if self.object.visible == False:
-            return
+            return False
         redNote = Red()
         blueNote = Blue()
         redNote.object.x = self.object.x
@@ -335,6 +341,8 @@ class HoldEnd:
                                 if keys.Pressed[outerRightKeys[i]]:
                                     hitANote(5)
                                     addToBulbRenders(blueNote)
+            return True
+        return False
 music = Sound(getSoundFile(), 6)
 
 
