@@ -26,6 +26,10 @@ def addToBulbRenders(item):
     bulbRenders.append(item)
     drumroll += 1
 
+def getAccuracy():
+    global good, ok, bad
+    values = [bad, ok, good]
+    return values
 
 def calculatehitDistance(note):
     global good, ok, bad

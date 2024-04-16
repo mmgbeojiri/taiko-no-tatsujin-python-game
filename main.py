@@ -186,6 +186,7 @@ while not game.over:
     game.drawText(f"Drumroll: {getDrumroll()}", 10, game.height - 20)
     game.drawText(f"Max Combo: {maxCombo}", 120, game.height - 20)
     game.drawText(f"Gogo Mode: {getGogoMode()}", 250, game.height - 20)
+    game.drawText(f"Bad: {getAccuracy()[0]} Ok: {getAccuracy()[1]} Good: {getAccuracy()[2]}", 10, game.height - 40)
 
     if songPosition == 0:
         renderNote("bar")
