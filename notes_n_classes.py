@@ -7,6 +7,12 @@ combo = 0
 localHealth = 50
 drumroll = 0
 bulbRenders = []
+
+good = 0
+ok = 0
+bad = 0
+
+
 def getCombo():
     return combo
 def getHealth():
@@ -20,6 +26,17 @@ def addToBulbRenders(item):
     bulbRenders.append(item)
     drumroll += 1
 
+
+def calculatehitDistance(object):
+    global good, ok, bad
+    hitDistance = object.x - drumCollide.x
+    hitDistance = abs(hitDistance)
+    if hitDistance > 30:
+        bad += 1
+    elif hitDistance > 15 and hitDistance < 30:
+        ok += 1
+    elif hitDistance > 0 and hitDistance < 15:
+        good += 1
 
 
 
@@ -87,6 +104,9 @@ class Blue: # Katsu
                                     hitANote(5)
                                     bulbRenders.append(self)
                                     #self.object.visible = False
+                return True
+        return False
+
 
 class Red: # Don
     def __init__(self, big = 0):
