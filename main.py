@@ -24,6 +24,8 @@ for key in debounce_flags:
         debounce_flags[key] = False  # Reset debounce flag
 '''
 
+donWadaNormal = Animation("./images/donWada/normalBop.png", 4, game, 370, 251, 8)
+
 blueTransparentImage = pygame.image.load("./images/blue.png").convert()
 redTransparentImage = pygame.image.load("./images/red.png").convert()
 def UpdateBulbNotes():
@@ -156,6 +158,7 @@ while not game.over:
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
     game.drawText(f"combo: {combo}", drum.left - 100, yPositionLine+50)
     drum.draw()
+    donWadaNormal.draw()
 
 
     for i in range(len(outerLeftKeys)): # Katsu
