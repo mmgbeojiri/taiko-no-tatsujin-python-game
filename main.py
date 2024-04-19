@@ -136,7 +136,7 @@ while not game.over:
     if donState == "BarJump":
         donWadaBarJump.visible = True
 
-    if keys.Pressed[K_SPACE]:
+    if keys.Pressed[K_SPACE]: # Transition to Survival
         ChangeDonState("Transition")
         donYVel = 10
 
@@ -147,7 +147,8 @@ while not game.over:
     if donY > donYGround:
         donY += donYVel
         donYVel = 0
-    donY -= donYVel
+    else:
+        donY -= donYVel
     
     # Falling #
     if donYVel < 0:
