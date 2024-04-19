@@ -27,6 +27,10 @@ for key in debounce_flags:
 donWadaNormal = Animation("./images/donWada/normalBop.png", 4, game, 370, 251, 8)
 donWadaGogo = Animation("./images/donWada/gogoBopLongWithCrop.png", 8, game, 370, 251, 4)
 donWadaSurvival = Animation("./images/donWada/survivalBop.png", 4, game, 370, 251, 8)
+donWadaRotate = Animation("./images/donWada/rotate.png", 5, game, 370, 251, 2)
+donWadaSurvivalFall = Animation("./images/donWada/survivalfall.png", 1, game, 370, 251, 8)
+donWadaBarJump = Animation("./images/donWada/barJump.png", 1, game, 370, 251, 8)
+donState = "Normal"
 
 blueTransparentImage = pygame.image.load("./images/blue.png").convert()
 redTransparentImage = pygame.image.load("./images/red.png").convert()
@@ -160,7 +164,7 @@ while not game.over:
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
     game.drawText(f"combo: {combo}", drum.left - 100, yPositionLine+50)
     drum.draw()
-    donWadaSurvival.draw()
+    donWadaRotate.draw()
 
 
     for i in range(len(outerLeftKeys)): # Katsu
