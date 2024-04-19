@@ -32,29 +32,22 @@ donWadaSurvival = Animation("./images/donWada/survivalBop.png", 4, game, 370, 25
 donWadaRotate = Animation("./images/donWada/rotate.png", 5, game, 370, 251, 2)
 donWadaSurvivalFall = Animation("./images/donWada/survivalfall.png", 1, game, 370, 251, 8)
 donWadaBarJump = Animation("./images/donWada/barJump.png", 1, game, 370, 251, 8)
+
 donState = "Normal"
-donRelativeY = 0
+
 donX = game.width/2
 donY = game.height/2
+donYVel = 0
+donYGround = donY
 
-donWadaNormal.moveTo(donX, donY)
-donWadaGogo.moveTo(donX, donY)
-donWadaSurvival.moveTo(donX, donY)
-donWadaRotate.moveTo(donX, donY)
-donWadaSurvivalFall.moveTo(donX, donY)
-donWadaBarJump.moveTo(donX, donY)
 
 blueTransparentImage = pygame.image.load("./images/blue.png").convert()
 redTransparentImage = pygame.image.load("./images/red.png").convert()
 
 def ChangeDonState(string):
-    global donState
+    global donState, donRelativeY
     donState = string
-    if donState == "Transition":
-        for x in range(10):
-            donRelativeY = -2.5 * math.cos(0.2*math.pi*x) + 2.5
-            if x >= 5:
-                donState = "SurvivalFall"
+
 
 
 def UpdateBulbNotes():
@@ -116,18 +109,64 @@ while not game.over:
     else:
         greenHealth.width = 0
 
+    donWadaNormal.moveTo(donX, donY)
+    donWadaGogo.moveTo(donX, donY)
+    donWadaSurvival.moveTo(donX, donY)
+    donWadaRotate.moveTo(donX, donY)
+    donWadaSurvivalFall.moveTo(donX, donY)
+    donWadaBarJump.moveTo(donX, donY)
+
+    donWadaNormal.visible = False
+    donWadaGogo.visible = False
+    donWadaSurvival.visible = False
+    donWadaRotate.visible = False
+    donWadaSurvivalFall.visible = False
+    donWadaBarJump.visible = False
+
     if donState == "Normal":
-        donWadaNormal.draw()
+        donWadaNormal.visible = True
     if donState == "Gogo":
-        donWadaGogo.draw()
+        donWadaGogo.visible = True
     if donState == "Survival":
-        donWadaSurvival.draw()
+        donWadaSurvival.visible = True
     if donState == "Transition":
-        donWadaRotate.draw()
+        donWadaRotate.visible = True
     if donState == "SurvivalFall":
-        donWadaSurvivalFall.draw()
+        donWadaSurvivalFall.visible = True
     if donState == "BarJump":
-        donWadaBarJump.draw()
+        donWadaBarJump.visible = True
+
+    if keys.Pressed[K_SPACE]:
+        ChangeDonState("Transition")
+        donYVel = 10
+
+    # Gravity #
+    donYVel -= 1
+
+    # Floor Collision #
+    if donY > donYGround:
+        donY += donYVel
+        donYVel = 0
+    donY -= donYVel
+    
+    # Falling #
+    if donYVel < 0:
+        if donState == "Transition":
+            ChangeDonState("SurvivalFall")
+
+    # Landing #
+    if donY == donYGround:
+        if donState == "SurvivalFall":
+            ChangeDonState("Survival")
+        if donState == "BarJump":
+            if getGogoMode():
+                ChangeDonState("Gogo")
+            else:
+                ChangeDonState("Normal")
+
+
+
+    
 
     yellowHealthContainer.moveTo(0, scoreContain.top-(yellowHealthContainer.height/2))
     greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
