@@ -4,6 +4,8 @@ from globalvars import * # All the Global Variables (Defining the inital keys an
 from notes_n_classes import * # All the Note Types and Classes (available for cloning)
 from filereader import * # responsible for reading the chart
 from conductor import * # responsible for rendering notes from the filereaders
+from math import cos
+from math import pi
 
 '''
 # Initialize debounce flags for each key
@@ -31,9 +33,30 @@ donWadaRotate = Animation("./images/donWada/rotate.png", 5, game, 370, 251, 2)
 donWadaSurvivalFall = Animation("./images/donWada/survivalfall.png", 1, game, 370, 251, 8)
 donWadaBarJump = Animation("./images/donWada/barJump.png", 1, game, 370, 251, 8)
 donState = "Normal"
+donRelativeY = 0
+donX = game.width/2
+donY = game.height/2
+
+donWadaNormal.moveTo(donX, donY)
+donWadaGogo.moveTo(donX, donY)
+donWadaSurvival.moveTo(donX, donY)
+donWadaRotate.moveTo(donX, donY)
+donWadaSurvivalFall.moveTo(donX, donY)
+donWadaBarJump.moveTo(donX, donY)
 
 blueTransparentImage = pygame.image.load("./images/blue.png").convert()
 redTransparentImage = pygame.image.load("./images/red.png").convert()
+
+def ChangeDonState(string):
+    global donState
+    donState = string
+    if donState == "Transition":
+        for x in range(10):
+            donRelativeY = -2.5 * math.cos(0.2*math.pi*x) + 2.5
+            if x >= 5:
+                donState = "SurvivalFall"
+
+
 def UpdateBulbNotes():
     global blueTransparentImage, redTransparentImage
     bulbRenders = getBulbRenders()
@@ -93,6 +116,18 @@ while not game.over:
     else:
         greenHealth.width = 0
 
+    if donState == "Normal":
+        donWadaNormal.draw()
+    if donState == "Gogo":
+        donWadaGogo.draw()
+    if donState == "Survival":
+        donWadaSurvival.draw()
+    if donState == "Transition":
+        donWadaRotate.draw()
+    if donState == "SurvivalFall":
+        donWadaSurvivalFall.draw()
+    if donState == "BarJump":
+        donWadaBarJump.draw()
 
     yellowHealthContainer.moveTo(0, scoreContain.top-(yellowHealthContainer.height/2))
     greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
@@ -164,7 +199,6 @@ while not game.over:
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
     game.drawText(f"combo: {combo}", drum.left - 100, yPositionLine+50)
     drum.draw()
-    donWadaRotate.draw()
 
 
     for i in range(len(outerLeftKeys)): # Katsu
