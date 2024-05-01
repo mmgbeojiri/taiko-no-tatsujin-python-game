@@ -251,7 +251,8 @@ while not game.over:
                 if donY < donYGround: # if don is already jumping
                     pass
                 else:
-                    barJump()
+                    if abs(drumCollide.x - getRenders()[i].object.x) <= 10:
+                        barJump()
 
 
 
