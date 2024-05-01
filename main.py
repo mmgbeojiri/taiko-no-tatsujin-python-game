@@ -48,9 +48,12 @@ def ChangeDonState(string):
     global donState, donRelativeY
     donState = string
 
-def barJump(type = "BarJump"):
-    global donYVel
-    ChangeDonState(type)
+def barJump():
+    global donYVel, donState
+    if donState == "Normal":
+        ChangeDonState("BarJump")
+    if donState == "Survival":
+        ChangeDonState("Transition")
     donYVel = -10
 
 def UpdateBulbNotes():
@@ -237,8 +240,12 @@ while not game.over:
     for i in range(len(getRenders())):
         getRenders()[i].move()
         print(getRenders()[i].__class__)
-        if getRenders()[i].__class__ == "<class 'notes_n_classes.Bar'>":
-            print("tis le bar")
+        if str(getRenders()[i].__class__) == "<class 'notes_n_classes.Bar'>":
+            if getRenders()[i].collidedWith(drumCollide):
+                if donY < donYGround: # if don is already jumping
+                    pass
+                else:
+                    barJump()
 
 
 
