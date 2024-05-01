@@ -49,6 +49,7 @@ def ChangeDonState(string):
     donState = string
 
 def barJump(type = "BarJump"):
+    global donYVel
     ChangeDonState(type)
     donYVel = -10
 
