@@ -138,17 +138,17 @@ while not game.over:
 
     if keys.Pressed[K_SPACE]: # Transition to Survival
         ChangeDonState("Transition")
-        donYVel = 10
+        donYVel = -10
 
     # Gravity #
-    donYVel -= 1
+    donYVel += 1
 
     # Floor Collision #
-    if donY > donYGround:
-        donY += donYVel
+    if round(donY) > donYGround:
+        donY = donYGround
         donYVel = 0
     else:
-        donY -= donYVel
+        donY += donYVel
     
     # Falling #
     if donYVel < 0:
@@ -156,7 +156,7 @@ while not game.over:
             ChangeDonState("SurvivalFall")
 
     # Landing #
-    if donY == donYGround:
+    if round(donY) == donYGround:
         if donState == "SurvivalFall":
             ChangeDonState("Survival")
         if donState == "BarJump":
