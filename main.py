@@ -44,6 +44,8 @@ donYGround = donY
 blueTransparentImage = pygame.image.load("./images/blue.png").convert()
 redTransparentImage = pygame.image.load("./images/red.png").convert()
 
+barDebounce = True
+
 def ChangeDonState(string):
     global donState, donRelativeY
     donState = string
@@ -251,8 +253,10 @@ while not game.over:
                 if donY < donYGround: # if don is already jumping
                     pass
                 else:
-                    if abs(drumCollide.x - getRenders()[i].object.x) <= 10:
-                        barJump()
+                    if abs(drumCollide.x - getRenders()[i].object.x) <= 15:
+                        if barDebounce == True:
+                            barJump()
+                        barDebounce = not barDebounce
 
 
 
