@@ -140,7 +140,7 @@ while not game.over:
         donWadaBarJump.visible = True
 
     if keys.Pressed[K_SPACE]: # Transition to Survival
-        barJump("BarJump")
+        barJump("Transition")
 
     # Gravity #
     donYVel += 1
@@ -153,7 +153,7 @@ while not game.over:
         donY += donYVel
     
     # Falling #
-    if donYVel < 0:
+    if donYVel > 0:
         if donState == "Transition":
             ChangeDonState("SurvivalFall")
 
@@ -236,6 +236,11 @@ while not game.over:
         #game.drawText(textObject.string, textObject.x, textObject.y)
     for i in range(len(getRenders())):
         getRenders()[i].move()
+        print(getRenders()[i].__class__)
+        if getRenders()[i].__class__ == "<class 'notes_n_classes.Bar'>":
+            print("tis le bar")
+
+
 
     scoreContain.draw()
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
