@@ -239,9 +239,8 @@ while not game.over:
         #game.drawText(textObject.string, textObject.x, textObject.y)
     for i in range(len(getRenders())):
         getRenders()[i].move()
-        print(getRenders()[i].__class__)
         if str(getRenders()[i].__class__) == "<class 'notes_n_classes.Bar'>":
-            if getRenders()[i].collidedWith(drumCollide):
+            if getRenders()[i].object.collidedWith(drumCollide):
                 if donY < donYGround: # if don is already jumping
                     pass
                 else:
