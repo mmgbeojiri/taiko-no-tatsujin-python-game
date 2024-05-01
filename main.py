@@ -154,24 +154,31 @@ while not game.over:
         donYVel = 0
     else:
         donY += donYVel
+
     
     # Falling #
     if donYVel > 0:
         if donState == "Transition":
             ChangeDonState("SurvivalFall")
 
+        
     # Landing #
     if round(donY) == donYGround:
         if donState == "SurvivalFall":
             ChangeDonState("Survival")
         if donState == "BarJump":
-            if getGogoMode():
-                ChangeDonState("Gogo")
-            else:
-                ChangeDonState("Normal")
+            ChangeDonState("Normal")
 
-
-
+    #Check every Frame
+    if donState == "Transition" or donState == "BarJump" or donState == "SurvivalFall": #if not stateemnent
+        pass
+    else:
+        if getGogoMode():
+            ChangeDonState("Gogo")
+        elif health > 50:
+            ChangeDonState("Survival")
+        else:
+            ChangeDonState("Normal")
     
 
     yellowHealthContainer.moveTo(0, scoreContain.top-(yellowHealthContainer.height/2))
