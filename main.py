@@ -48,7 +48,9 @@ def ChangeDonState(string):
     global donState, donRelativeY
     donState = string
 
-
+def barJump(type = "BarJump"):
+    ChangeDonState(type)
+    donYVel = -10
 
 def UpdateBulbNotes():
     global blueTransparentImage, redTransparentImage
@@ -137,8 +139,7 @@ while not game.over:
         donWadaBarJump.visible = True
 
     if keys.Pressed[K_SPACE]: # Transition to Survival
-        ChangeDonState("Transition")
-        donYVel = -10
+        barJump("BarJump")
 
     # Gravity #
     donYVel += 1
