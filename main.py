@@ -56,7 +56,7 @@ def barJump():
         ChangeDonState("BarJump")
     if donState == "Survival":
         ChangeDonState("Transition")
-    donYVel = -10
+    donYVel = -15
 
 def UpdateBulbNotes():
     global blueTransparentImage, redTransparentImage
@@ -145,7 +145,7 @@ while not game.over:
         donWadaBarJump.visible = True
 
     if keys.Pressed[K_SPACE]: # Transition to Survival
-        barJump("Transition")
+        barJump()
 
     # Gravity #
     donYVel += 1
@@ -157,6 +157,15 @@ while not game.over:
     else:
         donY += donYVel
 
+    if donState == "Transition" or donState == "BarJump" or donState == "SurvivalFall": #if not stateemnent
+        pass
+    else:
+        if getGogoMode():
+            ChangeDonState("Gogo")
+        elif health > 50:
+            ChangeDonState("Survival")
+        else:
+            ChangeDonState("Normal")
     
     # Falling #
     if donYVel > 0:
@@ -172,16 +181,7 @@ while not game.over:
             ChangeDonState("Normal")
 
     #Check every Frame
-    if donState == "Transition" or donState == "BarJump" or donState == "SurvivalFall": #if not stateemnent
-        pass
-    else:
-        if getGogoMode():
-            ChangeDonState("Gogo")
-        elif health > 50:
-            ChangeDonState("Survival")
-        else:
-            ChangeDonState("Normal")
-    
+ 
 
     yellowHealthContainer.moveTo(0, scoreContain.top-(yellowHealthContainer.height/2))
     greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
@@ -253,9 +253,10 @@ while not game.over:
                 if donY < donYGround: # if don is already jumping
                     pass
                 else:
-                    if abs(drumCollide.x - getRenders()[i].object.x) <= 15:
+                    if abs(drumCollide.x - getRenders()[i].object.x) <= 30:
                         if barDebounce == True:
-                            barJump()
+                            if not donState == "Gogo":
+                                barJump()
                         barDebounce = not barDebounce
 
 
