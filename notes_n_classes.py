@@ -37,10 +37,13 @@ def calculatehitDistance(note):
     hitDistance = abs(hitDistance)
     if hitDistance > 30:
         bad += 1
+        return "bad"
     elif hitDistance > 15 and hitDistance < 30:
         ok += 1
+        return "ok"
     elif hitDistance > 0 and hitDistance < 15:
         good += 1
+        return "good"
 
 
 

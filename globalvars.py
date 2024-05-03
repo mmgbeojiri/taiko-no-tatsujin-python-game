@@ -49,8 +49,12 @@ drumOuterLeft.moveTo(drum.x, drum.y)
 
 blue = Image("./images/blue.png", game)
 red = Image("./images/red.png", game)
-effect = Image("./images/effect.png", game)
-effect.resizeTo(5, 5)
+okEffect = Image("./images/effect.png", game)
+badEffect = Image("./images/badEffect.png", game)
+goodEffect = Image("./images/goodEffect.png", game)
+badEffect.resizeTo(5, 5)
+goodEffect.resizeTo(5, 5)
+okEffect.resizeTo(5, 5)
 
 drumInnerRight.resizeBy(drumResize)
 drumInnerLeft.resizeBy(drumResize)
@@ -72,6 +76,11 @@ greenHealthContainer = Shape("bar", game, 50 * barMultipler+5, greenHealth.heigh
 
 bulbx = greenHealthContainer.right
 bulby = greenHealthContainer.top-(greenHealthContainer.height/2)
+
+easyDifficulty = Image("./images/easyDif.png", game)
+normalDifficulty = Image("./images/normalDif.png", game)
+hardDifficulty = Image("./images/hardDif.png", game)
+oniDifficulty = Image("./images/oniDif.png", game)
 
 def hitEffect():
     global drumCollide, effect
