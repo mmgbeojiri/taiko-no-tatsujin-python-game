@@ -92,6 +92,20 @@ normalDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
 hardDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
 oniDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
 
+easyText = Image("./text/easy.png", game)
+normalText = Image("./text/normal.png", game)
+hardText = Image("./text/hard.png", game)
+oniText = Image("./text/oni.png", game)
+
+easyText.resizeBy(drumResize)
+normalText.resizeBy(drumResize)
+hardText.resizeBy(drumResize)
+oniText.resizeBy(drumResize)
+
+easyText.moveTo(scoreContain.x - 100, scoreContain.y+50)
+normalText.moveTo(scoreContain.x - 100, scoreContain.y+50)
+hardText.moveTo(scoreContain.x - 100, scoreContain.y+50)
+oniText.moveTo(scoreContain.x - 100, scoreContain.y+50)
 
 def hitEffect(type = "ok"):
     global drumCollide, okEffect, badEffect, goodEffect
