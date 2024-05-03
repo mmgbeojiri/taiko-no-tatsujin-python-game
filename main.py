@@ -271,6 +271,15 @@ while not game.over:
 
 
     scoreContain.draw()
+    if difficulty == "Easy":
+        easyDifficulty.draw()
+    if difficulty == "Normal":
+        normalDifficulty.draw()
+    if difficulty == "Hard":
+        hardDifficulty.draw()
+    if difficulty == "Oni":
+        oniDifficulty.draw()
+
     game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
     game.drawText(f"combo: {combo}", drum.left - 100, yPositionLine+50)
     drum.draw()

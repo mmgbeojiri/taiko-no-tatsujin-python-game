@@ -8,6 +8,7 @@ noteType = "0"
 noOffset = True
 gogoMode = False
 doDon = None
+difficulty = "Hard"
 song = "Luka Luka Night Fever"
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
@@ -124,8 +125,8 @@ subtitle = FindLineWith("SUBTITLE:", "String")
 bpm = FindLineWith("BPM:", "String")
 wave = FindLineWith("WAVE:", "String")
 
-startSongLine = FindStartEndSongLine("Start", "Hard")
-endSongLine = FindStartEndSongLine("End", "Hard")
+startSongLine = FindStartEndSongLine("Start", difficulty)
+endSongLine = FindStartEndSongLine("End", difficulty)
 
 measureDuration = (60/int(bpm))*4
 offset = float(FindLineWith("OFFSET:", "String"))
