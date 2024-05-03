@@ -82,6 +82,17 @@ normalDifficulty = Image("./images/normalDif.png", game)
 hardDifficulty = Image("./images/hardDif.png", game)
 oniDifficulty = Image("./images/oniDif.png", game)
 
+easyDifficulty.resizeBy(drumResize)
+normalDifficulty.resizeBy(drumResize)
+hardDifficulty.resizeBy(drumResize)
+oniDifficulty.resizeBy(drumResize)
+
+easyDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
+normalDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
+hardDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
+oniDifficulty.moveTo(scoreContain.x - 100, scoreContain.y)
+
+
 def hitEffect(type = "ok"):
     global drumCollide, okEffect, badEffect, goodEffect
     if type == "good":
