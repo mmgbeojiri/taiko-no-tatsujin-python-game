@@ -284,8 +284,7 @@ while not game.over:
         oniDifficulty.draw()
         oniText.draw()
 
-    game.drawText(f"{game.score}", drum.left - 100, yPositionLine)
-    game.drawText(f"combo: {combo}", drum.left - 100, yPositionLine+50)
+    game.drawText(f"{game.score}", drum.left - 30, yPositionLine + 50)
     drum.draw()
 
 
@@ -301,6 +300,10 @@ while not game.over:
     for i in range(len(innerRightKeys)): # Don
         if keys.Pressed[innerRightKeys[i]]:
             drumInnerRight.draw()
+    
+    if combo > 0:
+        game.drawText(f"{combo}", drum.x, yPositionLine)
+        comboText.draw()
     
     # for each key, make a sound debounce. when key is pressed, play sound only once. 
 

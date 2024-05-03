@@ -107,6 +107,10 @@ normalText.moveTo(scoreContain.x - 100, scoreContain.y+50)
 hardText.moveTo(scoreContain.x - 100, scoreContain.y+50)
 oniText.moveTo(scoreContain.x - 100, scoreContain.y+50)
 
+comboText = Image("./text/combo.png", game)
+comboText.resizeBy(drumResize-5)
+comboText.moveTo(drum.x, yPositionLine+40)
+
 def hitEffect(type = "ok"):
     global drumCollide, okEffect, badEffect, goodEffect
     if type == "good":
