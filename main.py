@@ -193,9 +193,18 @@ while not game.over:
     greenHealth.draw()
 
     innerBar.draw()
-    effect.draw()
-    effect.resizeBy(-2)
-    effect.moveTo(drumCollide.x, drumCollide.y)
+    okEffect.draw()
+    okEffect.resizeBy(-2)
+    okEffect.moveTo(drumCollide.x, drumCollide.y)
+    
+    badEffect.draw()
+    badEffect.resizeBy(-2)
+    badEffect.moveTo(drumCollide.x, drumCollide.y)
+
+    goodEffect.draw()
+    goodEffect.resizeBy(-2)
+    goodEffect.moveTo(drumCollide.x, drumCollide.y)
+
     drumCollide.draw()
 
     
@@ -205,10 +214,10 @@ while not game.over:
         if keys.Pressed[key]:
             if not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
                 debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
-                hitEffect()
+
                 for i in range(len(renders)):
                     if renders[i].checkIfHit():
-                        calculatehitDistance(renders[i])
+                        hitEffect(calculatehitDistance(renders[i]))
                 # Play corresponding sound based on key
                 if key in innerLeftKeys or key in innerRightKeys:  # Don sound
                     don.play()

@@ -82,10 +82,17 @@ normalDifficulty = Image("./images/normalDif.png", game)
 hardDifficulty = Image("./images/hardDif.png", game)
 oniDifficulty = Image("./images/oniDif.png", game)
 
-def hitEffect():
-    global drumCollide, effect
-    effect.resizeTo(78, 78)
-    effect.resizeBy(130)
+def hitEffect(type = "ok"):
+    global drumCollide, okEffect, badEffect, goodEffect
+    if type == "good":
+        goodEffect.resizeTo(78, 78)
+        goodEffect.resizeBy(130)
+    elif type == "bad":
+        badEffect.resizeTo(78, 78)
+        badEffect.resizeBy(130)
+    else:
+        okEffect.resizeTo(78, 78)
+        okEffect.resizeBy(130)
 
 
 
