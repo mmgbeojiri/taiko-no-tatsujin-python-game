@@ -50,12 +50,14 @@ def ChangeDonState(string):
     global donState, donRelativeY
     donState = string
 
-def barJump():
+def barJump(type = "Nonset"):
     global donYVel, donState
     if donState == "Normal":
         ChangeDonState("BarJump")
     if donState == "Survival":
         ChangeDonState("Transition")
+    if not type == "Nonset":
+        ChangeDonState(type) 
     donYVel = -15
 
 def UpdateBulbNotes():
@@ -306,7 +308,7 @@ while not game.over:
         comboText.draw()
     
     # for each key, make a sound debounce. when key is pressed, play sound only once. 
-
+    # fix it
     
 
         for key in debounce_flags:
