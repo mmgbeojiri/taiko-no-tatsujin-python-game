@@ -379,7 +379,7 @@ while not game.over:
     game.drawText(f"Score: {game.score}", 200, 600)
 
     reactionText = "congrat"
-    game.drawText(f"Score: {game.score}", 200, 600)
+    game.drawText(f"{reactionText}", 300, 400)
 
     game.update(60)
 game.quit()
