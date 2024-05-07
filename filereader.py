@@ -28,7 +28,7 @@ def FindStartEndSongLine(endOrStart, diffuculty):
    if endOrStart == "Start":
     return FindLineWith("#START", "Number", diffucultyLine)
    elif endOrStart == "End":
-    return FindLineWith("#End", "Number", diffucultyLine)
+    return FindLineWith("#END", "Number", diffucultyLine)
    else:
       return 0
 
