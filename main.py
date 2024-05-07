@@ -354,10 +354,32 @@ while not game.over:
         game.over = True
     game.update(60)
 
-resultsScreenContainer = Image("./images/results.png", game)
+
+
 game.over = False
 while not game.over:
     game.processInput()
+    game.clearBackground()
     resultsScreenContainer.draw()
+    game.drawText(f"Good: {getAccuracy()[0]}", 300, 400)
+    game.drawText(f"Ok: {getAccuracy()[1]}", 300, 500)
+    game.drawText(f"Bad: {getAccuracy()[2]}", 300, 600)
+    game.drawText(f"Max Combo: {maxCombo}", 400, 450)
+    game.drawText(f"Drumroll: {getDrumroll()}", 400, 550)
+
+    yellowHealthContainer.moveTo(300, 300)
+    greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
+
+    yellowHealth.moveTo(yellowHealthContainer.x + 5, yellowHealthContainer.y+5)
+
+    greenHealth.moveTo(greenHealthContainer.x, greenHealthContainer.y+5)
+    yellowHealth.draw()
+    greenHealth.draw()
+
+    game.drawText(f"Score: {game.score}", 200, 600)
+
+    reactionText = "congrat"
+    game.drawText(f"Score: {game.score}", 200, 600)
+
     game.update(60)
 game.quit()

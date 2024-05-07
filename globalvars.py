@@ -183,4 +183,6 @@ debounce_flags = {
     key: False for key in outerLeftKeys + outerRightKeys + innerLeftKeys + innerRightKeys
 }
 
+resultsScreenContainer = Image("./images/results.png", game)
+resultsScreenContainer.resizeTo(game.width, game.height)
 
