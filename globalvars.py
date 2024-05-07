@@ -124,7 +124,7 @@ def hitEffect(type = "ok"):
         okEffect.resizeBy(130)
 
 
-
+endOfSongTimer = 0
 
 outerLeftKeys = [
     K_1,

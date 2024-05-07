@@ -47,9 +47,14 @@ def findNextBar(updateBarIndex = 1):
 def findNextNote(updateNoteIndex = 1):
     global bpm, measure, noteIndex, measureWithComments, noteTimeStamp, noteType, measureDuration, offset, gogoMode, doDon
 
+
+             
     songFile = open(tjaFile, "r")
     for lineNumber, lineString in enumerate(songFile):
       if lineNumber == startSongLine + measureWithComments: # Check if this is the line we want to check
+        if lineNumber >= (endSongLine):
+             print("EndOfSong")
+             return "EndOfSong"
         beatMapLine = lineString
         noteType = beatMapLine[noteIndex]
         lengthOfMeasure = len(beatMapLine.split(',')[0])
@@ -75,6 +80,7 @@ def findNextNote(updateNoteIndex = 1):
           if str(beatMapLine) == "#GOGOEND\n":
              print("gogoend")
              gogoMode = False
+          
           continue
         if noteType == "1":
           if str(beatMapLine[noteIndex+1]) == "0":

@@ -324,15 +324,25 @@ while not game.over:
     game.drawText(f"Gogo Mode: {getGogoMode()}", 250, game.height - 20)
     game.drawText(f"Bad: {getAccuracy()[0]} Ok: {getAccuracy()[1]} Good: {getAccuracy()[2]}", 10, game.height - 40)
 
+    nextNote = findNextNote(0)
+    nextBar = findNextBar(0)
+
     if songPosition == 0:
         renderNote("bar")
-    if songPosition >= findNextBar(0):
+    if songPosition >= nextBar:
         renderNote("bar")
         findNextBar(1)
 
-    if songPosition >= findNextNote(0):
-        renderNote(getLastNoteType())
-        findNextNote(1)
+    if not nextNote == "EndOfSong":
+        if songPosition >= nextNote:
+            renderNote(getLastNoteType())
+            findNextNote(1)
+    else:
+        endOfSongTimer += 1
+        if endOfSongTimer >= 120:
+            game.over = True
+    print(nextNote == "EndOfSong")
+
 
     
     songPosition = (time() - startTime)
