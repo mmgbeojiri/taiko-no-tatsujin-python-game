@@ -219,6 +219,7 @@ while not game.over:
 
                 for i in range(len(renders)):
                     if renders[i].checkIfHit():
+                        print("comone")
                         hitEffect(calculatehitDistance(renders[i]))
                 # Play corresponding sound based on key
                 if key in innerLeftKeys or key in innerRightKeys:  # Don sound
@@ -339,9 +340,8 @@ while not game.over:
             findNextNote(1)
     else:
         endOfSongTimer += 1
-        if endOfSongTimer >= 120:
+        if endOfSongTimer >= 180:
             game.over = True
-    print(nextNote == "EndOfSong")
 
 
     
@@ -352,5 +352,12 @@ while not game.over:
     CheckIfShouldBeHold()
     if health < 0:
         game.over = True
+    game.update(60)
+
+resultsScreenContainer = Image("./images/results.png", game)
+game.over = False
+while not game.over:
+    game.processInput()
+    resultsScreenContainer.draw()
     game.update(60)
 game.quit()

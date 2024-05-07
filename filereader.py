@@ -53,7 +53,6 @@ def findNextNote(updateNoteIndex = 1):
     for lineNumber, lineString in enumerate(songFile):
       if lineNumber == startSongLine + measureWithComments: # Check if this is the line we want to check
         if lineNumber >= (endSongLine):
-             print("EndOfSong")
              return "EndOfSong"
         beatMapLine = lineString
         noteType = beatMapLine[noteIndex]
