@@ -359,6 +359,7 @@ while not game.over:
 
 
 game.over = False
+
 while not game.over:
     game.processInput()
     game.clearBackground()
@@ -368,6 +369,11 @@ while not game.over:
     game.drawText(f"Bad: {getAccuracy()[2]}", 300, 600)
     game.drawText(f"Max Combo: {maxCombo}", 400, 450)
     game.drawText(f"Drumroll: {getDrumroll()}", 400, 550)
+
+    goodText.moveTo(1150, 563)
+    okText.moveTo(1150, 627)
+    badText.moveTo(1150, 691)
+
 
     yellowHealthContainer.moveTo(300, 300)
     greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
