@@ -216,7 +216,7 @@ while not game.over:
         if keys.Pressed[key]:
             if not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
                 debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
-
+                print("rpresetion")
                 for i in range(len(renders)):
                     if renders[i].checkIfHit():
                         print("comone")
@@ -258,6 +258,7 @@ while not game.over:
         textObject = getTextRenders()[i]
         textObject.move()
         #game.drawText(textObject.string, textObject.x, textObject.y)
+
     for i in range(len(getRenders())):
         getRenders()[i].move()
         if str(getRenders()[i].__class__) == "<class 'notes_n_classes.Bar'>":
@@ -312,10 +313,10 @@ while not game.over:
     # fix it
     
 
-        for key in debounce_flags:
-            if not keys.Pressed[key]:
-                if debounce_flags[key]:  # Check if key is released and debounce flag is True
-                    debounce_flags[key] = False  # Reset debounce flag
+    for key in debounce_flags:
+        if not keys.Pressed[key]:
+            if debounce_flags[key]:  # Check if key is released and debounce flag is True
+                debounce_flags[key] = False  # Reset debounce flag
 
     UpdateBulbNotes()
             
