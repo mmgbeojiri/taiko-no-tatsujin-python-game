@@ -379,7 +379,7 @@ while not game.over:
     maxcomboText.moveTo(1525, 675)
 
 
-    yellowHealthContainer.moveTo(300, 300)
+    yellowHealthContainer.moveTo(750, 490)
     greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
 
     yellowHealth.moveTo(yellowHealthContainer.x + 5, yellowHealthContainer.y+5)
