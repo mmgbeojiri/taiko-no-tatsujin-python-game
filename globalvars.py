@@ -186,3 +186,10 @@ debounce_flags = {
 resultsScreenContainer = Image("./images/results.png", game)
 resultsScreenContainer.resizeTo(game.width, game.height)
 
+goodText = Image("./text/good.png", game)
+okText = Image("./text/ok.png", game)
+badText = Image("./text/bad.png", game)
+
+goodText.resizeBy(drumResize)
+okText.resizeBy(drumResize)
+badText.resizeBy(drumResize)

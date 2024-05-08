@@ -102,6 +102,7 @@ def CheckIfShouldBeHold():
         createObject("holdmiddle")
 
 while not game.over:
+    game.over = True # Immediate Death.
     game.processInput()
     game.clearBackground()
     outerBar.draw()
