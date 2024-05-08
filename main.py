@@ -374,6 +374,9 @@ while not game.over:
     okText.moveTo(1150, 627)
     badText.moveTo(1150, 691)
 
+    drumrollText.moveTo(1505, 580)
+    maxcomboText.moveTo(1525, 675)
+
 
     yellowHealthContainer.moveTo(300, 300)
     greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))

@@ -190,6 +190,12 @@ goodText = Image("./text/good.png", game)
 okText = Image("./text/ok.png", game)
 badText = Image("./text/bad.png", game)
 
+drumrollText = Image("./text/drumrollresult.png", game)
+maxcomboText = Image("./text/maxcombo.png", game)
+
 goodText.resizeBy(drumResize+5)
 okText.resizeBy(drumResize+5)
 badText.resizeBy(drumResize+5)
+
+drumrollText.resizeBy(drumResize+5)
+maxcomboText.resizeBy(drumResize+5)
