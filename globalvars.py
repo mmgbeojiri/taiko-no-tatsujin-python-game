@@ -67,10 +67,10 @@ katsu = Sound("./sounds/Katsu.wav", 2)
 maxCombo = 0
 
 barMultipler = 9
-yellowHealth = Shape("bar", game, 50 * barMultipler, 20, yellow)
+yellowHealth = Shape("bar", game, 75 * barMultipler, 20, yellow)
 greenHealth = Shape("bar", game, 50 * barMultipler, 25, green)
 
-yellowHealthContainer = Shape("bar", game, 50 * barMultipler+5, yellowHealth.height+10, (51, 51, 17))
+yellowHealthContainer = Shape("bar", game, 75 * barMultipler+5, yellowHealth.height+10, (51, 51, 17))
 greenHealthContainer = Shape("bar", game, 50 * barMultipler+5, greenHealth.height+10, (17, 51, 17))
 
 

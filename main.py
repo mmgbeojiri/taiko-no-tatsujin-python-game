@@ -380,7 +380,7 @@ while not game.over:
 
 
     yellowHealthContainer.moveTo(750, 490)
-    greenHealthContainer.moveTo(yellowHealth.x + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
+    greenHealthContainer.moveTo(yellowHealth.right + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
 
     yellowHealth.moveTo(yellowHealthContainer.x + 5, yellowHealthContainer.y+5)
 
