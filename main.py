@@ -364,11 +364,12 @@ while not game.over:
     game.processInput()
     game.clearBackground()
     resultsScreenContainer.draw()
-    game.drawText(f"Good: {getAccuracy()[0]}", 300, 400)
-    game.drawText(f"Ok: {getAccuracy()[1]}", 300, 500)
-    game.drawText(f"Bad: {getAccuracy()[2]}", 300, 600)
-    game.drawText(f"Max Combo: {maxCombo}", 400, 450)
-    game.drawText(f"Drumroll: {getDrumroll()}", 400, 550)
+
+    game.drawText(getAccuracy()[0], 1250, 563)
+    game.drawText(getAccuracy()[1], 1250, 627)
+    game.drawText(getAccuracy()[2], 1250, 691)
+    game.drawText(maxCombo, 1620, 580)
+    game.drawText(getDrumroll(), 1660, 675)
 
     goodText.moveTo(1150, 563)
     okText.moveTo(1150, 627)
