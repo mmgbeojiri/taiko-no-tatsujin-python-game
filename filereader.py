@@ -84,7 +84,7 @@ def findNextNote(updateNoteIndex = 1):
         if noteType == "1":
           if "0" in str(beatMapLine[noteIndex+1]):
               doDon = "Don"
-          if "," in str(beatMapLine[noteIndex+1]):
+          elif "," in str(beatMapLine[noteIndex+1]):
               doDon = "Don"
           else:
               doDon = "Do"
