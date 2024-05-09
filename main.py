@@ -102,7 +102,6 @@ def CheckIfShouldBeHold():
         createObject("holdmiddle")
 
 while not game.over:
-    game.over = True # Immediate Death.
     game.processInput()
     game.clearBackground()
     outerBar.draw()
@@ -380,7 +379,7 @@ while not game.over:
 
 
     yellowHealthContainer.moveTo(750, 490)
-    greenHealthContainer.moveTo(yellowHealth.right + (50*barMultipler), yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
+    greenHealthContainer.moveTo(yellowHealth.x + (greenHealthContainer.width)-5, yellowHealthContainer.y - (greenHealthContainer.height - yellowHealthContainer.height))
 
     yellowHealth.moveTo(yellowHealthContainer.x + 5, yellowHealthContainer.y+5)
 
