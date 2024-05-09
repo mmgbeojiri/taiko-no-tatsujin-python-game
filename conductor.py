@@ -17,7 +17,7 @@ def getRenders():
 def getTextRenders():
     return textRenders
 
-def createObject(string, big = 0, doDon = "Do"):
+def createObject(string, big = 0, doDon = None):
     global renders, holdNote
     if string == "katsu":
         if big == 0:
@@ -66,11 +66,11 @@ def createObject(string, big = 0, doDon = "Do"):
     if string == "bar":
         renders.append(Bar())
 
-def renderNote(noteType, doDon):
+def renderNote(noteType, doDon = None):
     if noteType == "0":
         pass
     elif noteType == "1":
-        createObject("don")
+        createObject("don", 0, doDon)
     elif noteType == "2":
         createObject("katsu")
     elif noteType == "3":
