@@ -22,21 +22,27 @@ def createObject(string, big = 0):
     if string == "katsu":
         if big == 0:
             renders.append(Blue())
+            textRenders.append(Text("ka"))
         else:
             renders.append(Blue(1))
+            textRenders.append(Text("bigka"))
     if string == "don":
         if big == 0:
             renders.append(Red())
-            textRenders.append(Text("Don"))
+            textRenders.append(Text("don"))
         else:
             renders.append(Red(1))
+            textRenders.append(Text("bigdon"))
 
     if string == "holdstart":
         if big == 0:
             renders.append(HoldStart())
+            textRenders.append(Text("drumroll"))
             holdNote = True
         else:
             renders.append(HoldStart(1))
+            textRenders.append(Text("bigdrumroll"))
+
             holdNote = True
     
     if string == "holdmiddle":

@@ -378,12 +378,13 @@ class Bar:
 class Text:
     def __init__(self, text = "Don"):
         self.object = Image(f"./text/{text}.png", game)
+        self.object.resizeBy(drumResize)
         self.object.x = game.width + 100 
         self.object.y = yPositionLine + 50
         self.object.setSpeed(scrollSpeed, 90)
     def move(self):
         self.object.move()
-        
+
         if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
             self.object.visible = False
         

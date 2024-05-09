@@ -209,17 +209,19 @@ while not game.over:
 
     drumCollide.draw()
 
-    
+    for i in range(len(getTextRenders())):
+        textObject = getTextRenders()[i]
+        textObject.move()
+        textObject.object.draw()
+
     # Inside the game loop, handle key press events
     renders = getRenders()
     for key in debounce_flags:
         if keys.Pressed[key]:
             if not debounce_flags[key]:  # Check if key is pressed and debounce flag is False
                 debounce_flags[key] = True  # Set debounce flag to True to prevent multiple plays
-                print("rpresetion")
                 for i in range(len(renders)):
                     if renders[i].checkIfHit():
-                        print("comone")
                         hitEffect(calculatehitDistance(renders[i]))
                 # Play corresponding sound based on key
                 if key in innerLeftKeys or key in innerRightKeys:  # Don sound
@@ -254,10 +256,7 @@ while not game.over:
                     createObject("holdend")
                     holdNote = False
     '''
-    for i in range(len(getTextRenders())):
-        textObject = getTextRenders()[i]
-        textObject.move()
-        #game.drawText(textObject.string, textObject.x, textObject.y)
+
 
     for i in range(len(getRenders())):
         getRenders()[i].move()
