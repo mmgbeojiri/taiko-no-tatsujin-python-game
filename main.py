@@ -329,9 +329,9 @@ while not game.over:
     nextBar = findNextBar(0)
 
     if songPosition == 0:
-        renderNote("bar")
+        renderNote("bar", None)
     if songPosition >= nextBar:
-        renderNote("bar")
+        renderNote("bar", None)
         findNextBar(1)
 
     if not nextNote == "EndOfSong":
@@ -366,8 +366,8 @@ while not game.over:
     game.drawText(getAccuracy()[0], 1250, 563)
     game.drawText(getAccuracy()[1], 1250, 627)
     game.drawText(getAccuracy()[2], 1250, 691)
-    game.drawText(maxCombo, 1620, 580)
-    game.drawText(getDrumroll(), 1660, 675)
+    game.drawText(getDrumroll(), 1620, 580)
+    game.drawText(maxCombo, 1660, 675)
 
     goodText.moveTo(1150, 563)
     okText.moveTo(1150, 627)

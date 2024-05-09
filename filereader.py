@@ -82,12 +82,14 @@ def findNextNote(updateNoteIndex = 1):
           
           continue
         if noteType == "1":
-          if str(beatMapLine[noteIndex+1]) == "0":
+          if "0" in str(beatMapLine[noteIndex+1]):
               doDon = "Don"
-          elif songFile.readlines()[lineNumber+1][0] == "0":
+          if "," in str(beatMapLine[noteIndex+1]):
               doDon = "Don"
           else:
               doDon = "Do"
+        elif noteType == 3:
+              doDon = "Don"
         else:
           doDon = None
         print(f"measure: {measure} noteindex: {noteIndex} read from {lineNumber} noteType {noteType} noteTimeStamp: {noteTimeStamp} doDon: {doDon}")

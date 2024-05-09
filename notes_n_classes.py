@@ -376,7 +376,7 @@ class Bar:
         # We do a pass to not cause an error since this is in the render
     
 class Text:
-    def __init__(self, text = "Don"):
+    def __init__(self, text):
         self.object = Image(f"./text/{text}.png", game)
         self.object.resizeBy(drumResize)
         self.object.x = game.width + 100 

@@ -66,7 +66,7 @@ def createObject(string, big = 0, doDon = None):
     if string == "bar":
         renders.append(Bar())
 
-def renderNote(noteType, doDon = None):
+def renderNote(noteType, doDon):
     if noteType == "0":
         pass
     elif noteType == "1":
