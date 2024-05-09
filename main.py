@@ -336,7 +336,7 @@ while not game.over:
 
     if not nextNote == "EndOfSong":
         if songPosition >= nextNote:
-            renderNote(getLastNoteType())
+            renderNote(getLastNoteType(), getLastDoDon())
             findNextNote(1)
     else:
         endOfSongTimer += 1
