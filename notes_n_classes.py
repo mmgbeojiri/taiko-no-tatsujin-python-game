@@ -368,16 +368,23 @@ class Bar:
                 print("play the Music")
                 music.play()
                 songStartDebounce = False
+
+        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
+            self.object.visible = False
     def checkIfHit(self):
         pass
         # We do a pass to not cause an error since this is in the render
     
 class Text:
     def __init__(self, text = "Don"):
-        self.string = text
-        self.x = game.width + 100 
-        self.y = yPositionLine + 50
+        self.object = Image(f"./text/{text}.png", game)
+        self.object.x = game.width + 100 
+        self.object.y = yPositionLine + 50
+        self.object.setSpeed(scrollSpeed, 90)
     def move(self):
-        self.x -= scrollSpeed
+        self.object.move()
+        
+        if self.object.x < drumCollide.left - drumHitboxAdd and self.object.visible:
+            self.object.visible = False
         
     
