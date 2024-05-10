@@ -1,3 +1,4 @@
+from globalvars import *
 measure = 0
 measureWithComments = 0
 noteIndex = 0
@@ -8,8 +9,7 @@ noteType = "0"
 noOffset = True
 gogoMode = False
 doDon = None
-difficulty = "Hard"
-song = "Luka Luka Night Fever"
+
 
 tjaFile = f"./tjadatabase/{song}/{song}.tja"
 def getLastNoteTimeStamp():

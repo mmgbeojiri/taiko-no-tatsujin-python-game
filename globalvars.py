@@ -199,3 +199,6 @@ badText.resizeBy(drumResize+5)
 
 drumrollText.resizeBy(drumResize+5)
 maxcomboText.resizeBy(drumResize+5)
+
+difficulty = "Hard"
+song = "Worlds End Dancehall"
