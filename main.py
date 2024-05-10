@@ -112,7 +112,7 @@ while not game.over:
 
 
     clickAnywhere.draw()
-    print(math.sin((0.1/15)*frame)*5)
+    game.drawText('To change song, rename the value of the variable “song” in globalvars.py.', 10, game.height - 30)
     
     frame += 1
     if frame == 240:
@@ -124,6 +124,26 @@ while not game.over:
     game.update(60)
 game.over = False
 frame = 0
+# Selection Screen #
+onDifficultyChange()
+while not game.over:
+    game.processInput()
+    game.clearBackground()
+
+    selectedSong.draw()
+    game.drawText(title, 500, 40)
+
+    easyDifficulty.draw()
+    easyText.draw()
+    normalDifficulty.draw()
+    normalText.draw()
+    hardDifficulty.draw()
+    hardText.draw()
+    oniDifficulty.draw()
+    oniText.draw()
+
+    game.update(60)
+game.over = False
 startTime = time()
 # Game #
 while not game.over:

@@ -131,9 +131,11 @@ title = FindLineWith("TITLE:", "String")
 subtitle = FindLineWith("SUBTITLE:", "String")
 bpm = FindLineWith("BPM:", "String")
 wave = FindLineWith("WAVE:", "String")
-
-startSongLine = FindStartEndSongLine("Start", difficulty)
-endSongLine = FindStartEndSongLine("End", difficulty)
+startSongLine = 0
+endSongLine = 0
+def onDifficultyChange():
+  startSongLine = FindStartEndSongLine("Start", difficulty)
+  endSongLine = FindStartEndSongLine("End", difficulty)
 
 measureDuration = (60/int(bpm))*4
 offset = float(FindLineWith("OFFSET:", "String"))
@@ -142,11 +144,6 @@ if noOffset:
 def getSoundFile():
     return f"./tjadatabase/{song}/{wave}"
 
-print(title)
-print(subtitle)
-print(bpm)
-print(wave)
-print(startSongLine)
-print(endSongLine)
+
 
         

@@ -205,10 +205,10 @@ clickAnywhere = Image("./text/clickanywhere.png", game)
 selectedSong = Image("./text/selectedsong.png", game)
 
 logo.resizeBy(50)
-selectedSong.resizeBy(-5)
+selectedSong.resizeBy(-50)
 
 clickAnywhere.moveTo(game.width/2, (game.height/4)*3)
-selectedSong.moveTo(150, 10)
+selectedSong.moveTo(300, 40)
 
 
 difficulty = "Hard"
