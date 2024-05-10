@@ -204,8 +204,7 @@ logo = Image("./images/logo.png", game)
 clickAnywhere = Image("./text/clickanywhere.png", game)
 selectedSong = Image("./text/selectedsong.png", game)
 
-logo.resizeBy(-5)
-clickAnywhere.resizeBy(-5)
+logo.resizeBy(50)
 selectedSong.resizeBy(-5)
 
 clickAnywhere.moveTo(game.width/2, (game.height/4)*3)
