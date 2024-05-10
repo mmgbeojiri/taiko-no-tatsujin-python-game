@@ -108,14 +108,14 @@ while not game.over:
     game.processInput()
     game.clearBackground()
 
-    logo.moveTo(game.width/2, math.sin((1/60)*math.pi*frame)*25 + game.height/4)
+    logo.moveTo(game.width/2, math.sin((1/240)*math.pi*frame)*25 + game.height/4)
 
 
     clickAnywhere.draw()
-    print(math.sin((0.1/60)*frame)*5)
+    print(math.sin((0.1/15)*frame)*5)
     
     frame += 1
-    if frame == 120:
+    if frame == 240:
         frame = 0
     
     if mouse.LeftClick:
