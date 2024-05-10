@@ -125,7 +125,7 @@ def FindLineWith(string, StringOrNum, lineNumberOffset = 0):
             return str(value)
         else:
             return i  # Append value and line number to results
-  return results
+  return 0 #if there is no line
 
 title = FindLineWith("TITLE:", "String")
 subtitle = FindLineWith("SUBTITLE:", "String")
