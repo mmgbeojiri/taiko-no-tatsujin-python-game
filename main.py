@@ -101,6 +101,22 @@ def CheckIfShouldBeHold():
     if getHoldStatus() == True and frame % 8 == 0:
         createObject("holdmiddle")
 
+# Title Screen #
+while not game.over:
+    game.processInput()
+    game.clearBackground()
+
+    logo.moveTo(game.width/2, math.sin((0.1/60)*frame)*2 - game.height/4)
+
+    clickAnywhere.draw()
+    frame += 1
+    if frame >= 60:
+        frame = 0 
+
+    game.update(60)
+game.over = False
+
+# Game #
 while not game.over:
     game.processInput()
     game.clearBackground()

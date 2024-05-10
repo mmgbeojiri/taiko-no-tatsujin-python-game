@@ -200,5 +200,17 @@ badText.resizeBy(drumResize+5)
 drumrollText.resizeBy(drumResize+5)
 maxcomboText.resizeBy(drumResize+5)
 
+logo = Image("./images/logo.png", game)
+clickAnywhere = Image("./text/clickanywhere.png", game)
+selectedSong = Image("./text/selectedsong.png", game)
+
+logo.resizeBy(-5)
+clickAnywhere.resizeBy(-5)
+selectedSong.resizeBy(-5)
+
+clickAnywhere.moveTo(game.width/2, (game.height/4)*3)
+selectedSong.moveTo(150, 10)
+
+
 difficulty = "Hard"
 song = "Worlds End Dancehall"
