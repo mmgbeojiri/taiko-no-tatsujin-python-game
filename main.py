@@ -6,6 +6,7 @@ from filereader import * # responsible for reading the chart
 from conductor import * # responsible for rendering notes from the filereaders
 from math import cos
 from math import pi
+from math import sin
 
 '''
 # Initialize debounce flags for each key
@@ -101,21 +102,25 @@ def CheckIfShouldBeHold():
     if getHoldStatus() == True and frame % 8 == 0:
         createObject("holdmiddle")
 
+frame = 0
 # Title Screen #
 while not game.over:
     game.processInput()
     game.clearBackground()
 
-    logo.moveTo(game.width/2, math.sin((0.1/60)*frame)*2 - game.height/4)
+    logo.moveTo(game.width/2, math.sin((1/60)*math.pi*frame)*25 + game.height/4)
 
     clickAnywhere.draw()
+    print(math.sin((0.1/60)*frame)*5)
+    
     frame += 1
-    if frame >= 60:
-        frame = 0 
+    if frame == 240:
+        frame = 0
 
     game.update(60)
 game.over = False
-
+frame = 0
+startTime = time()
 # Game #
 while not game.over:
     game.processInput()
