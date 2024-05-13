@@ -134,8 +134,10 @@ wave = FindLineWith("WAVE:", "String")
 startSongLine = 0
 endSongLine = 0
 def onDifficultyChange(difficulty):
+  global startSongLine, endSongLine
   startSongLine = FindStartEndSongLine("Start", difficulty)
   endSongLine = FindStartEndSongLine("End", difficulty)
+
 
 measureDuration = (60/int(bpm))*4
 offset = float(FindLineWith("OFFSET:", "String"))
