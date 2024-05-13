@@ -248,3 +248,4 @@ normalClearText.resizeBy(drumResize)
 
 difficulty = "Hard"
 song = "Luka Luka Night Fever"
+playerName = "Michael"

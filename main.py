@@ -112,7 +112,7 @@ while not game.over:
 
 
     clickAnywhere.draw()
-    game.drawText('To change song, rename the value of the variable “song” in globalvars.py.', 10, game.height - 30)
+    game.drawText('To change song, rename the value of the variable “song” at the end of the file "globalvars.py". Same for your playerName', 10, game.height - 30)
     
     frame += 1
     if frame == 240:
@@ -131,7 +131,7 @@ while not game.over:
     game.clearBackground()
 
     selectedSong.draw()
-    game.drawText(title, 500, 40)
+    game.drawText(title, 550, 40)
 
     startEasyDifficulty.resizeTo(1920, 1080)
     startNormalDifficulty.resizeTo(1920, 1080)
@@ -504,7 +504,7 @@ while not game.over:
     
     game.drawText(f"{reactionText}", 1000, 375)
 
-    
+    game.drawText(playerName, 275, 387)
 
     game.update(60)
 game.quit()
