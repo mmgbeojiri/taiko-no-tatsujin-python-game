@@ -125,7 +125,7 @@ while not game.over:
 game.over = False
 frame = 0
 # Selection Screen #
-onDifficultyChange()
+
 while not game.over:
     game.processInput()
     game.clearBackground()
@@ -133,17 +133,59 @@ while not game.over:
     selectedSong.draw()
     game.drawText(title, 500, 40)
 
-    easyDifficulty.draw()
-    easyText.draw()
-    normalDifficulty.draw()
-    normalText.draw()
-    hardDifficulty.draw()
-    hardText.draw()
-    oniDifficulty.draw()
-    oniText.draw()
+    startEasyDifficulty.resizeTo(1920, 1080)
+    startNormalDifficulty.resizeTo(1920, 1080)
+    startHardDifficulty.resizeTo(1920, 1080)
+    startOniDifficulty.resizeTo(1920, 1080)
+
+    startEasyDifficulty.resizeBy(drumResize)
+    startNormalDifficulty.resizeBy(drumResize)
+    startHardDifficulty.resizeBy(drumResize)
+    startOniDifficulty.resizeBy(drumResize)
+
+    
+    if mouse.collidedWith(startEasyDifficulty):
+        startEasyDifficulty.resizeBy(5)
+        if mouse.LeftClick:
+            onDifficultyChange("Easy") # This makes the note reader read from Easy
+            difficulty = "Easy" # This renders the Easy Note
+            game.over = True
+    
+    if mouse.collidedWith(startNormalDifficulty):
+        startNormalDifficulty.resizeBy(5)
+        if mouse.LeftClick:
+            onDifficultyChange("Normal")
+            difficulty = "Normal"
+            game.over = True
+    
+    if mouse.collidedWith(startHardDifficulty):
+        startHardDifficulty.resizeBy(5)
+        if mouse.LeftClick:
+            onDifficultyChange("Hard")
+            difficulty = "Hard"
+            game.over = True
+    
+    if mouse.collidedWith(startOniDifficulty):
+        startOniDifficulty.resizeBy(5)
+        if mouse.LeftClick:
+            onDifficultyChange("Oni")
+            difficulty = "Oni"
+            game.over = True
+        
+    startEasyDifficulty.draw()
+    startNormalDifficulty.draw()
+    startHardDifficulty.draw()
+    startOniDifficulty.draw()
+
+    startEasyText.draw()
+    startNormalText.draw()
+    startHardText.draw()
+    startOniText.draw()
 
     game.update(60)
 game.over = False
+
+
 startTime = time()
 # Game #
 while not game.over:

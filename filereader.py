@@ -133,7 +133,7 @@ bpm = FindLineWith("BPM:", "String")
 wave = FindLineWith("WAVE:", "String")
 startSongLine = 0
 endSongLine = 0
-def onDifficultyChange():
+def onDifficultyChange(difficulty):
   startSongLine = FindStartEndSongLine("Start", difficulty)
   endSongLine = FindStartEndSongLine("End", difficulty)
 

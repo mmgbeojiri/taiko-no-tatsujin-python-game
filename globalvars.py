@@ -210,6 +210,35 @@ selectedSong.resizeBy(-50)
 clickAnywhere.moveTo(game.width/2, (game.height/4)*3)
 selectedSong.moveTo(300, 40)
 
+startEasyDifficulty = Image("./images/easyDif.png", game)
+startNormalDifficulty = Image("./images/normalDif.png", game)
+startHardDifficulty = Image("./images/hardDif.png", game)
+startOniDifficulty = Image("./images/oniDif.png", game)
+
+startEasyDifficulty.resizeBy(drumResize)
+startNormalDifficulty.resizeBy(drumResize)
+startHardDifficulty.resizeBy(drumResize)
+startOniDifficulty.resizeBy(drumResize)
+
+startEasyDifficulty.moveTo(240, game.height/2)
+startNormalDifficulty.moveTo(720, game.height/2)
+startHardDifficulty.moveTo(1200, game.height/2)
+startOniDifficulty.moveTo(1680, game.height/2)
+
+startEasyText = Image("./text/easy.png", game)
+startNormalText = Image("./text/normal.png", game)
+startHardText = Image("./text/hard.png", game)
+startOniText = Image("./text/oni.png", game)
+
+startEasyText.resizeBy(drumResize)
+startNormalText.resizeBy(drumResize)
+startHardText.resizeBy(drumResize)
+startOniText.resizeBy(drumResize)
+
+startEasyText.moveTo(startEasyDifficulty.x, startEasyDifficulty.y + 50)
+startNormalText.moveTo(startNormalDifficulty.x, startEasyDifficulty.y + 50)
+startHardText.moveTo(startHardDifficulty.x, startEasyDifficulty.y + 50)
+startOniText.moveTo(startOniDifficulty.x, startOniDifficulty.y + 50)
 
 difficulty = "Hard"
-song = "Worlds End Dancehall"
+song = "Luka Luka Night Fever"
