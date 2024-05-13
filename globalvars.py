@@ -240,5 +240,11 @@ startNormalText.moveTo(startNormalDifficulty.x, startEasyDifficulty.y + 50)
 startHardText.moveTo(startHardDifficulty.x, startEasyDifficulty.y + 50)
 startOniText.moveTo(startOniDifficulty.x, startOniDifficulty.y + 50)
 
+normalClear = Image("./images/clearsymbol.png", game)
+normalClearText = Image("./text/normalclear.png", game)
+
+normalClear.resizeBy(drumResize)
+normalClearText.resizeBy(drumResize)
+
 difficulty = "Hard"
 song = "Luka Luka Night Fever"

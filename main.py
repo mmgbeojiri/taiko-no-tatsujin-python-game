@@ -473,13 +473,38 @@ while not game.over:
     yellowHealth.draw()
     greenHealth.draw()
 
-    game.drawText(f"Score: {game.score}", 200, 600)
+    game.drawText(f"Score: {game.score}", 800, 600)
 
     if health > 50: 
         reactionText = "Extra-DON-airy!"
+        normalClear.moveTo(605, 425)
+        normalClearText.moveTo(normalClear.x, normalClear.y + 50)
+        donWadaSurvival.visible = True
+        donWadaSurvival.moveTo(300, 600)
     if health <= 50:
         reactionText = "Failed... DON give up!"
-    game.drawText(f"{reactionText}", 300, 300)
+        donWadaNormal.visible = True
+        donWadaNormal.moveTo(300, 600)
+
+    if difficulty == "Easy":
+        easyDifficulty.moveTo(605, 650)
+        easyText.moveTo(easyDifficulty.x, easyDifficulty.y + 50)
+    if difficulty == "Normal":
+        normalDifficulty.moveTo(605, 650)
+        normalText.moveTo(normalDifficulty.x, normalDifficulty.y + 50)
+    if difficulty == "Hard":
+        hardDifficulty.moveTo(605, 650)
+        hardText.moveTo(hardDifficulty.x, hardDifficulty.y + 50)
+    if difficulty == "Oni":
+        oniDifficulty.moveTo(605, 650)
+        oniText.moveTo(oniDifficulty.x, oniDifficulty.y + 50)
+
+
+
+    
+    game.drawText(f"{reactionText}", 1000, 375)
+
+    
 
     game.update(60)
 game.quit()
