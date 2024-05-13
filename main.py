@@ -407,10 +407,7 @@ while not game.over:
     UpdateBulbNotes()
             
             
-    game.drawText(f"Drumroll: {getDrumroll()}", 10, game.height - 20)
-    game.drawText(f"Max Combo: {maxCombo}", 120, game.height - 20)
-    game.drawText(f"Gogo Mode: {getGogoMode()}", 250, game.height - 20)
-    game.drawText(f"Bad: {getAccuracy()[0]} Ok: {getAccuracy()[1]} Good: {getAccuracy()[2]}", 10, game.height - 40)
+
 
     nextNote = findNextNote(0)
     nextBar = findNextBar(0)
