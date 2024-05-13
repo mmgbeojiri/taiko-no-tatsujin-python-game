@@ -475,7 +475,10 @@ while not game.over:
 
     game.drawText(f"Score: {game.score}", 200, 600)
 
-    reactionText = "congrat"
+    if health > 50: 
+        reactionText = "Extra-DON-airy!"
+    if health <= 50:
+        reactionText = "Failed... DON give up!"
     game.drawText(f"{reactionText}", 300, 300)
 
     game.update(60)
